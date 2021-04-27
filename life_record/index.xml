@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Life_records on wei</title>
-    <link>http://example.org/life_record/</link>
+    <link>https://weivwang.github.io/life_record/</link>
     <description>Recent content in Life_records on wei</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <lastBuildDate>Tue, 27 Apr 2021 19:37:02 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/life_record/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/life_record/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Note</title>
-      <link>http://example.org/life_record/note/</link>
+      <link>https://weivwang.github.io/life_record/note/</link>
       <pubDate>Tue, 27 Apr 2021 19:37:02 +0800</pubDate>
       
-      <guid>http://example.org/life_record/note/</guid>
+      <guid>https://weivwang.github.io/life_record/note/</guid>
       <description>&lt;h1 id=&#34;-有时间再更新主要记录日常&#34;&gt;### 有时间再更新，主要记录日常&lt;/h1&gt;
 </description>
     </item>
