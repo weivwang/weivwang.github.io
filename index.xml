@@ -6,14 +6,19 @@
     <description>Recent content on wei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Apr 2021 19:37:02 +0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Apr 2021 19:37:02 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Note</title>
       <link>http://example.org/life_record/note/</link>
       <pubDate>Tue, 27 Apr 2021 19:37:02 +0800</pubDate>
       
       <guid>http://example.org/life_record/note/</guid>
-      <description>### 有时间再更新，主要记录日常 </description>
+      <description>&lt;h1 id=&#34;-有时间再更新主要记录日常&#34;&gt;### 有时间再更新，主要记录日常&lt;/h1&gt;
+</description>
     </item>
     
     <item>
@@ -22,7 +27,8 @@
       <pubDate>Tue, 27 Apr 2021 19:07:47 +0800</pubDate>
       
       <guid>http://example.org/my-first-post/</guid>
-      <description>留着慢慢写 </description>
+      <description>&lt;h2 id=&#34;留着慢慢写&#34;&gt;留着慢慢写&lt;/h2&gt;
+</description>
     </item>
     
   </channel>
