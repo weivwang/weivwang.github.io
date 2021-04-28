@@ -6,10 +6,43 @@
     <description>Recent content on 3w小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Apr 2021 16:44:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Apr 2021 20:25:53 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>写在前面</title>
+      <link>https://weivwang.github.io/life_record/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</link>
+      <pubDate>Wed, 28 Apr 2021 20:25:53 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/life_record/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</guid>
+      <description>&lt;h3 id=&#34;写在前面&#34;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;2020年大概12月，和3位朋友一起参加零杯（武大计算机学院零杯网页设计大赛）&lt;/p&gt;
+&lt;p&gt;在实验室做了一些前端，自学了html，css，react.js的部分内容，借此机会提升自己的前端技能&lt;/p&gt;
+&lt;p&gt;毛概课上，在后排摸🐟时&lt;/p&gt;
+&lt;p&gt;ziyi问我，你有博客吗？&lt;/p&gt;
+&lt;p&gt;我说：没&lt;/p&gt;
+&lt;p&gt;z：你可以搭一个，用hexo&lt;/p&gt;
+&lt;p&gt;于是回去之后我尝试使用hexo在github上搭建了一个博客&lt;/p&gt;
+&lt;p&gt;更新了几次后就忘记了&lt;/p&gt;
+&lt;p&gt;今年偶然进入WHUMSC群里的luoosu的个人博客，简约但惊艳&lt;/p&gt;
+&lt;p&gt;看了一下是基于hugo的，于是我萌生了重新搭建博客的想法。&lt;/p&gt;
+&lt;p&gt;2021-4-27搭建成功&lt;/p&gt;
+&lt;p&gt;我建了3个目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;life_record  用来记录生活琐事&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;study  记录学习中的一些心得或浅薄的见解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;other_things 可能是感情上困惑？或者一些摘抄，总之，any other things&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Js_learning</title>
@@ -216,16 +249,6 @@ children[length-1]
 &lt;p&gt;人脸识别，姿势识别，alphago，医学图像识别&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;卷积核：用一个更小的矩阵滑过原矩阵&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Note</title>
-      <link>https://weivwang.github.io/life_record/note/</link>
-      <pubDate>Tue, 27 Apr 2021 19:37:02 +0800</pubDate>
-      
-      <guid>https://weivwang.github.io/life_record/note/</guid>
-      <description>&lt;p&gt;有时间再更新，主要记录日常&lt;/p&gt;
 </description>
     </item>
     
