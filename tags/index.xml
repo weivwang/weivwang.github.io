@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 3w小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Apr 2021 20:25:53 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Apr 2021 21:16:25 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git</title>
+      <link>https://weivwang.github.io/tags/git/</link>
+      <pubDate>Wed, 28 Apr 2021 21:16:25 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>仓库关联</title>
+      <link>https://weivwang.github.io/tags/%E4%BB%93%E5%BA%93%E5%85%B3%E8%81%94/</link>
+      <pubDate>Wed, 28 Apr 2021 21:16:25 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/tags/%E4%BB%93%E5%BA%93%E5%85%B3%E8%81%94/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>碎碎念</title>
