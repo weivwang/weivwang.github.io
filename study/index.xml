@@ -6,19 +6,18 @@
     <description>Recent content in Studies on 3w小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Wed, 28 Apr 2021 16:32:56 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/study/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>https://weivwang.github.io/study/standford_cs231n/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Cs231n_learn</title>
+      <link>https://weivwang.github.io/study/cs231n_learn/</link>
+      <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
       
-      <guid>https://weivwang.github.io/study/standford_cs231n/</guid>
-      <description>&lt;p&gt;title: &amp;ldquo;cs231n学习笔记&amp;rdquo;
-date: 2021-04-28T19:37:02+08:00&lt;/p&gt;
-&lt;p&gt;2021-2-1&lt;/p&gt;
+      <guid>https://weivwang.github.io/study/cs231n_learn/</guid>
+      <description>&lt;p&gt;2021-2-1&lt;/p&gt;
 &lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;
 &lt;p&gt;&lt;!-- raw HTML omitted --&gt;focus on&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;

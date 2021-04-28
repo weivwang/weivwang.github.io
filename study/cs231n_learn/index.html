@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>3w小站  | 第一条博客</title>
+	<title>3w小站  | Cs231n_learn</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.82.1" />
 	
@@ -111,7 +111,7 @@
 		<a href="https://weivwang.github.io/" title="3w小站" class="heading font-cursive icon">3w小站</a>
 	</h2>
 </div>
-<h1 class="pt-2">第一条博客</h1>
+<h1 class="pt-2">Cs231n_learn</h1>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -120,7 +120,7 @@
 
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2021-04-27T19:07:47&#43;08:00">2021-4-27 19:07</time>
+		datetime="2021-04-28T16:32:56&#43;08:00">2021-4-28 16:32</time>
 </div>
 
 <hr />
@@ -133,7 +133,98 @@
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h2 id="留着慢慢写">留着慢慢写</h2>
+		<div class="c-rich-text"><p>2021-2-1</p>
+<p>课程链接： <a href="https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;spm_id_from=pageDriver">https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;spm_id_from=pageDriver</a></p>
+<p>课程重点：convolutional neural network (CNN) 卷积神经网络</p>
+<p><!-- raw HTML omitted -->focus on<!-- raw HTML omitted -->：</p>
+<ul>
+<li>
+<p>image classification problems. 图像分类问题</p>
+<p>ImageNet大赛推动了图像识别的发展，最近几年GPU性能提高较快，所以才允许该领域快速发展，另一个方面：数据量</p>
+<p>机器深刻地理解图像还早</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted -->python ，jupyter notebook tutorial<!-- raw HTML omitted --></p>
+<p>对计算机来说，图片就是一个像素值矩阵</p>
+<p>challenges：光线，形变，遮挡Occlusion，背景，类内差异(cats' color&hellip;.)</p>
+<p>Data-Driven Approach：从网上找一堆猫的照片，作为训练</p>
+<p>简易模型：</p>
+<p>train:</p>
+<p>​	def train(images, labels):</p>
+<p>​			return models</p>
+<p>Predict:</p>
+<p>​	def predict(model, test_images):</p>
+<p>​		return test_labels</p>
+<hr>
+<p><!-- raw HTML omitted -->Lecture1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->最近临近算法<!-- raw HTML omitted -->：</p>
+<p>L1 :曼哈顿距离</p>
+<p><img src="https://i.loli.net/2021/02/10/cA5pjUNB7VExJmk.png" alt="IMG_0116"></p>
+<p>给出了一个比较两个图片相像性的方法。</p>
+<p>落后的方法：train:O(1)</p>
+<p>Predict: O(n)，n个比较</p>
+<p><!-- raw HTML omitted -->K-最临近算法<!-- raw HTML omitted -->：KNN</p>
+<p>找到最近的k个点，更复杂，k越大，结果越好</p>
+<p>L2 = L1取根号 ， 欧式距离</p>
+<p>L1基于我们对坐标轴的选择，L2不会</p>
+<hr>
+<p>K的选择，距离的算法选择：超参数，不能从数据集里面获得，依赖于具体问题</p>
+<p>比如选L1还是L2，依赖你到底要不要注重坐标轴的选择，best answer：depend on question</p>
+<hr>
+<p><!-- raw HTML omitted -->Lecture2.  线性分类<!-- raw HTML omitted --></p>
+<p>图片像素值 x&mdash;&mdash;&mdash;-f(x,W)&mdash;&mdash;&mdash;&mdash;参数&mdash;&mdash;&mdash;&mdash;-分类</p>
+<p>W为权重（自己提出的） f(x,W) = Wx +b</p>
+<p><img src="https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png" alt=""></p>
+<hr>
+<p><!-- raw HTML omitted -->Lecture3.  如何选择：W和 f(x, W)的形式？<!-- raw HTML omitted --></p>
+<p><img src="https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png" alt="IMG_0118"></p>
+<p>回顾：</p>
+<p>猫的图片&mdash;&mdash;2*2矩阵&mdash;&mdash;4*1矩阵&mdash;&mdash;输入到f(x,W)</p>
+<p>W为自己探索的得出的3*4矩阵，f(x,W)为自己提出的函数，b为修正</p>
+<p>在这里f(x,W) = Wx + b 可以得到一个3*1的矩阵，对应3类，某一类的得分越高，则为该类的概率越高</p>
+<p><!-- raw HTML omitted -->如何选择W？<!-- raw HTML omitted --></p>
+<p>​	如果想让机器来进行评估，需要一个函数把W当输入，告诉我们这个W好不好，这个函数称作</p>
+<p><strong>损失函数（loss function)</strong>，可以定量地衡量W的好坏</p>
+<hr>
+<p><strong>SVM loss</strong></p>
+<p>Support Vector Machine 支持向量机</p>
+<p>Sj是通过分类器，预测出来的类的分数，S-Yi是这个样本的正确的分类标签</p>
+<p><img src="https://i.loli.net/2021/02/10/d5FcEvqJR8Hu1Ta.png" alt="IMG_0120"></p>
+<p>最小值为0，最大值无穷</p>
+<hr>
+<p>问题：发现一个W使L = 0，W唯一吗？</p>
+<p>不唯一</p>
+<hr>
+<p>通常在L（w）后面+一个lanmudaR(W)，正则项，防止过度拟合</p>
+<hr>
+<p><strong>Softmax Classifier</strong></p>
+<p>more common<img src="https://i.loli.net/2021/02/10/SnOb2cl5GvFAWZf.png" alt="IMG_0121"></p>
+<p>最小值：0，最大化：inf</p>
+<p>L_i = 0 代表真实，可以理解为损失程度，L_i越大，代表损失越多</p>
+<p><img src="https://i.loli.net/2021/02/10/6GPJAsUjwrivpB3.png" alt="IMG_0122"></p>
+<hr>
+<p><strong>W最开始如何选？</strong></p>
+<p>1，最笨办法：random</p>
+<p>2，梯度：通常是选一个之后进行优化，往往用到梯度，告诉我们向那个方向移动一个步长，损失变化会是多少</p>
+<p>在每一个维度修改一小部分，进行<strong>有限差分逼近</strong></p>
+<p>问题：W维度可能很多，或者CNN很大，导致计算很慢</p>
+<p>可以用来debug</p>
+<hr>
+<p>怎么计算梯度？ ：<strong>反向传播算法</strong></p>
+<p>就是求导的链式法则</p>
+<hr>
+<p>之前讲的是线性分类</p>
+<p>现在讲2层神经网络</p>
+<p>W2对W1得到的分数h再进行一个加权<img src="https://i.loli.net/2021/02/10/5z7gcIdpyktDiEK.png" alt="IMG_0126"></p>
+<p><img src="https://i.loli.net/2021/02/10/juAqi4M5JadpNzm.png" alt="IMG_0127"></p>
+<hr>
+<p><strong>卷积神经网络</strong></p>
+<p>历史：</p>
+<p>2012年神经网络爆发，最早是声音识别</p>
+<p>CNN在ImageNet取得很好的效果，之后被广泛使用</p>
+<p>人脸识别，姿势识别，alphago，医学图像识别</p>
+<hr>
+<p>卷积核：用一个更小的矩阵滑过原矩阵</p>
 </div>
 	</section>
 
@@ -157,7 +248,8 @@
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/study/" title="study page" >
+		<a href="/study/" title="study page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			study
 		</a>
 	</li>
@@ -194,7 +286,7 @@
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 124 words in this page.
 	</div>
 </div>
 
@@ -205,13 +297,14 @@
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    
     <a class="flex-grow-0" href="/life_record/note/">
-        Note
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Note
+    </a>
+    
     
 </div>
 <div >
