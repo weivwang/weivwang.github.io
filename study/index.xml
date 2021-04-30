@@ -6,10 +6,81 @@
     <description>Recent content in Studies on 3w小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Apr 2021 21:16:25 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Apr 2021 20:43:36 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/study/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue</title>
+      <link>https://weivwang.github.io/study/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 30 Apr 2021 20:43:36 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/study/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h2 id=&#34;引入vue&#34;&gt;引入Vue&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-&lt;!--&#34; data-lang=&#34;&lt;!--&#34;&gt;&amp;lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 生产环境版本，优化了尺寸和速度 --&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;vue指令&#34;&gt;Vue指令&lt;/h2&gt;
+&lt;h3 id=&#34;v-text&#34;&gt;v-text&lt;/h3&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+        {{message}}
+      &amp;lt;h2 v-text = &amp;quot;message+&#39;!&#39;&amp;quot;&amp;gt;&amp;lt;/h2&amp;gt; 
+      &amp;lt;h2&amp;gt;{{school.mobile}}&amp;lt;/h2&amp;gt; 
+      &amp;lt;h2&amp;gt; {{ names[0] }} &amp;lt;/h2&amp;gt;
+    &amp;lt;/div&amp;gt;
+    
+    
+ &amp;lt;script&amp;gt;
+        var app = new Vue({
+            el:&#39;#app&#39;,
+            data:{
+                message:&#39;hello vue!&#39;,
+                school:{
+                    name:&amp;quot;www&amp;quot;,
+                    mobile:&amp;quot;2-12302-1&amp;quot;
+                },
+                names:[&amp;quot;www&amp;quot;,&amp;quot;hdsi&amp;quot;,&amp;quot;dsk&amp;quot;]
+            }
+        })
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在标签里面直接指定v-text = &amp;quot; &amp;ldquo;,会将标签文本全部替换为&amp;rdquo; &amp;ldquo;的内容&lt;/p&gt;
+&lt;h3 id=&#34;v-html&#34;&gt;v-html&lt;/h3&gt;
+&lt;p&gt;设置标签的 innerHtml，将文本解析为html结构&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+        {{message}}
+      &amp;lt;h2 v-html = &amp;quot;content&amp;quot;&amp;gt;&amp;lt;/h2&amp;gt; 
+    &amp;lt;/div&amp;gt;
+    
+ &amp;lt;script&amp;gt;
+        var app = new Vue({
+            el:&#39;#app&#39;,
+            data:{
+                content:&amp;quot;&amp;lt;a href=&#39;#&#39;&#39;&amp;gt;v-html示例&amp;lt;/a&amp;gt;&amp;quot;
+            }
+        })
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;v-on&#34;&gt;v-on&lt;/h3&gt;
+&lt;p&gt;为元素绑定事件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+        &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;v-on&amp;quot; v-on:click=&amp;quot;study&amp;quot;&amp;gt;
+        &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;v-on简写&amp;quot; @click=&amp;quot;study&amp;quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+    
+&amp;lt;script&amp;gt;
+        var app = new Vue({
+            el:&#39;#app&#39;,
+            methods:{
+                study:function(){
+                    alert(&amp;quot;开始学习&amp;quot;);
+                }
+            },
+        })
+ &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Git关联及取消关联远程仓库操作</title>
