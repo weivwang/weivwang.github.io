@@ -205,7 +205,42 @@
             },
         })
  &lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div></div>
+</code></pre></div><h3 id="v-show">v-show</h3>
+<p>v-show = &ldquo;bool&rdquo;, 用于决定元素是否显示，操作的是display属性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./bili.png&#34;</span> <span style="color:#a6e22e">v-show</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;isShow&#34;</span>&gt;
+        &lt;<span style="color:#f92672">button</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;changeState&#34;</span>&gt;切换显示状态&lt;/<span style="color:#f92672">button</span>&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+            <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;#app&#39;</span>,
+            <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{
+                <span style="color:#a6e22e">isShow</span><span style="color:#f92672">:</span><span style="color:#66d9ef">false</span>
+            },
+            <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span>{
+                <span style="color:#a6e22e">changeState</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(){
+                    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isShow</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isShow</span>;
+                }
+            }
+        })
+ &lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><h3 id="v-if">v-if</h3>
+<p>直接操作元素是否显示</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+       &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;isShow&#34;</span>&gt;v-if&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+            <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;#app&#39;</span>,
+            <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{
+                <span style="color:#a6e22e">isShow</span><span style="color:#f92672">:</span><span style="color:#66d9ef">true</span>
+            },
+        })
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p>本质是操纵dom元素来切换显示状态，v-if=&ldquo;false&quot;时，将元素从dom树中移除</p>
+<p>在使用过程中，频繁的切换用v-show，不频繁用v-if，v-show切换消耗小</p>
+</div>
 	</section>
 
 
@@ -280,7 +315,7 @@
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 102 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 155 words in this page.
 	</div>
 </div>
 
