@@ -18,8 +18,6 @@
       
       <guid>https://weivwang.github.io/study/c#%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid>
       <description>&lt;h3 id=&#34;http请求&#34;&gt;HTTP请求&lt;/h3&gt;
-&lt;p&gt;资料参考：https://github.com/zhaotianff/CSharpCrawler/blob/master/CSharpCrawler/PrerequisiteKnowledge.md&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/eb3e5ec98a66&#34;&gt;https://www.jianshu.com/p/eb3e5ec98a66&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一，请求方法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;GET和POST请求&lt;/p&gt;
 &lt;ul&gt;
@@ -39,6 +37,8 @@
 &lt;p&gt;&lt;strong&gt;四，请求体&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/01/xopmywiDdMBV2jh.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
 &lt;p&gt;它将一个页面表单中的组件值通过param1=value1&amp;amp;param2=value2的键值对形式编码成一个格式化串，它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于“/chapter15/user.html? param1=value1&amp;amp;param2=value2”的方式传递请求参数。&lt;/p&gt;
+&lt;p&gt;资料参考：https://github.com/zhaotianff/CSharpCrawler/blob/master/CSharpCrawler/PrerequisiteKnowledge.md&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/eb3e5ec98a66&#34;&gt;https://www.jianshu.com/p/eb3e5ec98a66&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
