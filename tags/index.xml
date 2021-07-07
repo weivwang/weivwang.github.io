@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 3w小窝</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 27 May 2021 12:33:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jul 2021 20:29:18 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>python</title>
+      <link>https://weivwang.github.io/tags/python/</link>
+      <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>学习笔记</title>
+      <link>https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>实验</title>
