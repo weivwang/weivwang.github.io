@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>操作系统 on wwwvvvのblog</title>
-    <link>https:weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <link>https://weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
     <description>Recent content in 操作系统 on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 May 2021 12:33:50 +0800</lastBuildDate>
     
-	<atom:link href="https:weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Operating_system_experiment</title>
-      <link>https:weivwang.github.io/studynotes/operating_system_experiment/</link>
+      <link>https://weivwang.github.io/studynotes/operating_system_experiment/</link>
       <pubDate>Thu, 27 May 2021 12:33:50 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/operating_system_experiment/</guid>
+      <guid>https://weivwang.github.io/studynotes/operating_system_experiment/</guid>
       <description>&lt;h1 id=&#34;operation-system-experiment&#34;&gt;Operation-System-Experiment&lt;/h1&gt;
 &lt;p&gt;武汉大学软件工程操作系统课程设计&lt;/p&gt;
 &lt;p&gt;主要是使用高级语言模拟操作系统管理的一些算法，整体难度不大，甚至感觉像是在做数据结构的作业。&lt;/p&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>学习笔记 on wwwvvvのblog</title>
-    <link>https:weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <link>https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in 学习笔记 on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Oct 2021 21:04:17 +0800</lastBuildDate>
     
-	<atom:link href="https:weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker_notes</title>
-      <link>https:weivwang.github.io/studynotes/docker_notes/</link>
+      <link>https://weivwang.github.io/studynotes/docker_notes/</link>
       <pubDate>Fri, 29 Oct 2021 21:04:17 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/docker_notes/</guid>
+      <guid>https://weivwang.github.io/studynotes/docker_notes/</guid>
       <description>&lt;h1 id=&#34;docker-学习笔记&#34;&gt;Docker 学习笔记&lt;/h1&gt;
 &lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
 &lt;p&gt;最近为了做 csapp 的大作业，需要在 mac 上使用 Linux，但是又不想安装庞大的虚拟机，想到了使用 docker，正好趁此机会学习一下 docker&lt;/p&gt;
@@ -82,10 +82,10 @@
     
     <item>
       <title>Tensorflow八股笔记</title>
-      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <link>https://weivwang.github.io/studynotes/tensorflow/</link>
       <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <guid>https://weivwang.github.io/studynotes/tensorflow/</guid>
       <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
 &lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):
@@ -153,10 +153,10 @@
     
     <item>
       <title>Vue.js学习笔记</title>
-      <link>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Fri, 30 Apr 2021 20:43:36 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>&lt;h2 id=&#34;引入-vue&#34;&gt;引入 Vue&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&amp;gt;&lt;/span&gt;
 &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
@@ -258,10 +258,10 @@
     
     <item>
       <title>Cs231n学习笔记</title>
-      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <link>https://weivwang.github.io/studynotes/cs231n_learn/</link>
       <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <guid>https://weivwang.github.io/studynotes/cs231n_learn/</guid>
       <description>&lt;p&gt;2021-2-1&lt;/p&gt;
 &lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;

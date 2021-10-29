@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on wwwvvvのblog</title>
-    <link>https:weivwang.github.io/tags/python/</link>
+    <link>https://weivwang.github.io/tags/python/</link>
     <description>Recent content in python on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Jul 2021 20:29:18 +0800</lastBuildDate>
     
-	<atom:link href="https:weivwang.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tensorflow八股笔记</title>
-      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <link>https://weivwang.github.io/studynotes/tensorflow/</link>
       <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <guid>https://weivwang.github.io/studynotes/tensorflow/</guid>
       <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
 &lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):

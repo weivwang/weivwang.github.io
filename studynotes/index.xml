@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>StudyNotes on wwwvvvのblog</title>
-    <link>https:weivwang.github.io/studynotes/</link>
+    <link>https://weivwang.github.io/studynotes/</link>
     <description>Recent content in StudyNotes on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Oct 2021 21:04:17 +0800</lastBuildDate>
     
-	<atom:link href="https:weivwang.github.io/studynotes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/studynotes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker_notes</title>
-      <link>https:weivwang.github.io/studynotes/docker_notes/</link>
+      <link>https://weivwang.github.io/studynotes/docker_notes/</link>
       <pubDate>Fri, 29 Oct 2021 21:04:17 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/docker_notes/</guid>
+      <guid>https://weivwang.github.io/studynotes/docker_notes/</guid>
       <description>&lt;h1 id=&#34;docker-学习笔记&#34;&gt;Docker 学习笔记&lt;/h1&gt;
 &lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
 &lt;p&gt;最近为了做 csapp 的大作业，需要在 mac 上使用 Linux，但是又不想安装庞大的虚拟机，想到了使用 docker，正好趁此机会学习一下 docker&lt;/p&gt;
@@ -82,10 +82,10 @@
     
     <item>
       <title>Enbedded_software_courses_notes</title>
-      <link>https:weivwang.github.io/studynotes/enbedded_software_courses_notes/</link>
+      <link>https://weivwang.github.io/studynotes/enbedded_software_courses_notes/</link>
       <pubDate>Fri, 29 Oct 2021 19:27:15 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/enbedded_software_courses_notes/</guid>
+      <guid>https://weivwang.github.io/studynotes/enbedded_software_courses_notes/</guid>
       <description>&lt;h1 id=&#34;嵌入式软件课程笔记&#34;&gt;嵌入式软件课程笔记&lt;/h1&gt;
 &lt;h2 id=&#34;bootloader-的作用&#34;&gt;bootloader 的作用&lt;/h2&gt;
 &lt;p&gt;参考资料：https://blog.csdn.net/zxnsirius/article/details/52166558&lt;/p&gt;
@@ -139,10 +139,10 @@
     
     <item>
       <title>Tensorflow八股笔记</title>
-      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <link>https://weivwang.github.io/studynotes/tensorflow/</link>
       <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <guid>https://weivwang.github.io/studynotes/tensorflow/</guid>
       <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
 &lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):
@@ -210,10 +210,10 @@
     
     <item>
       <title>Operating_system_experiment</title>
-      <link>https:weivwang.github.io/studynotes/operating_system_experiment/</link>
+      <link>https://weivwang.github.io/studynotes/operating_system_experiment/</link>
       <pubDate>Thu, 27 May 2021 12:33:50 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/operating_system_experiment/</guid>
+      <guid>https://weivwang.github.io/studynotes/operating_system_experiment/</guid>
       <description>&lt;h1 id=&#34;operation-system-experiment&#34;&gt;Operation-System-Experiment&lt;/h1&gt;
 &lt;p&gt;武汉大学软件工程操作系统课程设计&lt;/p&gt;
 &lt;p&gt;主要是使用高级语言模拟操作系统管理的一些算法，整体难度不大，甚至感觉像是在做数据结构的作业。&lt;/p&gt;
@@ -364,10 +364,10 @@
     
     <item>
       <title>Vue.js学习笔记</title>
-      <link>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Fri, 30 Apr 2021 20:43:36 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>&lt;h2 id=&#34;引入-vue&#34;&gt;引入 Vue&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&amp;gt;&lt;/span&gt;
 &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
@@ -469,10 +469,10 @@
     
     <item>
       <title>Git关联及取消关联远程仓库操作</title>
-      <link>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
+      <link>https://weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Wed, 28 Apr 2021 21:16:25 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</guid>
       <description>&lt;h3 id=&#34;git-关联取消关联远程仓库操作&#34;&gt;git 关联/取消关联远程仓库操作&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -507,10 +507,10 @@
     
     <item>
       <title>Js_learning</title>
-      <link>https:weivwang.github.io/studynotes/js_learning/</link>
+      <link>https://weivwang.github.io/studynotes/js_learning/</link>
       <pubDate>Wed, 28 Apr 2021 16:44:41 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/js_learning/</guid>
+      <guid>https://weivwang.github.io/studynotes/js_learning/</guid>
       <description>&lt;h2 id=&#34;dom2021-1-31&#34;&gt;DOM(2021-1-31)&lt;/h2&gt;
 &lt;h4 id=&#34;dom-简介&#34;&gt;DOM 简介&lt;/h4&gt;
 &lt;p&gt;Document Object Model ，是 W3C 推荐的处理可扩展标记语言 HTML 或 XML 的标准编程 &lt;em&gt;接口&lt;/em&gt;&lt;/p&gt;
@@ -607,10 +607,10 @@ children[length-1]
     
     <item>
       <title>Cs231n学习笔记</title>
-      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <link>https://weivwang.github.io/studynotes/cs231n_learn/</link>
       <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <guid>https://weivwang.github.io/studynotes/cs231n_learn/</guid>
       <description>&lt;p&gt;2021-2-1&lt;/p&gt;
 &lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;

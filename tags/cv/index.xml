@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CV on wwwvvvのblog</title>
-    <link>https:weivwang.github.io/tags/cv/</link>
+    <link>https://weivwang.github.io/tags/cv/</link>
     <description>Recent content in CV on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Apr 2021 16:32:56 +0800</lastBuildDate>
     
-	<atom:link href="https:weivwang.github.io/tags/cv/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://weivwang.github.io/tags/cv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cs231n学习笔记</title>
-      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <link>https://weivwang.github.io/studynotes/cs231n_learn/</link>
       <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
       
-      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <guid>https://weivwang.github.io/studynotes/cs231n_learn/</guid>
       <description>&lt;p&gt;2021-2-1&lt;/p&gt;
 &lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;
