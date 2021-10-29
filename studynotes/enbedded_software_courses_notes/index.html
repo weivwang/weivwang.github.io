@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>wwwvvvのblog  | Enbedded_software_courses_notes</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('http:\/\/example.org\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('http://example.org/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="http://example.org/" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">Enbedded_software_courses_notes</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">武汉大学软件工程大三《嵌入式系统》课程笔记</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0'>课程笔记</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-10-29T19:27:15&#43;08:00">2021-10-29 19:27</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="嵌入式软件课程笔记">嵌入式软件课程笔记</h1>
+<h2 id="bootloader-的作用">bootloader 的作用</h2>
+<p>参考资料：https://blog.csdn.net/zxnsirius/article/details/52166558</p>
+<p><a href="https://blog.csdn.net/qq_35769944/article/details/81979980">https://blog.csdn.net/qq_35769944/article/details/81979980</a></p>
+<p><strong>BootLoader</strong>就是在操作系统运行之前运行的一段小程序。通过这段小程序，<strong>可以初始化硬件设备</strong>，从而将系统的软硬件环境带到一个合适的状态，以便为最终调用操作系统做好准备。对于 Bootloader 的启动过程又分为两个阶段 stage1 和 stage2。</p>
+<p>stage1 全部由汇编编写，它的主要工作是（1）初始化硬件设备、（2）为加载 Bootlodader 的 stage2 准备 RAM 空间（3）拷贝 Bootloader 的 stage2 到 RAM 空间（4）设置好堆栈段为 stager2 的 C 语言环境做准备。</p>
+<p>stage2 全部由 C 语言编写，其的主要工作是（1）初始化本阶段要使用到的硬件设备（2）将内核映像和根文件系统映像从 flash 上读到 RAM （3）调用内核</p>
+<h3 id="通俗解释">通俗解释</h3>
+<p>其实 bootloader 主要的必须的作用只有一个:就是把操作系统映像文件拷贝到 RAM 中去，然后跳转到它的入口处去执行。</p>
+<p>而操作系统文件的来源，可以是 flash,sd card,PC(可以通过网络，USB，甚至串口传输）等等，所谓的 EBOOT,UBOOT，其实就是表明了系统文件是通过 Ethernet 或者 USB 从 PC 传输过去的。</p>
+<p>当然，为了实现这个功能（以及其它附加功能），我们必须对硬件做一些必要的初始化，这个也是必须的（废话！）。除了这个必须的，现在的 bootloader 还常常会加入以下功能：</p>
+<p>1.将操作系统映像文件写入 FLASH/硬盘等：读取过来的操作系统文件，除了可以拷贝到 RAM 中直接运行，还可以烧录到 FLASH，或者写入硬盘永久保存，这样下次就可以直接从本机来读取操作系统映像。</p>
+<p>2.硬件诊断：如同 PC 的 BIOS 一样，检测硬件是否正常功能。</p>
+<p>3.显示一个 LOGO，因为拷贝操作系统文件和启动操作系统需要时间，所以产品化的设备，一般需要在这段时间显示一个 LOGO。</p>
+<h2 id="操作系统服务">操作系统服务</h2>
+<ul>
+<li>消息队列</li>
+<li>信箱</li>
+<li>管道</li>
+</ul>
+<h3 id="消息队列">消息队列</h3>
+<p>细节：</p>
+<ul>
+<li>绝大多是 RTOS 都需要一个特定函数来初始化队列</li>
+<li>大多数 RTOS 允许建立多个队列</li>
+<li>如果要写入的队列已经满了，则 RTOS 返还一个错误信息，表明写操作失败；或者阻塞该任务，直到队列释放空间</li>
+<li>若想要读的队列为空，则返回错误码</li>
+<li>写入数据量问题：向队列写 char，int 或者自己定义的 struct 怎么办？不能都写一个对应的方法来处理：C++泛型，重载；c 语言 void 指针，用宏包装函数（不好调试）</li>
+</ul>
+<p>指针和队列：</p>
+<p>将数据放在缓冲区，用指针指向这个缓冲区，把指针放在队列中</p>
+<h3 id="信箱">信箱</h3>
+<p>和队列的区别：信箱的数据有优先级，按优先级先后取出</p>
+<h3 id="管道">管道</h3>
+<ul>
+<li>一些 rtos 允许写入管道的消息长度不限</li>
+<li>面向字节的</li>
+<li>一些 rtos 使用标准的 fread 和 fwrite 来读出，写入管道</li>
+<li>由于面向字节，如何实现两个任务之间的数据传输量符合期望？制定通信协议。</li>
+</ul>
+<p>printf 就是用的管道</p>
+<h3 id="缺陷">缺陷</h3>
+<ul>
+<li>许多 rtos 不限制任务可以读写给定的队列，管道，信箱的权利</li>
+<li>rtos 不能保证读取数据的任务能够正确的解释数据</li>
+<li>队列，管道，信箱已满对嵌入式软件是一种灾难</li>
+<li>通过队列，管道，信箱在任务间传递指针可能会创建共享数据</li>
+</ul>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 120 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>

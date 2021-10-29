@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wwwvvvのblog</title>
+    <link>http://example.org/</link>
+    <description>Recent content on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Oct 2021 19:27:15 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Enbedded_software_courses_notes</title>
+      <link>http://example.org/studynotes/enbedded_software_courses_notes/</link>
+      <pubDate>Fri, 29 Oct 2021 19:27:15 +0800</pubDate>
+      
+      <guid>http://example.org/studynotes/enbedded_software_courses_notes/</guid>
+      <description>&lt;h1 id=&#34;嵌入式软件课程笔记&#34;&gt;嵌入式软件课程笔记&lt;/h1&gt;
+&lt;h2 id=&#34;bootloader-的作用&#34;&gt;bootloader 的作用&lt;/h2&gt;
+&lt;p&gt;参考资料：https://blog.csdn.net/zxnsirius/article/details/52166558&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/qq_35769944/article/details/81979980&#34;&gt;https://blog.csdn.net/qq_35769944/article/details/81979980&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BootLoader&lt;/strong&gt;就是在操作系统运行之前运行的一段小程序。通过这段小程序，&lt;strong&gt;可以初始化硬件设备&lt;/strong&gt;，从而将系统的软硬件环境带到一个合适的状态，以便为最终调用操作系统做好准备。对于 Bootloader 的启动过程又分为两个阶段 stage1 和 stage2。&lt;/p&gt;
+&lt;p&gt;stage1 全部由汇编编写，它的主要工作是（1）初始化硬件设备、（2）为加载 Bootlodader 的 stage2 准备 RAM 空间（3）拷贝 Bootloader 的 stage2 到 RAM 空间（4）设置好堆栈段为 stager2 的 C 语言环境做准备。&lt;/p&gt;
+&lt;p&gt;stage2 全部由 C 语言编写，其的主要工作是（1）初始化本阶段要使用到的硬件设备（2）将内核映像和根文件系统映像从 flash 上读到 RAM （3）调用内核&lt;/p&gt;
+&lt;h3 id=&#34;通俗解释&#34;&gt;通俗解释&lt;/h3&gt;
+&lt;p&gt;其实 bootloader 主要的必须的作用只有一个:就是把操作系统映像文件拷贝到 RAM 中去，然后跳转到它的入口处去执行。&lt;/p&gt;
+&lt;p&gt;而操作系统文件的来源，可以是 flash,sd card,PC(可以通过网络，USB，甚至串口传输）等等，所谓的 EBOOT,UBOOT，其实就是表明了系统文件是通过 Ethernet 或者 USB 从 PC 传输过去的。&lt;/p&gt;
+&lt;p&gt;当然，为了实现这个功能（以及其它附加功能），我们必须对硬件做一些必要的初始化，这个也是必须的（废话！）。除了这个必须的，现在的 bootloader 还常常会加入以下功能：&lt;/p&gt;
+&lt;p&gt;1.将操作系统映像文件写入 FLASH/硬盘等：读取过来的操作系统文件，除了可以拷贝到 RAM 中直接运行，还可以烧录到 FLASH，或者写入硬盘永久保存，这样下次就可以直接从本机来读取操作系统映像。&lt;/p&gt;
+&lt;p&gt;2.硬件诊断：如同 PC 的 BIOS 一样，检测硬件是否正常功能。&lt;/p&gt;
+&lt;p&gt;3.显示一个 LOGO，因为拷贝操作系统文件和启动操作系统需要时间，所以产品化的设备，一般需要在这段时间显示一个 LOGO。&lt;/p&gt;
+&lt;h2 id=&#34;操作系统服务&#34;&gt;操作系统服务&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;消息队列&lt;/li&gt;
+&lt;li&gt;信箱&lt;/li&gt;
+&lt;li&gt;管道&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;消息队列&#34;&gt;消息队列&lt;/h3&gt;
+&lt;p&gt;细节：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;绝大多是 RTOS 都需要一个特定函数来初始化队列&lt;/li&gt;
+&lt;li&gt;大多数 RTOS 允许建立多个队列&lt;/li&gt;
+&lt;li&gt;如果要写入的队列已经满了，则 RTOS 返还一个错误信息，表明写操作失败；或者阻塞该任务，直到队列释放空间&lt;/li&gt;
+&lt;li&gt;若想要读的队列为空，则返回错误码&lt;/li&gt;
+&lt;li&gt;写入数据量问题：向队列写 char，int 或者自己定义的 struct 怎么办？不能都写一个对应的方法来处理：C++泛型，重载；c 语言 void 指针，用宏包装函数（不好调试）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;指针和队列：&lt;/p&gt;
+&lt;p&gt;将数据放在缓冲区，用指针指向这个缓冲区，把指针放在队列中&lt;/p&gt;
+&lt;h3 id=&#34;信箱&#34;&gt;信箱&lt;/h3&gt;
+&lt;p&gt;和队列的区别：信箱的数据有优先级，按优先级先后取出&lt;/p&gt;
+&lt;h3 id=&#34;管道&#34;&gt;管道&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一些 rtos 允许写入管道的消息长度不限&lt;/li&gt;
+&lt;li&gt;面向字节的&lt;/li&gt;
+&lt;li&gt;一些 rtos 使用标准的 fread 和 fwrite 来读出，写入管道&lt;/li&gt;
+&lt;li&gt;由于面向字节，如何实现两个任务之间的数据传输量符合期望？制定通信协议。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;printf 就是用的管道&lt;/p&gt;
+&lt;h3 id=&#34;缺陷&#34;&gt;缺陷&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;许多 rtos 不限制任务可以读写给定的队列，管道，信箱的权利&lt;/li&gt;
+&lt;li&gt;rtos 不能保证读取数据的任务能够正确的解释数据&lt;/li&gt;
+&lt;li&gt;队列，管道，信箱已满对嵌入式软件是一种灾难&lt;/li&gt;
+&lt;li&gt;通过队列，管道，信箱在任务间传递指针可能会创建共享数据&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
