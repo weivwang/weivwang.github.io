@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/tags/python/</link>
+    <description>Recent content in python on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Jul 2021 20:29:18 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tensorflow八股笔记</title>
+      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
+&lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):
+	w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; y
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_weigth&lt;/span&gt;(shape,regularizer):
+  w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#75715e&#34;&gt;#把每一个w的正则化损失加到总损失losses中&lt;/span&gt;
+  tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_to_collection(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;losses&amp;#39;&lt;/span&gt;,tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contrib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;l2_regularizer(regularizer)(w))
+  retrun w
+  
+&lt;span style=&#34;color:#75715e&#34;&gt;#b的形状=某层中b的个数&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_bias&lt;/span&gt;(shape):
+  b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反向传播就是训练网络，优化网络参数(backward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;backward&lt;/span&gt;():
+  x&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  )
+  y_&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  ) &lt;span style=&#34;color:#75715e&#34;&gt;#注意下划线&lt;/span&gt;
+  y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;forward&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;forward(x,REGULARIZER)
+  global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,trainable&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)
+  &lt;span style=&#34;color:#75715e&#34;&gt;#损失函数&lt;/span&gt;
+  loss&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss可以是：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  y与y_的差距(loss_mse) = tf.reduce_mean(tf.square(y-y_)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ce = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  cem = tf.reduce_mean(ce)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  加入正则化后：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss=y与y_的差距 + tf.add_n(tf.get_collection(&amp;#34;losses&amp;#34;))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#使用指数衰减学习率，用以下代码：&lt;/span&gt;
+  learning rate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;exponential_decay(
+  	LEARNING_RATE_BASE,
+  	global_step,
+  	数据集总样本数&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;BATCH_SIZE,
+  	LEARNING_RATE_DECAY,
+  	staircase&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+  	)
+  train_step &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GradientDescentOptimizer(learning_rate)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;minimize(loss,global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;global_step)
+  
+  &lt;span style=&#34;color:#75715e&#34;&gt;#滑动平均&lt;/span&gt;
+  ema &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ExponentialMovingAverage(MOVING_AVERAGE_DECAY,global_step)
+  ema_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ema&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;apply(tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trainable_variables())
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;control_dependencies([train_step,ema_op]):
+  	train_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;no_op(name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;train&amp;#39;&lt;/span&gt;)
+    
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;v1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Session &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sess:
+    init_op&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;global_variables_initializer()
+    sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(init_op)
+    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(STEPS):
+      sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(train_step,feed_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{x: ,y_: })
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 轮数 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+        print()
+   
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+  backward()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

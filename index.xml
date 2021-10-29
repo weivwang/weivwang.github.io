@@ -2,21 +2,90 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wwwvvvのblog</title>
-    <link>http://example.org/</link>
+    <link>https:weivwang.github.io/</link>
     <description>Recent content on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Oct 2021 19:27:15 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 29 Oct 2021 21:04:17 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https:weivwang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Docker_notes</title>
+      <link>https:weivwang.github.io/studynotes/docker_notes/</link>
+      <pubDate>Fri, 29 Oct 2021 21:04:17 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/docker_notes/</guid>
+      <description>&lt;h1 id=&#34;docker-学习笔记&#34;&gt;Docker 学习笔记&lt;/h1&gt;
+&lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
+&lt;p&gt;最近为了做 csapp 的大作业，需要在 mac 上使用 Linux，但是又不想安装庞大的虚拟机，想到了使用 docker，正好趁此机会学习一下 docker&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;bilibili 狂神说 docker 教程&lt;/p&gt;
+&lt;h2 id=&#34;docker-简介&#34;&gt;Docker 简介&lt;/h2&gt;
+&lt;p&gt;传统：开发 Jar，运维来做&lt;/p&gt;
+&lt;p&gt;现在：开发打包部署上线，一套流程做完。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Docker 通过&lt;strong&gt;隔离&lt;/strong&gt;机制，将服务器利用到极致。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mysql 集群，redis 集群部署，使用 docker 十分方便&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-历史&#34;&gt;Docker 历史&lt;/h2&gt;
+&lt;p&gt;2010 年，几个年轻人在美国成立 dotCloud，做 paas 云计算服务(plantform as a service)&lt;/p&gt;
+&lt;p&gt;他们将容器化技术命名为 Docker，起初没有引起行业注意，公司无法生存。2013 年他们决定开源 docker。越来越多人发现 docker 的优点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;docker 为什么火？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;相对于虚拟机，非常轻量，基于 Go 语言开发&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;虚拟机：windows-Vmware，mac- parallels，通过虚拟机软件虚拟出来一台电脑或者多台电脑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器：创建镜像（最核心的环境+jdk+mysql），几个 M 就够了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;虚拟机缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;kernel -&amp;gt;Lib -&amp;gt; app&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;资源占用多&lt;/li&gt;
+&lt;li&gt;启动慢&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;docker：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;kernel -&amp;gt;容器（Lib-&amp;gt;app）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器的应用直接运行在数组环境中，容器没有自己的内核，所以轻便&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个容器间相互隔离，都有自己的文件系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;文档地址：https://docs.docker.com&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DevOps（开发，运维）：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用更快速的交付和部署，docker 打包镜像发布测试&lt;/li&gt;
+&lt;li&gt;更便捷升级和扩缩容&lt;/li&gt;
+&lt;li&gt;更简单的系统运维&lt;/li&gt;
+&lt;li&gt;更高效的计算资源利用，一个物理机可以运行很多容器实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-的基本组成&#34;&gt;Docker 的基本组成：&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/10/18/RZ39hA8XGdcr1T2.png&#34; alt=&#34;95AE2B87-8FDB-4D2C-8C60-8E0D262720AB&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Image&lt;/strong&gt;：一个模版，通过改模版创建容器服务&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Container&lt;/strong&gt;：项目往 container 里面放&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Repository&lt;/strong&gt;：存放 image 的地方&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Enbedded_software_courses_notes</title>
-      <link>http://example.org/studynotes/enbedded_software_courses_notes/</link>
+      <link>https:weivwang.github.io/studynotes/enbedded_software_courses_notes/</link>
       <pubDate>Fri, 29 Oct 2021 19:27:15 +0800</pubDate>
       
-      <guid>http://example.org/studynotes/enbedded_software_courses_notes/</guid>
+      <guid>https:weivwang.github.io/studynotes/enbedded_software_courses_notes/</guid>
       <description>&lt;h1 id=&#34;嵌入式软件课程笔记&#34;&gt;嵌入式软件课程笔记&lt;/h1&gt;
 &lt;h2 id=&#34;bootloader-的作用&#34;&gt;bootloader 的作用&lt;/h2&gt;
 &lt;p&gt;参考资料：https://blog.csdn.net/zxnsirius/article/details/52166558&lt;/p&gt;
@@ -65,6 +134,597 @@
 &lt;li&gt;队列，管道，信箱已满对嵌入式软件是一种灾难&lt;/li&gt;
 &lt;li&gt;通过队列，管道，信箱在任务间传递指针可能会创建共享数据&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tensorflow八股笔记</title>
+      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
+&lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):
+	w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; y
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_weigth&lt;/span&gt;(shape,regularizer):
+  w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#75715e&#34;&gt;#把每一个w的正则化损失加到总损失losses中&lt;/span&gt;
+  tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_to_collection(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;losses&amp;#39;&lt;/span&gt;,tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contrib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;l2_regularizer(regularizer)(w))
+  retrun w
+  
+&lt;span style=&#34;color:#75715e&#34;&gt;#b的形状=某层中b的个数&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_bias&lt;/span&gt;(shape):
+  b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反向传播就是训练网络，优化网络参数(backward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;backward&lt;/span&gt;():
+  x&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  )
+  y_&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  ) &lt;span style=&#34;color:#75715e&#34;&gt;#注意下划线&lt;/span&gt;
+  y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;forward&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;forward(x,REGULARIZER)
+  global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,trainable&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)
+  &lt;span style=&#34;color:#75715e&#34;&gt;#损失函数&lt;/span&gt;
+  loss&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss可以是：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  y与y_的差距(loss_mse) = tf.reduce_mean(tf.square(y-y_)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ce = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  cem = tf.reduce_mean(ce)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  加入正则化后：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss=y与y_的差距 + tf.add_n(tf.get_collection(&amp;#34;losses&amp;#34;))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#使用指数衰减学习率，用以下代码：&lt;/span&gt;
+  learning rate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;exponential_decay(
+  	LEARNING_RATE_BASE,
+  	global_step,
+  	数据集总样本数&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;BATCH_SIZE,
+  	LEARNING_RATE_DECAY,
+  	staircase&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+  	)
+  train_step &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GradientDescentOptimizer(learning_rate)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;minimize(loss,global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;global_step)
+  
+  &lt;span style=&#34;color:#75715e&#34;&gt;#滑动平均&lt;/span&gt;
+  ema &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ExponentialMovingAverage(MOVING_AVERAGE_DECAY,global_step)
+  ema_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ema&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;apply(tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trainable_variables())
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;control_dependencies([train_step,ema_op]):
+  	train_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;no_op(name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;train&amp;#39;&lt;/span&gt;)
+    
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;v1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Session &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sess:
+    init_op&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;global_variables_initializer()
+    sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(init_op)
+    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(STEPS):
+      sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(train_step,feed_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{x: ,y_: })
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 轮数 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+        print()
+   
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+  backward()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Operating_system_experiment</title>
+      <link>https:weivwang.github.io/studynotes/operating_system_experiment/</link>
+      <pubDate>Thu, 27 May 2021 12:33:50 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/operating_system_experiment/</guid>
+      <description>&lt;h1 id=&#34;operation-system-experiment&#34;&gt;Operation-System-Experiment&lt;/h1&gt;
+&lt;p&gt;武汉大学软件工程操作系统课程设计&lt;/p&gt;
+&lt;p&gt;主要是使用高级语言模拟操作系统管理的一些算法，整体难度不大，甚至感觉像是在做数据结构的作业。&lt;/p&gt;
+&lt;p&gt;第一次实验课写了两个实验，分别是&lt;/p&gt;
+&lt;p&gt;1，模拟处理器调度算法中的按优先数调度算法&lt;/p&gt;
+&lt;p&gt;2，模拟可变分区管理方式下采用首次适应算法实现主存分配和回收&lt;/p&gt;
+&lt;h3 id=&#34;os_exp1&#34;&gt;OS_exp1&lt;/h3&gt;
+&lt;p&gt;实验要求如下：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(1)假定系统有5个进程，每个进程用一个PCB来代表。PCB的结构为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·进程名——如P1~P5。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·指针——按优先数的大小把5个进程连成队列，用指针指出下一个进程PCB的首地址。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·要求运行时间——假设进程需要运行的单位时间数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·优先数——赋予进程的优先数，调度时总是选取优先数大的进程先执行。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·状态——假设两种状态：就绪和结束，用R表示就绪，用E表示结束。初始状态都为就绪状态。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(2)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*开始运行之前，为每个进程确定它的“优先数”和“要求运行时间”。通过键盘输入这些参数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*处理器总是选择队首进程运行。采用动态改变优先数的办法，进程每运行1次，优先数减1，要求运行时间减1。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(4)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*进程运行一次后，若要求运行时间不等于0，则将它加入就绪队列，否则，将状态改为“结束”，退出就绪队列。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(5)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*若就绪队列为空，结束，否则转到*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*重复。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;用java写的，核心算法一个排序&lt;/p&gt;
+&lt;p&gt;每次执行让进程优先数和运行时间-1，再重新排序，执行优先数最大的进程。&lt;/p&gt;
+&lt;p&gt;直到所有进程要求运行时间全为0&lt;/p&gt;
+&lt;p&gt;写的可能不是很规范，建了一个OperationSystem类，在其中定义了一些静态方法，对PCB类进行操作。&lt;/p&gt;
+&lt;p&gt;运行效果如下：&lt;/p&gt;
+&lt;p&gt;模拟设置了五个线程，分别让用户输入线程优先数&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/lhET4SIuYMHaUZg.png&#34; alt=&#34;lhET4SIuYMHaUZg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;输入完成后会自动输出表格显示信息，并将第一次按优先数进行排序的表显示出来&lt;/p&gt;
+&lt;p&gt;然后依次执行，每执行会本次执行的进程的进程名，并将新的表格输出。&lt;/p&gt;
+&lt;p&gt;输入完成后初始表和排序表：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/oPXN45gmZVkeqt7.png&#34; alt=&#34;oPXN45gmZVkeqt7&#34;&gt;&lt;/p&gt;
+&lt;p&gt;运行过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/v5NEY7n28oRerCA.png&#34; alt=&#34;v5NEY7n28oRerCA&#34;&gt;&lt;/p&gt;
+&lt;p&gt;中间过程还是比较长的，最后所有要求运行时间全0，退出：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/Rfd4baMXTtp2UcS.png&#34; alt=&#34;Rfd4baMXTtp2UcS&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;os_exp2&#34;&gt;OS_exp2&lt;/h3&gt;
+&lt;p&gt;实验要求：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*可变分区方式是按作业需要的主存空间大小来分割分区的。当要装入一个作业时，根据作业需要的主存容量查看是否有足够的空闲空间，若有，则按需分配，否则，作业无法装入。假定内存大小为128K，空闲区说明表格式为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·分区号——表示是第几个空闲分区；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·起始地址——指出空闲区的起始地址；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·长度——一个连续空闲区的长度；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*采用首次适应算法分配回收内存空间。运行时，输入一系列分配请求和回收请求。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能显示*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分区分配及回收后的内存布局情况。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;分配很容易，就是按顺序找到第一个空间大于申请空间的分区，然后分配给他&lt;/p&gt;
+&lt;p&gt;回收算法如下需要考虑几种情况：&lt;/p&gt;
+&lt;p&gt;1，回收分区起始地址和空闲分区相邻，但和后面空闲分区不相邻，则将回收分区和前面相邻的合并，起始地址为前面空闲分区起始地址&lt;/p&gt;
+&lt;p&gt;2，回收分区起始地址和前面空闲分区不相邻，和后面分区相邻，则与后面分区合并，起始地址为回收分区起始地址&lt;/p&gt;
+&lt;p&gt;3，回收分区和前，后空闲分区都不相邻，则新建一个表项&lt;/p&gt;
+&lt;p&gt;4，回收分区和前后空闲分区都相邻，则将3块分区合并，其实地址为第一块空闲分区起始地址&lt;/p&gt;
+&lt;p&gt;运行截图如下：&lt;/p&gt;
+&lt;p&gt;请求内存：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/r9EoUSB45NfusTI.png&#34; alt=&#34;r9EoUSB45NfusTI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回收内存：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/Miw5zj6dRP1T7IK.png&#34; alt=&#34;Miw5zj6dRP1T7IK&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回收分区恰好与前后空闲分区相邻，所以1号分区，回收分区，和2号分区直接合并成一块分区，编号为1，其实地址为1号分区起始地址50，大小为20+30+10 = 60&lt;/p&gt;
+&lt;h3 id=&#34;os_exp2_new&#34;&gt;OS_exp2_new&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*在分页管理方式下采用位示图来表示主存分配情况，实现主存分配和回收*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*[提示]：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*假定系统的主存被分成大小相等的64个块，用0/1对应空闲/占用。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*当要装入一个作业时，根据作业对主存的需求量，先查空闲块数是否能满足作业要求，若能满足，则查位示图，修改位示图和空闲块数。位置与块号的对应关系为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*块号=*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*j*8+i*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*，其中*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*i*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*表示位，*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*j*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*表示字节。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*根据分配的块号建立页表。页表包括两项：页号和块号。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(3)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*回收时，修改位示图和空闲块数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能显示*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*位示图和空闲块数的变化，能显示进程的页表。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;由于实验三选用了可变分区管理方式，验收的时候实验二有点问题，所以实验二重新选了分页管理方式&lt;/p&gt;
+&lt;p&gt;在验收的时候，老师专门要求提高鲁棒性，第一遍没有通过，,又修改了一部分才完成&lt;/p&gt;
+&lt;p&gt;运行截图如下：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h3 id=&#34;os_exp3&#34;&gt;os_exp3&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*一、实习内容*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*模拟磁盘空闲空间的表示方法，以及模拟实现磁盘空间的分配和回收。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*二、实习目的*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁盘初始化时把磁盘存储空间分成许多块（扇区），这些空间可以被多个用户共享。用户作业在执行期间常常要在磁盘上建立文件或把已经建立在磁盘上的文件删去，这就涉及到磁盘存储空间的分配和回收。一个文件存放到磁盘上，可以组织成顺序文件（连续文件）、链接文件（串联文件）、索引文件等，因此，磁盘存储空间的分配有两种方式，一种是分配连续的存储空间，另一种是可以分配不连续的存储空间。怎样有效地管理磁盘存储空间是操作系统应解决的一个重要问题，通过本实习使学生掌握磁盘存储空间的分配和回收算法。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*三、实习题目*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*本实习有三个题目，可以任选一个，*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*但不能与内存管理的题目类似*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*第一题：连续磁盘存储空间的分配和回收*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*[提示]：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(1)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*要在磁盘上建立顺序文件时，必须把按序排列的逻辑记录依次存放在磁盘的连续存储空间中。可假定磁盘初始化时，已把磁盘存储空间划分成若干等长的块（扇区），按柱面号和盘面号的顺序给每一块确定一个编号。随着文件的建立、删除、磁盘存储空间被分成许多区（每一区包含若干块），有的区存放着文件，而有的区是空闲的。当要建立顺序文件时必须找到一个合适的空闲区来存放文件记录，当一个文件被删除时，则该文件占用的区应成为空闲区。为此可用一张空闲区表来记录磁盘存储空间中尚未占用的部分，格式如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*序  号*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*起始空闲块号*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*空闲块个数*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*状   态*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*1*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*5*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*6*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*2*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*14*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*3*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*3*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*21*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*30*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*4*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*。。。*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(2)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*建立文件时，先查找空闲区表，从空闲区表中找出一个块数能满足要求的区，由起始空闲块号能依次推得可使用的其它块号。若不需要占用该区的所有块时，则剩余的块仍应为未分配的空闲块，这时要修改起始空闲块号和空闲块数。若占用了该区的所有块，则删去该空闲区。删除一个文件时，需要考虑空闲块的合并情况。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁盘存储空间的分配和回收算法类似于主存储器的可变分区方式的分配和回收。同学们可参考实习二的第一题。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*当找到空闲块后，必须启动磁盘把信息存放到指定的块中，启动磁盘必须给出由三个参数组成的物理地址：盘面号、柱面号和物理记录号（即扇区号）。故必须把找到的空闲块号换算成磁盘的物理地址。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*为了减少移臂次数，磁盘上的信息按柱面上各磁道顺序存放。现假定一个盘组共有200个柱面，（编号0-199）每个柱面有20个磁道（编号0-19，同一柱面上的各磁道分布在各盘面上，故磁道号即盘面号。），每个磁道被分成等长的6个物理记录（编号0-5，每个盘面被分成若干个扇区，故每个磁道上的物理记录号即为对应的扇区号）。那么，空闲块号与磁盘物理地址的对应关系如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*则  物理记录号*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*=*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*空闲块号 % 6*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁道号=（空闲块号 / 6 ）% 20*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*柱面号=（空闲块号 / 6）/20*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(4)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*删除一个文件时，从文件目录表中可得到该文件在磁盘上的起始地址和逻辑记录个数，假定每个逻辑记录占磁盘上的一块，则可推算出归还后的起始空闲块号和块数，登记到空闲区表中。换算关系如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*起始空闲块号=（柱面号*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*´*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*20+磁道号）*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*´*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*6+物理记录号*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*空闲块数=逻辑记录数*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(5)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*请设计磁盘存储空间的分配和回收程序，要求把分配到的空闲块转换成磁盘物理地址，把归还的磁盘空间转换成空闲块号。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*显示或打印分配及回收后的空闲区表以及分配到的磁盘空间的起始物理地址：包括柱面号、磁道号、物理记录号（扇区号）。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这个实验看起来复杂，实际做起来和第二个实验的可变分区管理内存的思路基本一样，只不过需要增加一个磁盘位置。&lt;/p&gt;
+&lt;p&gt;运行截图：&lt;/p&gt;
+&lt;p&gt;起始时，我分配了在块表中分配了3个表项，状态F表示未被使用&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;提示用户输入文件名，需要的空闲块：&lt;/p&gt;
+&lt;p&gt;程序返回系统分配的起始块号，磁盘上的起始物理记录号，磁道号，柱面号&lt;/p&gt;
+&lt;p&gt;并将文件的存储信息展示出来:&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;再存入一个：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;释放空间时，只需要输入文件名称，即可从磁盘空间移除：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vue.js学习笔记</title>
+      <link>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 30 Apr 2021 20:43:36 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h2 id=&#34;引入-vue&#34;&gt;引入 Vue&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 生产环境版本，优化了尺寸和速度 --&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vue-指令&#34;&gt;Vue 指令&lt;/h2&gt;
+&lt;h3 id=&#34;v-text&#34;&gt;v-text&lt;/h3&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  {{message}}
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-text&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message+&amp;#39;!&amp;#39;&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;{{school.mobile}}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;{{ names[0] }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;message&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello vue!&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;school&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;mobile&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2-12302-1&amp;#34;&lt;/span&gt;,
+      },
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hdsi&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dsk&amp;#34;&lt;/span&gt;],
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在标签里面直接指定 v-text = &amp;quot; &amp;ldquo;,会将标签文本全部替换为&amp;rdquo; &amp;ldquo;的内容&lt;/p&gt;
+&lt;h3 id=&#34;v-html&#34;&gt;v-html&lt;/h3&gt;
+&lt;p&gt;设置标签的 innerHtml，将文本解析为 html 结构&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  {{message}}
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-html&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;a href=&amp;#39;#&amp;#39;&amp;#39;&amp;gt;v-html示例&amp;lt;/a&amp;gt;&amp;#34;&lt;/span&gt;,
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-on&#34;&gt;v-on&lt;/h3&gt;
+&lt;p&gt;为元素绑定事件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;v-on&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-on:click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;study&amp;#34;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;v-on简写&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;study&amp;#34;&lt;/span&gt; /&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;methods&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;study&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;alert&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;开始学习&amp;#34;&lt;/span&gt;);
+      },
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-show&#34;&gt;v-show&lt;/h3&gt;
+&lt;p&gt;v-show = &amp;ldquo;bool&amp;rdquo;, 用于决定元素是否显示，操作的是 display 属性&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;img&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./bili.png&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-show&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isShow&amp;#34;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;changeState&amp;#34;&lt;/span&gt;&amp;gt;切换显示状态&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+    },
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;methods&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;changeState&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;;
+      },
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-if&#34;&gt;v-if&lt;/h3&gt;
+&lt;p&gt;直接操作元素是否显示&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-if&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isShow&amp;#34;&lt;/span&gt;&amp;gt;v-if&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本质是操纵 dom 元素来切换显示状态，v-if=&amp;ldquo;false&amp;quot;时，将元素从 dom 树中移除&lt;/p&gt;
+&lt;p&gt;在使用过程中，频繁的切换用 v-show，不频繁用 v-if，v-show 切换消耗小&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Git关联及取消关联远程仓库操作</title>
+      <link>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 28 Apr 2021 21:16:25 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;h3 id=&#34;git-关联取消关联远程仓库操作&#34;&gt;git 关联/取消关联远程仓库操作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;初始化仓库：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;git 本地仓库与远程仓库关联：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（本地有一个文件夹了，怎么将其与 github 上新建的远程仓库联系起来）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt; git remote add origin git@github.com:username/projectname.git&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;输入：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git remote -v&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以看到是否关联成功&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立 main 分支&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git branch -M main&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将本地仓库推送到远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git push -u origin main&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;取消关联：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git remote remove origin&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>写在前面</title>
+      <link>https:weivwang.github.io/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</link>
+      <pubDate>Wed, 28 Apr 2021 20:25:53 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</guid>
+      <description>&lt;h3 id=&#34;写在前面&#34;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;2020 年大概 12 月，和 3 位朋友一起参加零杯（武大计算机学院零杯网页设计大赛）&lt;/p&gt;
+&lt;p&gt;在实验室做了一些前端，自学了 html，css，react.js 的部分内容，借此机会提升自己的前端技能&lt;/p&gt;
+&lt;p&gt;毛概课上，在后排摸 🐟 时&lt;/p&gt;
+&lt;p&gt;ziyi 问我，你有博客吗？&lt;/p&gt;
+&lt;p&gt;我说：没&lt;/p&gt;
+&lt;p&gt;z：你可以搭一个，用 hexo&lt;/p&gt;
+&lt;p&gt;于是回去之后我尝试使用 hexo 在 github 上搭建了一个博客&lt;/p&gt;
+&lt;p&gt;更新了几次后就忘记了&lt;/p&gt;
+&lt;p&gt;今年偶然进入 WHUMSC 群里的 luoosu 的个人博客，简约但惊艳&lt;/p&gt;
+&lt;p&gt;看了一下是基于 hugo 的，于是我萌生了重新搭建博客的想法。&lt;/p&gt;
+&lt;p&gt;2021-4-27 搭建成功&lt;/p&gt;
+&lt;p&gt;2021-10-29 重新修复&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Js_learning</title>
+      <link>https:weivwang.github.io/studynotes/js_learning/</link>
+      <pubDate>Wed, 28 Apr 2021 16:44:41 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/js_learning/</guid>
+      <description>&lt;h2 id=&#34;dom2021-1-31&#34;&gt;DOM(2021-1-31)&lt;/h2&gt;
+&lt;h4 id=&#34;dom-简介&#34;&gt;DOM 简介&lt;/h4&gt;
+&lt;p&gt;Document Object Model ，是 W3C 推荐的处理可扩展标记语言 HTML 或 XML 的标准编程 &lt;em&gt;接口&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;用来改变网页的内容，样式等&lt;/p&gt;
+&lt;p&gt;页面 = 文档，用 document 表示&lt;/p&gt;
+&lt;p&gt;元素 = 标签： 用 element 表示&lt;/p&gt;
+&lt;p&gt;节点：所有内容（属性，标签，文本，注释）都是节点，用 node 表示&lt;/p&gt;
+&lt;p&gt;DOM 把以上内容都看作对象&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;获取元素&#34;&gt;获取元素&lt;/h4&gt;
+&lt;p&gt;ID ： &lt;code&gt;document.getElementById(id)&lt;/code&gt;，返回匹配 id 的元素对象，id 是字符串&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;console.dir()&lt;/code&gt;打印元素对象，查看其中的属性和方法&lt;/p&gt;
+&lt;p&gt;标签名：&lt;code&gt;document.getElementByTagName()&lt;/code&gt;，返回伪数组&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;element.getElementByTagName()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;H5：通过类名，&lt;code&gt;document.getElementByClassName()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;document.querySelector(&#39;.box&#39;)&lt;/code&gt; 类 。返回指定选择器的第一个元素对象&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;document.querySelector(&#39;#nav&#39;) &lt;/code&gt; id&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;document.body&lt;/code&gt;之类的也行&lt;/p&gt;
+&lt;h4 id=&#34;事件&#34;&gt;事件&lt;/h4&gt;
+&lt;p&gt;三部分：事件源，事件类型，事件处理程序&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;var btn = document.getElementById(&#39;btn&#39;); &lt;/code&gt;//事件源：按钮&lt;/p&gt;
+&lt;p&gt;btn.oncliick = function(){ //事件类型：点击&lt;/p&gt;
+&lt;p&gt;​ alert(&amp;lsquo;按钮被点击&amp;rsquo;); //事件处理程序&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;element.InnerText&lt;/code&gt; 来改元素内容，不识别 HTML 标签，非标准，去掉空格和换行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;element.InnerHTML&lt;/code&gt;能识别 html 标签，用的更多&lt;/p&gt;
+&lt;h3 id=&#34;2021-2-2&#34;&gt;2021-2-2&lt;/h3&gt;
+&lt;p&gt;密码框显示密码常用这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;flag&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;Btn&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;onclick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;flag&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;pwd&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;flag&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+  } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;pwd&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;flag&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;js 修改 css&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;属性采用驼峰命名&lt;/p&gt;
+&lt;p&gt;element.style.backgroundColor = &#39; &amp;lsquo;，改的是行内样式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关闭淘宝二维码案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用&lt;code&gt;display:none&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;btn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.close-btn&amp;#34;&lt;/span&gt;);
+&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.box&amp;#34;&lt;/span&gt;);
+&lt;span style=&#34;color:#a6e22e&#34;&gt;btn&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;onclick&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;循环精灵图案例&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;for 循环修改 background-position&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lis&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;li&amp;#34;&lt;/span&gt;);
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lis&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;44&lt;/span&gt;;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;lis&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt;].&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;backgroundPisition&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0 -&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;index&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;px&amp;#34;&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;焦点事件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;element.onfocus&lt;/code&gt;获得焦点&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;element.onblur&lt;/code&gt;失去焦点&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;element.className 直接改类名，适合样式改的 比较多的时候&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;操作元素&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//获取
+element.attribute	//获取内置属性
+element.getAttribute(&#39;id&#39;) //可以获取自定义属性,最常用
+//h5新增
+div.dataset.index
+
+//修改
+element.attribute = &#39; &#39;
+element.setAttribute(&#39;id&#39;,nav) //可以修改自定义属性
+改className就直接&#39;class&#39;，不用className
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;节点操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1，通过 DOM 操作，逻辑性不强，操作复杂&lt;/p&gt;
+&lt;p&gt;2，利用节点操作，更简单&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;parentNode //离节点最近的父级节点，找不到就返回为null
+childNodes //子节点，包含文本节点，元素节点等,标准
+
+//只想获得元素节点，需要专门处理(用nodeType来判断，所以一般不用)
+children //获取所有的子元素节点，常用
+firstElementChild //第一个子元素节点
+lastElementChild //最后，这两个都有兼容问题
+
+//实际开发写法：
+children[0]
+children[length-1]
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cs231n学习笔记</title>
+      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <description>&lt;p&gt;2021-2-1&lt;/p&gt;
+&lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;focus on&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;image classification problems. 图像分类问题&lt;/p&gt;
+&lt;p&gt;ImageNet 大赛推动了图像识别的发展，最近几年 GPU 性能提高较快，所以才允许该领域快速发展，另一个方面：数据量&lt;/p&gt;
+&lt;p&gt;机器深刻地理解图像还早&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;python ，jupyter notebook tutorial&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;对计算机来说，图片就是一个像素值矩阵&lt;/p&gt;
+&lt;p&gt;challenges：光线，形变，遮挡 Occlusion，背景，类内差异(cats&#39; color&amp;hellip;.)&lt;/p&gt;
+&lt;p&gt;Data-Driven Approach：从网上找一堆猫的照片，作为训练&lt;/p&gt;
+&lt;p&gt;简易模型：&lt;/p&gt;
+&lt;p&gt;train:&lt;/p&gt;
+&lt;p&gt;​ def train(images, labels):&lt;/p&gt;
+&lt;p&gt;​ return models&lt;/p&gt;
+&lt;p&gt;Predict:&lt;/p&gt;
+&lt;p&gt;​ def predict(model, test_images):&lt;/p&gt;
+&lt;p&gt;​ return test_labels&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture1&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;最近临近算法&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;p&gt;L1 :曼哈顿距离&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/cA5pjUNB7VExJmk.png&#34; alt=&#34;IMG_0116&#34;&gt;&lt;/p&gt;
+&lt;p&gt;给出了一个比较两个图片相像性的方法。&lt;/p&gt;
+&lt;p&gt;落后的方法：train:O(1)&lt;/p&gt;
+&lt;p&gt;Predict: O(n)，n 个比较&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;K-最临近算法&lt;!-- raw HTML omitted --&gt;：KNN&lt;/p&gt;
+&lt;p&gt;找到最近的 k 个点，更复杂，k 越大，结果越好&lt;/p&gt;
+&lt;p&gt;L2 = L1 取根号 ， 欧式距离&lt;/p&gt;
+&lt;p&gt;L1 基于我们对坐标轴的选择，L2 不会&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;K 的选择，距离的算法选择：超参数，不能从数据集里面获得，依赖于具体问题&lt;/p&gt;
+&lt;p&gt;比如选 L1 还是 L2，依赖你到底要不要注重坐标轴的选择，best answer：depend on question&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture2.   线性分类&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;图片像素值 x&amp;mdash;&amp;mdash;&amp;mdash;-f(x,W)&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;参数&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-分类&lt;/p&gt;
+&lt;p&gt;W 为权重（自己提出的） f(x,W) = Wx +b&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture3.   如何选择：W 和 f(x, W)的形式？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;IMG_0118&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回顾：&lt;/p&gt;
+&lt;p&gt;猫的图片&amp;mdash;&amp;mdash;2*2 矩阵&amp;mdash;&amp;mdash;4*1 矩阵&amp;mdash;&amp;mdash;输入到 f(x,W)&lt;/p&gt;
+&lt;p&gt;W 为自己探索的得出的 3*4 矩阵，f(x,W)为自己提出的函数，b 为修正&lt;/p&gt;
+&lt;p&gt;在这里 f(x,W) = Wx + b 可以得到一个 3*1 的矩阵，对应 3 类，某一类的得分越高，则为该类的概率越高&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;如何选择 W？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;​ 如果想让机器来进行评估，需要一个函数把 W 当输入，告诉我们这个 W 好不好，这个函数称作&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;损失函数（loss function)&lt;/strong&gt;，可以定量地衡量 W 的好坏&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;SVM loss&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Support Vector Machine 支持向量机&lt;/p&gt;
+&lt;p&gt;Sj 是通过分类器，预测出来的类的分数，S-Yi 是这个样本的正确的分类标签&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/d5FcEvqJR8Hu1Ta.png&#34; alt=&#34;IMG_0120&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值为 0，最大值无穷&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;问题：发现一个 W 使 L = 0，W 唯一吗？&lt;/p&gt;
+&lt;p&gt;不唯一&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;通常在 L（w）后面+一个 lanmudaR(W)，正则项，防止过度拟合&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Softmax Classifier&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;more common&lt;img src=&#34;https://i.loli.net/2021/02/10/SnOb2cl5GvFAWZf.png&#34; alt=&#34;IMG_0121&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值：0，最大化：inf&lt;/p&gt;
+&lt;p&gt;L_i = 0 代表真实，可以理解为损失程度，L_i 越大，代表损失越多&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/6GPJAsUjwrivpB3.png&#34; alt=&#34;IMG_0122&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;W 最开始如何选？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1，最笨办法：random&lt;/p&gt;
+&lt;p&gt;2，梯度：通常是选一个之后进行优化，往往用到梯度，告诉我们向那个方向移动一个步长，损失变化会是多少&lt;/p&gt;
+&lt;p&gt;在每一个维度修改一小部分，进行&lt;strong&gt;有限差分逼近&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;问题：W 维度可能很多，或者 CNN 很大，导致计算很慢&lt;/p&gt;
+&lt;p&gt;可以用来 debug&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;怎么计算梯度？ ：&lt;strong&gt;反向传播算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就是求导的链式法则&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;之前讲的是线性分类&lt;/p&gt;
+&lt;p&gt;现在讲 2 层神经网络&lt;/p&gt;
+&lt;p&gt;W2 对 W1 得到的分数 h 再进行一个加权&lt;img src=&#34;https://i.loli.net/2021/02/10/5z7gcIdpyktDiEK.png&#34; alt=&#34;IMG_0126&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/juAqi4M5JadpNzm.png&#34; alt=&#34;IMG_0127&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;卷积神经网络&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;历史：&lt;/p&gt;
+&lt;p&gt;2012 年神经网络爆发，最早是声音识别&lt;/p&gt;
+&lt;p&gt;CNN 在 ImageNet 取得很好的效果，之后被广泛使用&lt;/p&gt;
+&lt;p&gt;人脸识别，姿势识别，alphago，医学图像识别&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;卷积核：用一个更小的矩阵滑过原矩阵&lt;/p&gt;
 </description>
     </item>
     

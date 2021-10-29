@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习笔记 on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 学习笔记 on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Oct 2021 21:04:17 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker_notes</title>
+      <link>https:weivwang.github.io/studynotes/docker_notes/</link>
+      <pubDate>Fri, 29 Oct 2021 21:04:17 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/docker_notes/</guid>
+      <description>&lt;h1 id=&#34;docker-学习笔记&#34;&gt;Docker 学习笔记&lt;/h1&gt;
+&lt;h2 id=&#34;目的&#34;&gt;目的&lt;/h2&gt;
+&lt;p&gt;最近为了做 csapp 的大作业，需要在 mac 上使用 Linux，但是又不想安装庞大的虚拟机，想到了使用 docker，正好趁此机会学习一下 docker&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;bilibili 狂神说 docker 教程&lt;/p&gt;
+&lt;h2 id=&#34;docker-简介&#34;&gt;Docker 简介&lt;/h2&gt;
+&lt;p&gt;传统：开发 Jar，运维来做&lt;/p&gt;
+&lt;p&gt;现在：开发打包部署上线，一套流程做完。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Docker 通过&lt;strong&gt;隔离&lt;/strong&gt;机制，将服务器利用到极致。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mysql 集群，redis 集群部署，使用 docker 十分方便&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-历史&#34;&gt;Docker 历史&lt;/h2&gt;
+&lt;p&gt;2010 年，几个年轻人在美国成立 dotCloud，做 paas 云计算服务(plantform as a service)&lt;/p&gt;
+&lt;p&gt;他们将容器化技术命名为 Docker，起初没有引起行业注意，公司无法生存。2013 年他们决定开源 docker。越来越多人发现 docker 的优点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;docker 为什么火？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;相对于虚拟机，非常轻量，基于 Go 语言开发&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;虚拟机：windows-Vmware，mac- parallels，通过虚拟机软件虚拟出来一台电脑或者多台电脑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器：创建镜像（最核心的环境+jdk+mysql），几个 M 就够了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;虚拟机缺点：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;kernel -&amp;gt;Lib -&amp;gt; app&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;资源占用多&lt;/li&gt;
+&lt;li&gt;启动慢&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;docker：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;kernel -&amp;gt;容器（Lib-&amp;gt;app）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;容器的应用直接运行在数组环境中，容器没有自己的内核，所以轻便&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个容器间相互隔离，都有自己的文件系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;文档地址：https://docs.docker.com&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DevOps（开发，运维）：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用更快速的交付和部署，docker 打包镜像发布测试&lt;/li&gt;
+&lt;li&gt;更便捷升级和扩缩容&lt;/li&gt;
+&lt;li&gt;更简单的系统运维&lt;/li&gt;
+&lt;li&gt;更高效的计算资源利用，一个物理机可以运行很多容器实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-的基本组成&#34;&gt;Docker 的基本组成：&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/10/18/RZ39hA8XGdcr1T2.png&#34; alt=&#34;95AE2B87-8FDB-4D2C-8C60-8E0D262720AB&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Image&lt;/strong&gt;：一个模版，通过改模版创建容器服务&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Container&lt;/strong&gt;：项目往 container 里面放&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Repository&lt;/strong&gt;：存放 image 的地方&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tensorflow八股笔记</title>
+      <link>https:weivwang.github.io/studynotes/tensorflow/</link>
+      <pubDate>Wed, 07 Jul 2021 20:29:18 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/tensorflow/</guid>
+      <description>&lt;p&gt;搭建模块化的神经网路八股&lt;/p&gt;
+&lt;p&gt;前向传播就是搭建网络，设计网络结构（forward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forward&lt;/span&gt;(x,regularizer):
+	w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; y
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_weigth&lt;/span&gt;(shape,regularizer):
+  w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#75715e&#34;&gt;#把每一个w的正则化损失加到总损失losses中&lt;/span&gt;
+  tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_to_collection(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;losses&amp;#39;&lt;/span&gt;,tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contrib&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;l2_regularizer(regularizer)(w))
+  retrun w
+  
+&lt;span style=&#34;color:#75715e&#34;&gt;#b的形状=某层中b的个数&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_bias&lt;/span&gt;(shape):
+  b&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable()
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反向传播就是训练网络，优化网络参数(backward.py)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;backward&lt;/span&gt;():
+  x&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  )
+  y_&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;placeholder(  ) &lt;span style=&#34;color:#75715e&#34;&gt;#注意下划线&lt;/span&gt;
+  y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;forward&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;forward(x,REGULARIZER)
+  global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Variable(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,trainable&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)
+  &lt;span style=&#34;color:#75715e&#34;&gt;#损失函数&lt;/span&gt;
+  loss&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss可以是：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  y与y_的差距(loss_mse) = tf.reduce_mean(tf.square(y-y_)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ce = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  cem = tf.reduce_mean(ce)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  加入正则化后：
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  loss=y与y_的差距 + tf.add_n(tf.get_collection(&amp;#34;losses&amp;#34;))
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#使用指数衰减学习率，用以下代码：&lt;/span&gt;
+  learning rate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;exponential_decay(
+  	LEARNING_RATE_BASE,
+  	global_step,
+  	数据集总样本数&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;BATCH_SIZE,
+  	LEARNING_RATE_DECAY,
+  	staircase&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+  	)
+  train_step &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;GradientDescentOptimizer(learning_rate)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;minimize(loss,global_step&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;global_step)
+  
+  &lt;span style=&#34;color:#75715e&#34;&gt;#滑动平均&lt;/span&gt;
+  ema &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ExponentialMovingAverage(MOVING_AVERAGE_DECAY,global_step)
+  ema_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ema&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;apply(tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trainable_variables())
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;control_dependencies([train_step,ema_op]):
+  	train_op &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;no_op(name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;train&amp;#39;&lt;/span&gt;)
+    
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;v1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Session &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sess:
+    init_op&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;global_variables_initializer()
+    sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(init_op)
+    
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(STEPS):
+      sess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run(train_step,feed_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{x: ,y_: })
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 轮数 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+        print()
+   
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+  backward()
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue.js学习笔记</title>
+      <link>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 30 Apr 2021 20:43:36 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h2 id=&#34;引入-vue&#34;&gt;引入 Vue&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 生产环境版本，优化了尺寸和速度 --&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/vue&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vue-指令&#34;&gt;Vue 指令&lt;/h2&gt;
+&lt;h3 id=&#34;v-text&#34;&gt;v-text&lt;/h3&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  {{message}}
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-text&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message+&amp;#39;!&amp;#39;&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;{{school.mobile}}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;{{ names[0] }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;message&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello vue!&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;school&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;mobile&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2-12302-1&amp;#34;&lt;/span&gt;,
+      },
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hdsi&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dsk&amp;#34;&lt;/span&gt;],
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在标签里面直接指定 v-text = &amp;quot; &amp;ldquo;,会将标签文本全部替换为&amp;rdquo; &amp;ldquo;的内容&lt;/p&gt;
+&lt;h3 id=&#34;v-html&#34;&gt;v-html&lt;/h3&gt;
+&lt;p&gt;设置标签的 innerHtml，将文本解析为 html 结构&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  {{message}}
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-html&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;a href=&amp;#39;#&amp;#39;&amp;#39;&amp;gt;v-html示例&amp;lt;/a&amp;gt;&amp;#34;&lt;/span&gt;,
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-on&#34;&gt;v-on&lt;/h3&gt;
+&lt;p&gt;为元素绑定事件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;v-on&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-on:click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;study&amp;#34;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;button&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;v-on简写&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;study&amp;#34;&lt;/span&gt; /&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;methods&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;study&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;alert&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;开始学习&amp;#34;&lt;/span&gt;);
+      },
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-show&#34;&gt;v-show&lt;/h3&gt;
+&lt;p&gt;v-show = &amp;ldquo;bool&amp;rdquo;, 用于决定元素是否显示，操作的是 display 属性&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;img&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./bili.png&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-show&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isShow&amp;#34;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;@&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;changeState&amp;#34;&lt;/span&gt;&amp;gt;切换显示状态&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;button&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+    },
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;methods&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;changeState&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;;
+      },
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;v-if&#34;&gt;v-if&lt;/h3&gt;
+&lt;p&gt;直接操作元素是否显示&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-if&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isShow&amp;#34;&lt;/span&gt;&amp;gt;v-if&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#app&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;isShow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+    },
+  });
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本质是操纵 dom 元素来切换显示状态，v-if=&amp;ldquo;false&amp;quot;时，将元素从 dom 树中移除&lt;/p&gt;
+&lt;p&gt;在使用过程中，频繁的切换用 v-show，不频繁用 v-if，v-show 切换消耗小&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cs231n学习笔记</title>
+      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <description>&lt;p&gt;2021-2-1&lt;/p&gt;
+&lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;focus on&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;image classification problems. 图像分类问题&lt;/p&gt;
+&lt;p&gt;ImageNet 大赛推动了图像识别的发展，最近几年 GPU 性能提高较快，所以才允许该领域快速发展，另一个方面：数据量&lt;/p&gt;
+&lt;p&gt;机器深刻地理解图像还早&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;python ，jupyter notebook tutorial&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;对计算机来说，图片就是一个像素值矩阵&lt;/p&gt;
+&lt;p&gt;challenges：光线，形变，遮挡 Occlusion，背景，类内差异(cats&#39; color&amp;hellip;.)&lt;/p&gt;
+&lt;p&gt;Data-Driven Approach：从网上找一堆猫的照片，作为训练&lt;/p&gt;
+&lt;p&gt;简易模型：&lt;/p&gt;
+&lt;p&gt;train:&lt;/p&gt;
+&lt;p&gt;​ def train(images, labels):&lt;/p&gt;
+&lt;p&gt;​ return models&lt;/p&gt;
+&lt;p&gt;Predict:&lt;/p&gt;
+&lt;p&gt;​ def predict(model, test_images):&lt;/p&gt;
+&lt;p&gt;​ return test_labels&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture1&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;最近临近算法&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;p&gt;L1 :曼哈顿距离&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/cA5pjUNB7VExJmk.png&#34; alt=&#34;IMG_0116&#34;&gt;&lt;/p&gt;
+&lt;p&gt;给出了一个比较两个图片相像性的方法。&lt;/p&gt;
+&lt;p&gt;落后的方法：train:O(1)&lt;/p&gt;
+&lt;p&gt;Predict: O(n)，n 个比较&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;K-最临近算法&lt;!-- raw HTML omitted --&gt;：KNN&lt;/p&gt;
+&lt;p&gt;找到最近的 k 个点，更复杂，k 越大，结果越好&lt;/p&gt;
+&lt;p&gt;L2 = L1 取根号 ， 欧式距离&lt;/p&gt;
+&lt;p&gt;L1 基于我们对坐标轴的选择，L2 不会&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;K 的选择，距离的算法选择：超参数，不能从数据集里面获得，依赖于具体问题&lt;/p&gt;
+&lt;p&gt;比如选 L1 还是 L2，依赖你到底要不要注重坐标轴的选择，best answer：depend on question&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture2.   线性分类&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;图片像素值 x&amp;mdash;&amp;mdash;&amp;mdash;-f(x,W)&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;参数&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-分类&lt;/p&gt;
+&lt;p&gt;W 为权重（自己提出的） f(x,W) = Wx +b&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture3.   如何选择：W 和 f(x, W)的形式？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;IMG_0118&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回顾：&lt;/p&gt;
+&lt;p&gt;猫的图片&amp;mdash;&amp;mdash;2*2 矩阵&amp;mdash;&amp;mdash;4*1 矩阵&amp;mdash;&amp;mdash;输入到 f(x,W)&lt;/p&gt;
+&lt;p&gt;W 为自己探索的得出的 3*4 矩阵，f(x,W)为自己提出的函数，b 为修正&lt;/p&gt;
+&lt;p&gt;在这里 f(x,W) = Wx + b 可以得到一个 3*1 的矩阵，对应 3 类，某一类的得分越高，则为该类的概率越高&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;如何选择 W？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;​ 如果想让机器来进行评估，需要一个函数把 W 当输入，告诉我们这个 W 好不好，这个函数称作&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;损失函数（loss function)&lt;/strong&gt;，可以定量地衡量 W 的好坏&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;SVM loss&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Support Vector Machine 支持向量机&lt;/p&gt;
+&lt;p&gt;Sj 是通过分类器，预测出来的类的分数，S-Yi 是这个样本的正确的分类标签&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/d5FcEvqJR8Hu1Ta.png&#34; alt=&#34;IMG_0120&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值为 0，最大值无穷&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;问题：发现一个 W 使 L = 0，W 唯一吗？&lt;/p&gt;
+&lt;p&gt;不唯一&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;通常在 L（w）后面+一个 lanmudaR(W)，正则项，防止过度拟合&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Softmax Classifier&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;more common&lt;img src=&#34;https://i.loli.net/2021/02/10/SnOb2cl5GvFAWZf.png&#34; alt=&#34;IMG_0121&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值：0，最大化：inf&lt;/p&gt;
+&lt;p&gt;L_i = 0 代表真实，可以理解为损失程度，L_i 越大，代表损失越多&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/6GPJAsUjwrivpB3.png&#34; alt=&#34;IMG_0122&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;W 最开始如何选？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1，最笨办法：random&lt;/p&gt;
+&lt;p&gt;2，梯度：通常是选一个之后进行优化，往往用到梯度，告诉我们向那个方向移动一个步长，损失变化会是多少&lt;/p&gt;
+&lt;p&gt;在每一个维度修改一小部分，进行&lt;strong&gt;有限差分逼近&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;问题：W 维度可能很多，或者 CNN 很大，导致计算很慢&lt;/p&gt;
+&lt;p&gt;可以用来 debug&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;怎么计算梯度？ ：&lt;strong&gt;反向传播算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就是求导的链式法则&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;之前讲的是线性分类&lt;/p&gt;
+&lt;p&gt;现在讲 2 层神经网络&lt;/p&gt;
+&lt;p&gt;W2 对 W1 得到的分数 h 再进行一个加权&lt;img src=&#34;https://i.loli.net/2021/02/10/5z7gcIdpyktDiEK.png&#34; alt=&#34;IMG_0126&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/juAqi4M5JadpNzm.png&#34; alt=&#34;IMG_0127&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;卷积神经网络&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;历史：&lt;/p&gt;
+&lt;p&gt;2012 年神经网络爆发，最早是声音识别&lt;/p&gt;
+&lt;p&gt;CNN 在 ImageNet 取得很好的效果，之后被广泛使用&lt;/p&gt;
+&lt;p&gt;人脸识别，姿势识别，alphago，医学图像识别&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;卷积核：用一个更小的矩阵滑过原矩阵&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作系统 on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <description>Recent content in 操作系统 on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 May 2021 12:33:50 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Operating_system_experiment</title>
+      <link>https:weivwang.github.io/studynotes/operating_system_experiment/</link>
+      <pubDate>Thu, 27 May 2021 12:33:50 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/operating_system_experiment/</guid>
+      <description>&lt;h1 id=&#34;operation-system-experiment&#34;&gt;Operation-System-Experiment&lt;/h1&gt;
+&lt;p&gt;武汉大学软件工程操作系统课程设计&lt;/p&gt;
+&lt;p&gt;主要是使用高级语言模拟操作系统管理的一些算法，整体难度不大，甚至感觉像是在做数据结构的作业。&lt;/p&gt;
+&lt;p&gt;第一次实验课写了两个实验，分别是&lt;/p&gt;
+&lt;p&gt;1，模拟处理器调度算法中的按优先数调度算法&lt;/p&gt;
+&lt;p&gt;2，模拟可变分区管理方式下采用首次适应算法实现主存分配和回收&lt;/p&gt;
+&lt;h3 id=&#34;os_exp1&#34;&gt;OS_exp1&lt;/h3&gt;
+&lt;p&gt;实验要求如下：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(1)假定系统有5个进程，每个进程用一个PCB来代表。PCB的结构为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·进程名——如P1~P5。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·指针——按优先数的大小把5个进程连成队列，用指针指出下一个进程PCB的首地址。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·要求运行时间——假设进程需要运行的单位时间数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·优先数——赋予进程的优先数，调度时总是选取优先数大的进程先执行。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·状态——假设两种状态：就绪和结束，用R表示就绪，用E表示结束。初始状态都为就绪状态。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(2)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*开始运行之前，为每个进程确定它的“优先数”和“要求运行时间”。通过键盘输入这些参数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*处理器总是选择队首进程运行。采用动态改变优先数的办法，进程每运行1次，优先数减1，要求运行时间减1。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(4)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*进程运行一次后，若要求运行时间不等于0，则将它加入就绪队列，否则，将状态改为“结束”，退出就绪队列。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(5)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*若就绪队列为空，结束，否则转到*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*重复。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;用java写的，核心算法一个排序&lt;/p&gt;
+&lt;p&gt;每次执行让进程优先数和运行时间-1，再重新排序，执行优先数最大的进程。&lt;/p&gt;
+&lt;p&gt;直到所有进程要求运行时间全为0&lt;/p&gt;
+&lt;p&gt;写的可能不是很规范，建了一个OperationSystem类，在其中定义了一些静态方法，对PCB类进行操作。&lt;/p&gt;
+&lt;p&gt;运行效果如下：&lt;/p&gt;
+&lt;p&gt;模拟设置了五个线程，分别让用户输入线程优先数&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/lhET4SIuYMHaUZg.png&#34; alt=&#34;lhET4SIuYMHaUZg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;输入完成后会自动输出表格显示信息，并将第一次按优先数进行排序的表显示出来&lt;/p&gt;
+&lt;p&gt;然后依次执行，每执行会本次执行的进程的进程名，并将新的表格输出。&lt;/p&gt;
+&lt;p&gt;输入完成后初始表和排序表：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/oPXN45gmZVkeqt7.png&#34; alt=&#34;oPXN45gmZVkeqt7&#34;&gt;&lt;/p&gt;
+&lt;p&gt;运行过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/v5NEY7n28oRerCA.png&#34; alt=&#34;v5NEY7n28oRerCA&#34;&gt;&lt;/p&gt;
+&lt;p&gt;中间过程还是比较长的，最后所有要求运行时间全0，退出：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/Rfd4baMXTtp2UcS.png&#34; alt=&#34;Rfd4baMXTtp2UcS&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;os_exp2&#34;&gt;OS_exp2&lt;/h3&gt;
+&lt;p&gt;实验要求：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*可变分区方式是按作业需要的主存空间大小来分割分区的。当要装入一个作业时，根据作业需要的主存容量查看是否有足够的空闲空间，若有，则按需分配，否则，作业无法装入。假定内存大小为128K，空闲区说明表格式为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·分区号——表示是第几个空闲分区；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·起始地址——指出空闲区的起始地址；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*·长度——一个连续空闲区的长度；*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*采用首次适应算法分配回收内存空间。运行时，输入一系列分配请求和回收请求。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能显示*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分区分配及回收后的内存布局情况。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;分配很容易，就是按顺序找到第一个空间大于申请空间的分区，然后分配给他&lt;/p&gt;
+&lt;p&gt;回收算法如下需要考虑几种情况：&lt;/p&gt;
+&lt;p&gt;1，回收分区起始地址和空闲分区相邻，但和后面空闲分区不相邻，则将回收分区和前面相邻的合并，起始地址为前面空闲分区起始地址&lt;/p&gt;
+&lt;p&gt;2，回收分区起始地址和前面空闲分区不相邻，和后面分区相邻，则与后面分区合并，起始地址为回收分区起始地址&lt;/p&gt;
+&lt;p&gt;3，回收分区和前，后空闲分区都不相邻，则新建一个表项&lt;/p&gt;
+&lt;p&gt;4，回收分区和前后空闲分区都相邻，则将3块分区合并，其实地址为第一块空闲分区起始地址&lt;/p&gt;
+&lt;p&gt;运行截图如下：&lt;/p&gt;
+&lt;p&gt;请求内存：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/r9EoUSB45NfusTI.png&#34; alt=&#34;r9EoUSB45NfusTI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回收内存：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/05/15/Miw5zj6dRP1T7IK.png&#34; alt=&#34;Miw5zj6dRP1T7IK&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回收分区恰好与前后空闲分区相邻，所以1号分区，回收分区，和2号分区直接合并成一块分区，编号为1，其实地址为1号分区起始地址50，大小为20+30+10 = 60&lt;/p&gt;
+&lt;h3 id=&#34;os_exp2_new&#34;&gt;OS_exp2_new&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*在分页管理方式下采用位示图来表示主存分配情况，实现主存分配和回收*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*[提示]：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*假定系统的主存被分成大小相等的64个块，用0/1对应空闲/占用。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*当要装入一个作业时，根据作业对主存的需求量，先查空闲块数是否能满足作业要求，若能满足，则查位示图，修改位示图和空闲块数。位置与块号的对应关系为：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*块号=*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*j*8+i*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*，其中*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*i*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*表示位，*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*j*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*表示字节。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*根据分配的块号建立页表。页表包括两项：页号和块号。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(3)&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*回收时，修改位示图和空闲块数。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能显示*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*位示图和空闲块数的变化，能显示进程的页表。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;由于实验三选用了可变分区管理方式，验收的时候实验二有点问题，所以实验二重新选了分页管理方式&lt;/p&gt;
+&lt;p&gt;在验收的时候，老师专门要求提高鲁棒性，第一遍没有通过，,又修改了一部分才完成&lt;/p&gt;
+&lt;p&gt;运行截图如下：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h3 id=&#34;os_exp3&#34;&gt;os_exp3&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*一、实习内容*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*模拟磁盘空闲空间的表示方法，以及模拟实现磁盘空间的分配和回收。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*二、实习目的*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁盘初始化时把磁盘存储空间分成许多块（扇区），这些空间可以被多个用户共享。用户作业在执行期间常常要在磁盘上建立文件或把已经建立在磁盘上的文件删去，这就涉及到磁盘存储空间的分配和回收。一个文件存放到磁盘上，可以组织成顺序文件（连续文件）、链接文件（串联文件）、索引文件等，因此，磁盘存储空间的分配有两种方式，一种是分配连续的存储空间，另一种是可以分配不连续的存储空间。怎样有效地管理磁盘存储空间是操作系统应解决的一个重要问题，通过本实习使学生掌握磁盘存储空间的分配和回收算法。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*三、实习题目*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*本实习有三个题目，可以任选一个，*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*但不能与内存管理的题目类似*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*第一题：连续磁盘存储空间的分配和回收*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*[提示]：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(1)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*要在磁盘上建立顺序文件时，必须把按序排列的逻辑记录依次存放在磁盘的连续存储空间中。可假定磁盘初始化时，已把磁盘存储空间划分成若干等长的块（扇区），按柱面号和盘面号的顺序给每一块确定一个编号。随着文件的建立、删除、磁盘存储空间被分成许多区（每一区包含若干块），有的区存放着文件，而有的区是空闲的。当要建立顺序文件时必须找到一个合适的空闲区来存放文件记录，当一个文件被删除时，则该文件占用的区应成为空闲区。为此可用一张空闲区表来记录磁盘存储空间中尚未占用的部分，格式如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*序  号*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*起始空闲块号*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*空闲块个数*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;th&gt;&lt;em&gt;&lt;strong&gt;*状   态*&lt;/strong&gt;&lt;/em&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*1*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*5*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*6*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*2*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*14*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*3*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*3*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*21*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*30*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*未 分 配*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*4*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;*。。。*&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(2)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*建立文件时，先查找空闲区表，从空闲区表中找出一个块数能满足要求的区，由起始空闲块号能依次推得可使用的其它块号。若不需要占用该区的所有块时，则剩余的块仍应为未分配的空闲块，这时要修改起始空闲块号和空闲块数。若占用了该区的所有块，则删去该空闲区。删除一个文件时，需要考虑空闲块的合并情况。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁盘存储空间的分配和回收算法类似于主存储器的可变分区方式的分配和回收。同学们可参考实习二的第一题。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(3)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*当找到空闲块后，必须启动磁盘把信息存放到指定的块中，启动磁盘必须给出由三个参数组成的物理地址：盘面号、柱面号和物理记录号（即扇区号）。故必须把找到的空闲块号换算成磁盘的物理地址。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*为了减少移臂次数，磁盘上的信息按柱面上各磁道顺序存放。现假定一个盘组共有200个柱面，（编号0-199）每个柱面有20个磁道（编号0-19，同一柱面上的各磁道分布在各盘面上，故磁道号即盘面号。），每个磁道被分成等长的6个物理记录（编号0-5，每个盘面被分成若干个扇区，故每个磁道上的物理记录号即为对应的扇区号）。那么，空闲块号与磁盘物理地址的对应关系如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*则  物理记录号*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*=*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*空闲块号 % 6*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*磁道号=（空闲块号 / 6 ）% 20*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*柱面号=（空闲块号 / 6）/20*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(4)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*删除一个文件时，从文件目录表中可得到该文件在磁盘上的起始地址和逻辑记录个数，假定每个逻辑记录占磁盘上的一块，则可推算出归还后的起始空闲块号和块数，登记到空闲区表中。换算关系如下：*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*起始空闲块号=（柱面号*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*´*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*20+磁道号）*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*´*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*6+物理记录号*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*空闲块数=逻辑记录数*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*(5)*&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;&lt;strong&gt;*请设计磁盘存储空间的分配和回收程序，要求把分配到的空闲块转换成磁盘物理地址，把归还的磁盘空间转换成空闲块号。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*要求能接受来自键盘的空间申请及释放请求，能*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*显示或打印分配及回收后的空闲区表以及分配到的磁盘空间的起始物理地址：包括柱面号、磁道号、物理记录号（扇区号）。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这个实验看起来复杂，实际做起来和第二个实验的可变分区管理内存的思路基本一样，只不过需要增加一个磁盘位置。&lt;/p&gt;
+&lt;p&gt;运行截图：&lt;/p&gt;
+&lt;p&gt;起始时，我分配了在块表中分配了3个表项，状态F表示未被使用&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;提示用户输入文件名，需要的空闲块：&lt;/p&gt;
+&lt;p&gt;程序返回系统分配的起始块号，磁盘上的起始物理记录号，磁道号，柱面号&lt;/p&gt;
+&lt;p&gt;并将文件的存储信息展示出来:&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;再存入一个：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;释放空间时，只需要输入文件名称，即可从磁盘空间移除：&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

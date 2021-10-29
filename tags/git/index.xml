@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/tags/git/</link>
+    <description>Recent content in git on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Apr 2021 21:16:25 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git关联及取消关联远程仓库操作</title>
+      <link>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 28 Apr 2021 21:16:25 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;h3 id=&#34;git-关联取消关联远程仓库操作&#34;&gt;git 关联/取消关联远程仓库操作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;初始化仓库：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;git 本地仓库与远程仓库关联：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（本地有一个文件夹了，怎么将其与 github 上新建的远程仓库联系起来）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt; git remote add origin git@github.com:username/projectname.git&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;输入：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git remote -v&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以看到是否关联成功&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立 main 分支&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git branch -M main&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将本地仓库推送到远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git push -u origin main&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;取消关联：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;git remote remove origin&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

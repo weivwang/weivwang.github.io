@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CV on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/tags/cv/</link>
+    <description>Recent content in CV on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Apr 2021 16:32:56 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/tags/cv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cs231n学习笔记</title>
+      <link>https:weivwang.github.io/studynotes/cs231n_learn/</link>
+      <pubDate>Wed, 28 Apr 2021 16:32:56 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/studynotes/cs231n_learn/</guid>
+      <description>&lt;p&gt;2021-2-1&lt;/p&gt;
+&lt;p&gt;课程链接： &lt;a href=&#34;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&#34;&gt;https://www.bilibili.com/video/BV1nJ411z7fe?p=2&amp;amp;spm_id_from=pageDriver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;课程重点：convolutional neural network (CNN) 卷积神经网络&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;focus on&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;image classification problems. 图像分类问题&lt;/p&gt;
+&lt;p&gt;ImageNet 大赛推动了图像识别的发展，最近几年 GPU 性能提高较快，所以才允许该领域快速发展，另一个方面：数据量&lt;/p&gt;
+&lt;p&gt;机器深刻地理解图像还早&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;python ，jupyter notebook tutorial&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;对计算机来说，图片就是一个像素值矩阵&lt;/p&gt;
+&lt;p&gt;challenges：光线，形变，遮挡 Occlusion，背景，类内差异(cats&#39; color&amp;hellip;.)&lt;/p&gt;
+&lt;p&gt;Data-Driven Approach：从网上找一堆猫的照片，作为训练&lt;/p&gt;
+&lt;p&gt;简易模型：&lt;/p&gt;
+&lt;p&gt;train:&lt;/p&gt;
+&lt;p&gt;​ def train(images, labels):&lt;/p&gt;
+&lt;p&gt;​ return models&lt;/p&gt;
+&lt;p&gt;Predict:&lt;/p&gt;
+&lt;p&gt;​ def predict(model, test_images):&lt;/p&gt;
+&lt;p&gt;​ return test_labels&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture1&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;最近临近算法&lt;!-- raw HTML omitted --&gt;：&lt;/p&gt;
+&lt;p&gt;L1 :曼哈顿距离&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/cA5pjUNB7VExJmk.png&#34; alt=&#34;IMG_0116&#34;&gt;&lt;/p&gt;
+&lt;p&gt;给出了一个比较两个图片相像性的方法。&lt;/p&gt;
+&lt;p&gt;落后的方法：train:O(1)&lt;/p&gt;
+&lt;p&gt;Predict: O(n)，n 个比较&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;K-最临近算法&lt;!-- raw HTML omitted --&gt;：KNN&lt;/p&gt;
+&lt;p&gt;找到最近的 k 个点，更复杂，k 越大，结果越好&lt;/p&gt;
+&lt;p&gt;L2 = L1 取根号 ， 欧式距离&lt;/p&gt;
+&lt;p&gt;L1 基于我们对坐标轴的选择，L2 不会&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;K 的选择，距离的算法选择：超参数，不能从数据集里面获得，依赖于具体问题&lt;/p&gt;
+&lt;p&gt;比如选 L1 还是 L2，依赖你到底要不要注重坐标轴的选择，best answer：depend on question&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture2.   线性分类&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;图片像素值 x&amp;mdash;&amp;mdash;&amp;mdash;-f(x,W)&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;参数&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-分类&lt;/p&gt;
+&lt;p&gt;W 为权重（自己提出的） f(x,W) = Wx +b&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Lecture3.   如何选择：W 和 f(x, W)的形式？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/qOUWS4Z6dRLhQ8X.png&#34; alt=&#34;IMG_0118&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回顾：&lt;/p&gt;
+&lt;p&gt;猫的图片&amp;mdash;&amp;mdash;2*2 矩阵&amp;mdash;&amp;mdash;4*1 矩阵&amp;mdash;&amp;mdash;输入到 f(x,W)&lt;/p&gt;
+&lt;p&gt;W 为自己探索的得出的 3*4 矩阵，f(x,W)为自己提出的函数，b 为修正&lt;/p&gt;
+&lt;p&gt;在这里 f(x,W) = Wx + b 可以得到一个 3*1 的矩阵，对应 3 类，某一类的得分越高，则为该类的概率越高&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;如何选择 W？&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;​ 如果想让机器来进行评估，需要一个函数把 W 当输入，告诉我们这个 W 好不好，这个函数称作&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;损失函数（loss function)&lt;/strong&gt;，可以定量地衡量 W 的好坏&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;SVM loss&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Support Vector Machine 支持向量机&lt;/p&gt;
+&lt;p&gt;Sj 是通过分类器，预测出来的类的分数，S-Yi 是这个样本的正确的分类标签&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/d5FcEvqJR8Hu1Ta.png&#34; alt=&#34;IMG_0120&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值为 0，最大值无穷&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;问题：发现一个 W 使 L = 0，W 唯一吗？&lt;/p&gt;
+&lt;p&gt;不唯一&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;通常在 L（w）后面+一个 lanmudaR(W)，正则项，防止过度拟合&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Softmax Classifier&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;more common&lt;img src=&#34;https://i.loli.net/2021/02/10/SnOb2cl5GvFAWZf.png&#34; alt=&#34;IMG_0121&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最小值：0，最大化：inf&lt;/p&gt;
+&lt;p&gt;L_i = 0 代表真实，可以理解为损失程度，L_i 越大，代表损失越多&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/6GPJAsUjwrivpB3.png&#34; alt=&#34;IMG_0122&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;W 最开始如何选？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1，最笨办法：random&lt;/p&gt;
+&lt;p&gt;2，梯度：通常是选一个之后进行优化，往往用到梯度，告诉我们向那个方向移动一个步长，损失变化会是多少&lt;/p&gt;
+&lt;p&gt;在每一个维度修改一小部分，进行&lt;strong&gt;有限差分逼近&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;问题：W 维度可能很多，或者 CNN 很大，导致计算很慢&lt;/p&gt;
+&lt;p&gt;可以用来 debug&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;怎么计算梯度？ ：&lt;strong&gt;反向传播算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;就是求导的链式法则&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;之前讲的是线性分类&lt;/p&gt;
+&lt;p&gt;现在讲 2 层神经网络&lt;/p&gt;
+&lt;p&gt;W2 对 W1 得到的分数 h 再进行一个加权&lt;img src=&#34;https://i.loli.net/2021/02/10/5z7gcIdpyktDiEK.png&#34; alt=&#34;IMG_0126&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/02/10/juAqi4M5JadpNzm.png&#34; alt=&#34;IMG_0127&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;卷积神经网络&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;历史：&lt;/p&gt;
+&lt;p&gt;2012 年神经网络爆发，最早是声音识别&lt;/p&gt;
+&lt;p&gt;CNN 在 ImageNet 取得很好的效果，之后被广泛使用&lt;/p&gt;
+&lt;p&gt;人脸识别，姿势识别，alphago，医学图像识别&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;卷积核：用一个更小的矩阵滑过原矩阵&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

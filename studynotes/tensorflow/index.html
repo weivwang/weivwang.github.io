@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>wwwvvvのblog  | Tensorflow八股笔记</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:weivwang.github.io', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https:weivwang.github.io" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">Tensorflow八股笔记</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">参考北大人工智能实践课程</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/python'>python</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0'>学习笔记</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-07-07T20:29:18&#43;08:00">2021-7-7 20:29</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p>搭建模块化的神经网路八股</p>
+<p>前向传播就是搭建网络，设计网络结构（forward.py)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(x,regularizer):
+	w<span style="color:#f92672">=</span>
+	b<span style="color:#f92672">=</span>
+	y<span style="color:#f92672">=</span>
+	<span style="color:#66d9ef">return</span> y
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_weigth</span>(shape,regularizer):
+  w<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>Variable()
+  <span style="color:#75715e">#把每一个w的正则化损失加到总损失losses中</span>
+  tf<span style="color:#f92672">.</span>add_to_collection(<span style="color:#e6db74">&#39;losses&#39;</span>,tf<span style="color:#f92672">.</span>contrib<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>l2_regularizer(regularizer)(w))
+  retrun w
+  
+<span style="color:#75715e">#b的形状=某层中b的个数</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_bias</span>(shape):
+  b<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>Variable()
+  <span style="color:#66d9ef">return</span> b
+</code></pre></div><p>反向传播就是训练网络，优化网络参数(backward.py)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>():
+  x<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>placeholder(  )
+  y_<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>placeholder(  ) <span style="color:#75715e">#注意下划线</span>
+  y<span style="color:#f92672">=</span>forward<span style="color:#f92672">.</span>forward(x,REGULARIZER)
+  global_step<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>Variable(<span style="color:#ae81ff">0</span>,trainable<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+  <span style="color:#75715e">#损失函数</span>
+  loss<span style="color:#f92672">=</span>
+  <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">  loss可以是：
+</span><span style="color:#e6db74">  y与y_的差距(loss_mse) = tf.reduce_mean(tf.square(y-y_)
+</span><span style="color:#e6db74">  ce = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y,labels=tf.argmax(y_,1))
+</span><span style="color:#e6db74">  cem = tf.reduce_mean(ce)
+</span><span style="color:#e6db74">  加入正则化后：
+</span><span style="color:#e6db74">  loss=y与y_的差距 + tf.add_n(tf.get_collection(&#34;losses&#34;))
+</span><span style="color:#e6db74">  &#39;&#39;&#39;</span>
+  <span style="color:#75715e">#使用指数衰减学习率，用以下代码：</span>
+  learning rate <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>exponential_decay(
+  	LEARNING_RATE_BASE,
+  	global_step,
+  	数据集总样本数<span style="color:#f92672">/</span>BATCH_SIZE,
+  	LEARNING_RATE_DECAY,
+  	staircase<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+  	)
+  train_step <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>GradientDescentOptimizer(learning_rate)<span style="color:#f92672">.</span>minimize(loss,global_step<span style="color:#f92672">=</span>global_step)
+  
+  <span style="color:#75715e">#滑动平均</span>
+  ema <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>ExponentialMovingAverage(MOVING_AVERAGE_DECAY,global_step)
+  ema_op <span style="color:#f92672">=</span> ema<span style="color:#f92672">.</span>apply(tf<span style="color:#f92672">.</span>trainable_variables())
+  <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>control_dependencies([train_step,ema_op]):
+  	train_op <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>no_op(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;train&#39;</span>)
+    
+  <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>compat<span style="color:#f92672">.</span>v1<span style="color:#f92672">.</span>Session <span style="color:#66d9ef">as</span> sess:
+    init_op<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>global_variables_initializer()
+    sess<span style="color:#f92672">.</span>run(init_op)
+    
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(STEPS):
+      sess<span style="color:#f92672">.</span>run(train_step,feed_dict<span style="color:#f92672">=</span>{x: ,y_: })
+      <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> 轮数 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        print()
+   
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+  backward()
+
+</code></pre></div></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 103 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/studynotes/operating_system_experiment/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Operating_system_experiment
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/studynotes/enbedded_software_courses_notes/">
+        Enbedded_software_courses_notes
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vue.js学习笔记</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/studynotes/cs231n_learn/">Cs231n学习笔记</a>
+		
+</span>
+</div>
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>

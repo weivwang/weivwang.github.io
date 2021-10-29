@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>wwwvvvのblog  | Js_learning</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:weivwang.github.io', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https:weivwang.github.io" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">Js_learning</h1>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E5%89%8D%E7%AB%AF'>前端</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-04-28T16:44:41&#43;08:00">2021-4-28 16:44</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h2 id="dom2021-1-31">DOM(2021-1-31)</h2>
+<h4 id="dom-简介">DOM 简介</h4>
+<p>Document Object Model ，是 W3C 推荐的处理可扩展标记语言 HTML 或 XML 的标准编程 <em>接口</em></p>
+<p>用来改变网页的内容，样式等</p>
+<p>页面 = 文档，用 document 表示</p>
+<p>元素 = 标签： 用 element 表示</p>
+<p>节点：所有内容（属性，标签，文本，注释）都是节点，用 node 表示</p>
+<p>DOM 把以上内容都看作对象</p>
+<hr>
+<h4 id="获取元素">获取元素</h4>
+<p>ID ： <code>document.getElementById(id)</code>，返回匹配 id 的元素对象，id 是字符串</p>
+<p><code>console.dir()</code>打印元素对象，查看其中的属性和方法</p>
+<p>标签名：<code>document.getElementByTagName()</code>，返回伪数组</p>
+<p><code>element.getElementByTagName()</code></p>
+<p>H5：通过类名，<code>document.getElementByClassName()</code></p>
+<p><code>document.querySelector('.box')</code> 类 。返回指定选择器的第一个元素对象</p>
+<p><code>document.querySelector('#nav') </code> id</p>
+<p><code>document.body</code>之类的也行</p>
+<h4 id="事件">事件</h4>
+<p>三部分：事件源，事件类型，事件处理程序</p>
+<p><code>var btn = document.getElementById('btn'); </code>//事件源：按钮</p>
+<p>btn.oncliick = function(){ //事件类型：点击</p>
+<p>​ alert(&lsquo;按钮被点击&rsquo;); //事件处理程序</p>
+<p>}</p>
+<p><code>element.InnerText</code> 来改元素内容，不识别 HTML 标签，非标准，去掉空格和换行</p>
+<p><code>element.InnerHTML</code>能识别 html 标签，用的更多</p>
+<h3 id="2021-2-2">2021-2-2</h3>
+<p>密码框显示密码常用这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">flag</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+<span style="color:#a6e22e">Btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">flag</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#a6e22e">pwd</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text&#34;</span>;
+
+    <span style="color:#a6e22e">flag</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#a6e22e">pwd</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password&#34;</span>;
+
+    <span style="color:#a6e22e">flag</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  }
+};
+</code></pre></div><p><strong>js 修改 css</strong></p>
+<p>属性采用驼峰命名</p>
+<p>element.style.backgroundColor = ' &lsquo;，改的是行内样式</p>
+<p><strong>关闭淘宝二维码案例</strong></p>
+<p>用<code>display:none</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">btn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;.close-btn&#34;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">box</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;.box&#34;</span>);
+<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+  <span style="color:#a6e22e">box</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+};
+</code></pre></div><p><strong>循环精灵图案例</strong></p>
+<p>for 循环修改 background-position</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lis</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;li&#34;</span>);
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">lis</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">44</span>;
+  <span style="color:#a6e22e">lis</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundPisition</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0 -&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;px&#34;</span>;
+}
+</code></pre></div><p><strong>焦点事件</strong></p>
+<p><code>element.onfocus</code>获得焦点</p>
+<p><code>element.onblur</code>失去焦点</p>
+<hr>
+<p>element.className 直接改类名，适合样式改的 比较多的时候</p>
+<hr>
+<p><strong>操作元素</strong></p>
+<pre><code>//获取
+element.attribute	//获取内置属性
+element.getAttribute('id') //可以获取自定义属性,最常用
+//h5新增
+div.dataset.index
+
+//修改
+element.attribute = ' '
+element.setAttribute('id',nav) //可以修改自定义属性
+改className就直接'class'，不用className
+</code></pre><hr>
+<p><strong>节点操作</strong></p>
+<p>1，通过 DOM 操作，逻辑性不强，操作复杂</p>
+<p>2，利用节点操作，更简单</p>
+<pre><code>parentNode //离节点最近的父级节点，找不到就返回为null
+childNodes //子节点，包含文本节点，元素节点等,标准
+
+//只想获得元素节点，需要专门处理(用nodeType来判断，所以一般不用)
+children //获取所有的子元素节点，常用
+firstElementChild //第一个子元素节点
+lastElementChild //最后，这两个都有兼容问题
+
+//实际开发写法：
+children[0]
+children[length-1]
+</code></pre><hr>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 204 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/studynotes/cs231n_learn/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Cs231n学习笔记
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/">
+        写在前面
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>

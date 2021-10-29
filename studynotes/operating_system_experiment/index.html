@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>wwwvvvのblog  | Operating_system_experiment</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:weivwang.github.io', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https:weivwang.github.io') format('woff2'),
+				 
+				url('https:weivwang.github.io') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https:weivwang.github.io" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">Operating_system_experiment</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">武汉大学操作系统实验</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F'>操作系统</a>&nbsp;&#47;
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95'>实验记录</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-05-27T12:33:50&#43;08:00">2021-5-27 12:33</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="operation-system-experiment">Operation-System-Experiment</h1>
+<p>武汉大学软件工程操作系统课程设计</p>
+<p>主要是使用高级语言模拟操作系统管理的一些算法，整体难度不大，甚至感觉像是在做数据结构的作业。</p>
+<p>第一次实验课写了两个实验，分别是</p>
+<p>1，模拟处理器调度算法中的按优先数调度算法</p>
+<p>2，模拟可变分区管理方式下采用首次适应算法实现主存分配和回收</p>
+<h3 id="os_exp1">OS_exp1</h3>
+<p>实验要求如下：</p>
+<p><em><strong>*(1)假定系统有5个进程，每个进程用一个PCB来代表。PCB的结构为：*</strong></em></p>
+<p><em><strong>*·进程名——如P1~P5。*</strong></em></p>
+<p><em><strong>*·指针——按优先数的大小把5个进程连成队列，用指针指出下一个进程PCB的首地址。*</strong></em></p>
+<p><em><strong>*·要求运行时间——假设进程需要运行的单位时间数。*</strong></em></p>
+<p><em><strong>*·优先数——赋予进程的优先数，调度时总是选取优先数大的进程先执行。*</strong></em></p>
+<p><em><strong>*·状态——假设两种状态：就绪和结束，用R表示就绪，用E表示结束。初始状态都为就绪状态。*</strong></em></p>
+<p><em><strong>*(2)*</strong></em> <em><strong>*开始运行之前，为每个进程确定它的“优先数”和“要求运行时间”。通过键盘输入这些参数。*</strong></em></p>
+<p><em><strong>*(3)*</strong></em> <em><strong>*处理器总是选择队首进程运行。采用动态改变优先数的办法，进程每运行1次，优先数减1，要求运行时间减1。*</strong></em></p>
+<p><em><strong>*(4)*</strong></em> <em><strong>*进程运行一次后，若要求运行时间不等于0，则将它加入就绪队列，否则，将状态改为“结束”，退出就绪队列。*</strong></em></p>
+<p><em><strong>*(5)*</strong></em> <em><strong>*若就绪队列为空，结束，否则转到*</strong></em><em><strong>*(3)*</strong></em><em><strong>*重复。*</strong></em></p>
+<p>用java写的，核心算法一个排序</p>
+<p>每次执行让进程优先数和运行时间-1，再重新排序，执行优先数最大的进程。</p>
+<p>直到所有进程要求运行时间全为0</p>
+<p>写的可能不是很规范，建了一个OperationSystem类，在其中定义了一些静态方法，对PCB类进行操作。</p>
+<p>运行效果如下：</p>
+<p>模拟设置了五个线程，分别让用户输入线程优先数</p>
+<p><img src="https://i.loli.net/2021/05/15/lhET4SIuYMHaUZg.png" alt="lhET4SIuYMHaUZg"></p>
+<p>输入完成后会自动输出表格显示信息，并将第一次按优先数进行排序的表显示出来</p>
+<p>然后依次执行，每执行会本次执行的进程的进程名，并将新的表格输出。</p>
+<p>输入完成后初始表和排序表：</p>
+<p><img src="https://i.loli.net/2021/05/15/oPXN45gmZVkeqt7.png" alt="oPXN45gmZVkeqt7"></p>
+<p>运行过程：</p>
+<p><img src="https://i.loli.net/2021/05/15/v5NEY7n28oRerCA.png" alt="v5NEY7n28oRerCA"></p>
+<p>中间过程还是比较长的，最后所有要求运行时间全0，退出：</p>
+<p><img src="https://i.loli.net/2021/05/15/Rfd4baMXTtp2UcS.png" alt="Rfd4baMXTtp2UcS"></p>
+<h3 id="os_exp2">OS_exp2</h3>
+<p>实验要求：</p>
+<p><strong>(1)</strong> <em><strong>*可变分区方式是按作业需要的主存空间大小来分割分区的。当要装入一个作业时，根据作业需要的主存容量查看是否有足够的空闲空间，若有，则按需分配，否则，作业无法装入。假定内存大小为128K，空闲区说明表格式为：*</strong></em></p>
+<p><em><strong>*·分区号——表示是第几个空闲分区；*</strong></em></p>
+<p><em><strong>*·起始地址——指出空闲区的起始地址；*</strong></em></p>
+<p><em><strong>*·长度——一个连续空闲区的长度；*</strong></em></p>
+<p><strong>(2)</strong> <em><strong>*采用首次适应算法分配回收内存空间。运行时，输入一系列分配请求和回收请求。*</strong></em></p>
+<p><em><strong>*要求能接受来自键盘的空间申请及释放请求，能显示*</strong></em><em><strong>*分区分配及回收后的内存布局情况。*</strong></em></p>
+<p>分配很容易，就是按顺序找到第一个空间大于申请空间的分区，然后分配给他</p>
+<p>回收算法如下需要考虑几种情况：</p>
+<p>1，回收分区起始地址和空闲分区相邻，但和后面空闲分区不相邻，则将回收分区和前面相邻的合并，起始地址为前面空闲分区起始地址</p>
+<p>2，回收分区起始地址和前面空闲分区不相邻，和后面分区相邻，则与后面分区合并，起始地址为回收分区起始地址</p>
+<p>3，回收分区和前，后空闲分区都不相邻，则新建一个表项</p>
+<p>4，回收分区和前后空闲分区都相邻，则将3块分区合并，其实地址为第一块空闲分区起始地址</p>
+<p>运行截图如下：</p>
+<p>请求内存：</p>
+<p><img src="https://i.loli.net/2021/05/15/r9EoUSB45NfusTI.png" alt="r9EoUSB45NfusTI"></p>
+<p>回收内存：</p>
+<p><img src="https://i.loli.net/2021/05/15/Miw5zj6dRP1T7IK.png" alt="Miw5zj6dRP1T7IK"></p>
+<p>回收分区恰好与前后空闲分区相邻，所以1号分区，回收分区，和2号分区直接合并成一块分区，编号为1，其实地址为1号分区起始地址50，大小为20+30+10 = 60</p>
+<h3 id="os_exp2_new">OS_exp2_new</h3>
+<p><em><strong>*在分页管理方式下采用位示图来表示主存分配情况，实现主存分配和回收*</strong></em></p>
+<p><em><strong>*[提示]：*</strong></em></p>
+<p><strong>(1)</strong> <em><strong>*假定系统的主存被分成大小相等的64个块，用0/1对应空闲/占用。*</strong></em></p>
+<p><strong>(2)</strong> <em><strong>*当要装入一个作业时，根据作业对主存的需求量，先查空闲块数是否能满足作业要求，若能满足，则查位示图，修改位示图和空闲块数。位置与块号的对应关系为：*</strong></em></p>
+<p><em><strong>*块号=*</strong></em><em><strong>*j*8+i*</strong></em><em><strong>*，其中*</strong></em><em><strong>*i*</strong></em><em><strong>*表示位，*</strong></em><em><strong>*j*</strong></em><em><strong>*表示字节。*</strong></em></p>
+<p><em><strong>*根据分配的块号建立页表。页表包括两项：页号和块号。*</strong></em></p>
+<p><strong>(3)</strong> <em><strong>*回收时，修改位示图和空闲块数。*</strong></em></p>
+<p><em><strong>*要求能接受来自键盘的空间申请及释放请求，能显示*</strong></em><em><strong>*位示图和空闲块数的变化，能显示进程的页表。*</strong></em></p>
+<p>由于实验三选用了可变分区管理方式，验收的时候实验二有点问题，所以实验二重新选了分页管理方式</p>
+<p>在验收的时候，老师专门要求提高鲁棒性，第一遍没有通过，,又修改了一部分才完成</p>
+<p>运行截图如下：</p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="os_exp3">os_exp3</h3>
+<p><em><strong>*一、实习内容*</strong></em></p>
+<p><em><strong>*模拟磁盘空闲空间的表示方法，以及模拟实现磁盘空间的分配和回收。*</strong></em></p>
+<p><em><strong>*二、实习目的*</strong></em></p>
+<p><em><strong>*磁盘初始化时把磁盘存储空间分成许多块（扇区），这些空间可以被多个用户共享。用户作业在执行期间常常要在磁盘上建立文件或把已经建立在磁盘上的文件删去，这就涉及到磁盘存储空间的分配和回收。一个文件存放到磁盘上，可以组织成顺序文件（连续文件）、链接文件（串联文件）、索引文件等，因此，磁盘存储空间的分配有两种方式，一种是分配连续的存储空间，另一种是可以分配不连续的存储空间。怎样有效地管理磁盘存储空间是操作系统应解决的一个重要问题，通过本实习使学生掌握磁盘存储空间的分配和回收算法。*</strong></em></p>
+<p><em><strong>*三、实习题目*</strong></em></p>
+<p><em><strong>*本实习有三个题目，可以任选一个，*</strong></em><em><strong>*但不能与内存管理的题目类似*</strong></em><em><strong>*。*</strong></em></p>
+<p><em><strong>*第一题：连续磁盘存储空间的分配和回收*</strong></em></p>
+<p><em><strong>*[提示]：*</strong></em></p>
+<p><em><strong>*(1)*</strong></em> <em><strong>*要在磁盘上建立顺序文件时，必须把按序排列的逻辑记录依次存放在磁盘的连续存储空间中。可假定磁盘初始化时，已把磁盘存储空间划分成若干等长的块（扇区），按柱面号和盘面号的顺序给每一块确定一个编号。随着文件的建立、删除、磁盘存储空间被分成许多区（每一区包含若干块），有的区存放着文件，而有的区是空闲的。当要建立顺序文件时必须找到一个合适的空闲区来存放文件记录，当一个文件被删除时，则该文件占用的区应成为空闲区。为此可用一张空闲区表来记录磁盘存储空间中尚未占用的部分，格式如下：*</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>*序  号*</strong></em></th>
+<th><em><strong>*起始空闲块号*</strong></em></th>
+<th><em><strong>*空闲块个数*</strong></em></th>
+<th><em><strong>*状   态*</strong></em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em><strong>*1*</strong></em></td>
+<td><em><strong>*5*</strong></em></td>
+<td><em><strong>*6*</strong></em></td>
+<td><em><strong>*未 分 配*</strong></em></td>
+</tr>
+<tr>
+<td><em><strong>*2*</strong></em></td>
+<td><em><strong>*14*</strong></em></td>
+<td><em><strong>*3*</strong></em></td>
+<td><em><strong>*未 分 配*</strong></em></td>
+</tr>
+<tr>
+<td><em><strong>*3*</strong></em></td>
+<td><em><strong>*21*</strong></em></td>
+<td><em><strong>*30*</strong></em></td>
+<td><em><strong>*未 分 配*</strong></em></td>
+</tr>
+<tr>
+<td><em><strong>*4*</strong></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>*。。。*</strong></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>*(2)*</strong></em> <em><strong>*建立文件时，先查找空闲区表，从空闲区表中找出一个块数能满足要求的区，由起始空闲块号能依次推得可使用的其它块号。若不需要占用该区的所有块时，则剩余的块仍应为未分配的空闲块，这时要修改起始空闲块号和空闲块数。若占用了该区的所有块，则删去该空闲区。删除一个文件时，需要考虑空闲块的合并情况。*</strong></em></p>
+<p><em><strong>*磁盘存储空间的分配和回收算法类似于主存储器的可变分区方式的分配和回收。同学们可参考实习二的第一题。*</strong></em></p>
+<p><em><strong>*(3)*</strong></em> <em><strong>*当找到空闲块后，必须启动磁盘把信息存放到指定的块中，启动磁盘必须给出由三个参数组成的物理地址：盘面号、柱面号和物理记录号（即扇区号）。故必须把找到的空闲块号换算成磁盘的物理地址。*</strong></em></p>
+<p><em><strong>*为了减少移臂次数，磁盘上的信息按柱面上各磁道顺序存放。现假定一个盘组共有200个柱面，（编号0-199）每个柱面有20个磁道（编号0-19，同一柱面上的各磁道分布在各盘面上，故磁道号即盘面号。），每个磁道被分成等长的6个物理记录（编号0-5，每个盘面被分成若干个扇区，故每个磁道上的物理记录号即为对应的扇区号）。那么，空闲块号与磁盘物理地址的对应关系如下：*</strong></em></p>
+<p><em><strong>*则  物理记录号*</strong></em> <em><strong>*=*</strong></em> <em><strong>*空闲块号 % 6*</strong></em></p>
+<p><em><strong>*磁道号=（空闲块号 / 6 ）% 20*</strong></em></p>
+<p><em><strong>*柱面号=（空闲块号 / 6）/20*</strong></em></p>
+<p><em><strong>*(4)*</strong></em> <em><strong>*删除一个文件时，从文件目录表中可得到该文件在磁盘上的起始地址和逻辑记录个数，假定每个逻辑记录占磁盘上的一块，则可推算出归还后的起始空闲块号和块数，登记到空闲区表中。换算关系如下：*</strong></em></p>
+<p><em><strong>*起始空闲块号=（柱面号*</strong></em><em><strong>*´*</strong></em><em><strong>*20+磁道号）*</strong></em><em><strong>*´*</strong></em><em><strong>*6+物理记录号*</strong></em></p>
+<p><em><strong>*空闲块数=逻辑记录数*</strong></em></p>
+<p><em><strong>*(5)*</strong></em> <em><strong>*请设计磁盘存储空间的分配和回收程序，要求把分配到的空闲块转换成磁盘物理地址，把归还的磁盘空间转换成空闲块号。*</strong></em></p>
+<p><em><strong>*要求能接受来自键盘的空间申请及释放请求，能*</strong></em><em><strong>*显示或打印分配及回收后的空闲区表以及分配到的磁盘空间的起始物理地址：包括柱面号、磁道号、物理记录号（扇区号）。*</strong></em></p>
+<p>这个实验看起来复杂，实际做起来和第二个实验的可变分区管理内存的思路基本一样，只不过需要增加一个磁盘位置。</p>
+<p>运行截图：</p>
+<p>起始时，我分配了在块表中分配了3个表项，状态F表示未被使用</p>
+<p><!-- raw HTML omitted --></p>
+<p>提示用户输入文件名，需要的空闲块：</p>
+<p>程序返回系统分配的起始块号，磁盘上的起始物理记录号，磁道号，柱面号</p>
+<p>并将文件的存储信息展示出来:</p>
+<p><!-- raw HTML omitted --></p>
+<p>再存入一个：</p>
+<p><!-- raw HTML omitted --></p>
+<p>释放空间时，只需要输入文件名称，即可从磁盘空间移除：</p>
+<p><!-- raw HTML omitted --></p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 142 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Vue.js学习笔记
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/studynotes/tensorflow/">
+        Tensorflow八股笔记
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>

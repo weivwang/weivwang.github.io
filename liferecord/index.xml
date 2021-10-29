@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LifeRecords on wwwvvvのblog</title>
+    <link>https:weivwang.github.io/liferecord/</link>
+    <description>Recent content in LifeRecords on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Apr 2021 20:25:53 +0800</lastBuildDate>
+    
+	<atom:link href="https:weivwang.github.io/liferecord/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>写在前面</title>
+      <link>https:weivwang.github.io/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</link>
+      <pubDate>Wed, 28 Apr 2021 20:25:53 +0800</pubDate>
+      
+      <guid>https:weivwang.github.io/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</guid>
+      <description>&lt;h3 id=&#34;写在前面&#34;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;2020 年大概 12 月，和 3 位朋友一起参加零杯（武大计算机学院零杯网页设计大赛）&lt;/p&gt;
+&lt;p&gt;在实验室做了一些前端，自学了 html，css，react.js 的部分内容，借此机会提升自己的前端技能&lt;/p&gt;
+&lt;p&gt;毛概课上，在后排摸 🐟 时&lt;/p&gt;
+&lt;p&gt;ziyi 问我，你有博客吗？&lt;/p&gt;
+&lt;p&gt;我说：没&lt;/p&gt;
+&lt;p&gt;z：你可以搭一个，用 hexo&lt;/p&gt;
+&lt;p&gt;于是回去之后我尝试使用 hexo 在 github 上搭建了一个博客&lt;/p&gt;
+&lt;p&gt;更新了几次后就忘记了&lt;/p&gt;
+&lt;p&gt;今年偶然进入 WHUMSC 群里的 luoosu 的个人博客，简约但惊艳&lt;/p&gt;
+&lt;p&gt;看了一下是基于 hugo 的，于是我萌生了重新搭建博客的想法。&lt;/p&gt;
+&lt;p&gt;2021-4-27 搭建成功&lt;/p&gt;
+&lt;p&gt;2021-10-29 重新修复&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

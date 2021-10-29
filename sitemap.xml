@@ -2,21 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/studynotes/enbedded_software_courses_notes/</loc>
+    <loc>https:weivwang.github.io/studynotes/docker_notes/</loc>
+    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/</loc>
+    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/</loc>
+    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/</loc>
+    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/enbedded_software_courses_notes/</loc>
     <lastmod>2021-10-29T19:27:15+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/studynotes/</loc>
+    <loc>https:weivwang.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-10-29T19:27:15+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
-    <lastmod>2021-10-29T19:27:15+08:00</lastmod>
+    <loc>https:weivwang.github.io/tags/python/</loc>
+    <lastmod>2021-07-07T20:29:18+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
-    <lastmod>2021-10-29T19:27:15+08:00</lastmod>
+    <loc>https:weivwang.github.io/studynotes/tensorflow/</loc>
+    <lastmod>2021-07-07T20:29:18+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-10-29T19:27:15+08:00</lastmod>
+    <loc>https:weivwang.github.io/studynotes/operating_system_experiment/</loc>
+    <lastmod>2021-05-27T12:33:50+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https:weivwang.github.io/tags/%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-05-27T12:33:50+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2021-05-27T12:33:50+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/vue.js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-04-30T20:43:36+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2021-04-30T20:43:36+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/git/</loc>
+    <lastmod>2021-04-28T21:16:25+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/git%E5%85%B3%E8%81%94%E5%8F%8A%E5%8F%96%E6%B6%88%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2021-04-28T21:16:25+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/liferecord/</loc>
+    <lastmod>2021-04-28T20:25:53+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/liferecord/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/</loc>
+    <lastmod>2021-04-28T20:25:53+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
+    <lastmod>2021-04-28T20:25:53+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/js_learning/</loc>
+    <lastmod>2021-04-28T16:44:41+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/studynotes/cs231n_learn/</loc>
+    <lastmod>2021-04-28T16:32:56+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/tags/cv/</loc>
+    <lastmod>2021-04-28T16:32:56+08:00</lastmod>
+  </url><url>
+    <loc>https:weivwang.github.io/categories/</loc>
   </url>
 </urlset>
