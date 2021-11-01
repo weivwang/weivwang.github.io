@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://weivwang.github.io/studynotes/csapp_bomblab/</loc>
+    <lastmod>2021-11-01T22:18:42+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/</loc>
+    <lastmod>2021-11-01T22:18:42+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/</loc>
+    <lastmod>2021-11-01T22:18:42+08:00</lastmod>
+  </url><url>
     <loc>https://weivwang.github.io/studynotes/docker_notes/</loc>
     <lastmod>2021-10-29T21:04:17+08:00</lastmod>
   </url><url>
-    <loc>https://weivwang.github.io/studynotes/</loc>
-    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
-  </url><url>
     <loc>https://weivwang.github.io/tags/</loc>
-    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
-  </url><url>
-    <loc>https://weivwang.github.io/</loc>
     <lastmod>2021-10-29T21:04:17+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>wwwvvvのblog  | CSAPP_BombLab</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:\/\/weivwang.github.io\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https://weivwang.github.io" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">CSAPP_BombLab</h1>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-11-01T22:18:42&#43;08:00">2021-11-1 22:18</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h1 id="csapp-bomblab">CSAPP BombLab</h1>
+<h2 id="背景">背景</h2>
+<p>大三上的《系统级程序设计》使用了CMU的经典教材CSAPP（Computer System: A Programmer&rsquo;s Perspective），其实对这门课早有耳闻，是CMU的神课。正好大三上学期学校安排了这门课，而且是大三上学期唯一一门专业必修课，也让人很期待。</p>
+<p>这门课，确实是很有质量的课。原因如下：</p>
+<ul>
+<li>上课用的是CMU原版全英文的PPT，增加对一些常见的计算机组成的英文词汇的了解。</li>
+<li>设置了助教，并且会让助教在课上演示实际代码的运行情况（很多专业课都没有）</li>
+<li>老师讲的很好，能够看出来对这门课的教学经验很足</li>
+</ul>
+<p>BombLab是设置的第一次实验，助教课上演示了第一关的过关方法，并提醒我们一些注意事项：每个人下载的代码都不一样等等</p>
+<h2 id="实验记录">实验记录</h2>
+<p>软件包构成：</p>
+<ul>
+<li>bomb（可执行文件）</li>
+<li>bomb.c</li>
+<li>Readme（记录学号和编号）</li>
+</ul>
+<p>前置知识：</p>
+<p>X86-64有16个64位寄存器，每一个的用途：</p>
+<p><img src="https://i.loli.net/2021/11/01/8lFpHKwER9AfOGN.png" alt="img"></p>
+<p><img src="https://i.loli.net/2021/11/01/74hRjgZa3Ke1muF.png" alt="img"></p>
+<p>X86-64的栈帧结构：https://www.jianshu.com/p/997dddb3122c</p>
+<p><a href="https://zhuanlan.zhihu.com/p/27339191">https://zhuanlan.zhihu.com/p/27339191</a></p>
+<p>objdump：objdump命令是Linux下的反汇编目标文件或者可执行文件的命令，它以一种可阅读的格式让你更多地了解二进制文件可能带有的附加信息。</p>
+<p>GDB ：gdb是GNU开源组织发布的一个强大的Linux下的程序调试工具。</p>
+<p>gdb_quickreference:</p>
+<p><img src="https://i.loli.net/2021/11/01/mbioHa6OI4xtDkB.png" alt="image-20211101135039742"></p>
+<p><img src="https://i.loli.net/2021/11/01/Y2de9IaKZFJorzX.png" alt="image-20211101135134390"></p>
+<p>由于我使用的是macOS，又不希望安装庞大的虚拟机软件占用空间，因此选择使用docker配置环境，建立了一个ubuntu的容器。</p>
+<p>使用docker cp 命令将文件夹copy到容器下，安装gcc，gdb，objdump，vim</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt update //升级apt
+apt install build-essential
+apt install binutils
+apt install vim
+</code></pre></div><p>拆弹思路：</p>
+<p>因为每一关都是输入一段正确的字符串通关。阅读bomb.c文件，可以发现每一关都是一个函数phase_x()，却没有提供函数体，因此，需要对可执行文件进行反汇编，阅读汇编代码，找到输入的参数，再分析如何避免引爆炸弹。（其实使用IDA反编译可以直接看到源码，但是这样达不到效果，因为这个实验就是锻炼阅读汇编代码的能力，但其实不会的部分还是参考了IDA的反编译代码，后面几关，尤其是最后一关还挺难理解的）</p>
+<h3 id="phase_1">phase_1</h3>
+<p>使用objdump命令，将bomb可执行程序反汇编，保存到bomb.txt文件</p>
+<pre><code>objdump -d bomb &gt; bomb.txt
+</code></pre><pre><code class="language-assembly" data-lang="assembly">gdb -q bomb //进入调试
+disas phase_1
+</code></pre><p>显示结果及分析如下：</p>
+<pre><code class="language-assembly" data-lang="assembly">Dump of assembler code for function phase_1:
+   0x0000558037001204 &lt;+0&gt;:	sub    $0x8,%rsp  #开栈
+   0x0000558037001208 &lt;+4&gt;:	lea    0x17c1(%rip),%rsi        # 0x5580370029d0 #rsi = rip + 0x17c1，rdi为第一个参数,rsi为第二个参数。接着调用string_not_equal函数，可以大胆猜测这里的rsi存放的地址就是标准答案的字符串的地址
+   0x000055803700120f &lt;+11&gt;:	callq  0x558037001706 &lt;strings_not_equal&gt; #调用string_not_equal函数
+   0x0000558037001214 &lt;+16&gt;:	test   %eax,%eax #eax为string_not_eaual的返回值，为0或1，与运算后设置标志位也为0或1
+   0x0000558037001216 &lt;+18&gt;:	jne    0x55803700121d &lt;phase_1+25&gt; #，跟据标志位跳转，两字符串不相等就跳转到explode_bomb
+   0x0000558037001218 &lt;+20&gt;:	add    $0x8,%rsp
+   0x000055803700121c &lt;+24&gt;:	retq   
+   0x000055803700121d &lt;+25&gt;:	callq  0x558037001996 &lt;explode_bomb&gt;
+   0x0000558037001222 &lt;+30&gt;:	jmp    0x558037001218 &lt;phase_1+20&gt;
+</code></pre><p>在0x000055803700120f打断点：</p>
+<pre><code>b *0x000055803700120f
+c //继续运行
+</code></pre><p>在0x0000558037001208指令执行完后，查看所有寄存器内容：</p>
+<pre><code> info all-registers
+</code></pre><p>可以找到rsi寄存器存放的地址为：0x5580370029d0</p>
+<p>rsi存放的地址也可以看到</p>
+<p>查看该地址存放的内容：</p>
+<pre><code>x/s 0x5580370029d0
+</code></pre><p>输出：</p>
+<pre><code>0x5580370029d0:	&quot;I am just a renegade hockey mom.&quot;
+</code></pre><p>执行程序</p>
+<pre><code>./bomb
+</code></pre><p>输入上面的字符串，显示进入下一关：</p>
+<pre><code>Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+I am just a renegade hockey mom.
+Phase 1 defused. How about the next one?
+</code></pre><p>我们也可以看rdi的值是不是输入的字符串</p>
+<pre><code class="language-assembly" data-lang="assembly">(gdb) x/s 0x560d15a046c0
+0x560d15a046c0 &lt;input_strings&gt;:	&quot;test&quot;
+</code></pre><p>可以看到rdi存放的值确实是我测试输入的字符串test</p>
+<p><strong>小插曲：</strong></p>
+<p>​	执行./bomb时，电脑网恰好断了，程序运行不了，提示如下：</p>
+<pre><code># ./bomb 
+
+Initialization error:
+
+Error: DNS is unable to resolve server address
+</code></pre><p>说明程序是联网的，果然会记录你每一关爆炸的次数（CMU原版的是这样说的，武大的版本是把爆炸次数发给课程的服务器）</p>
+<h3 id="phase_2">phase_2</h3>
+<p>采用同样的方法：</p>
+<pre><code class="language-assembly" data-lang="assembly">0000000000001224 &lt;phase_2&gt;:
+    1224:	55                   	push   %rbp
+    1225:	53                   	push   %rbx
+    1226:	48 83 ec 28          	sub    $0x28,%rsp #开栈
+    122a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax # rax = 0x28
+    1231:	00 00 
+    1233:	48 89 44 24 18       	mov    %rax,0x18(%rsp)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ) #这里就说明了有6个参数0x18 = 24 = 4 * 6，int32是4个字节，总共有6个
+    1238:	31 c0                	xor    %eax,%eax
+    123a:	48 89 e6             	mov    %rsp,%rsi #rsi = rsp
+    123d:	e8 90 07 00 00       	callq  19d2 &lt;read_six_numbers&gt; #可以看出是输入6个数字
+    1242:	83 3c 24 00          	cmpl   $0x0,(%rsp) # rsp - 0，rsp此时指向第一个参数
+    1246:	78 0a                	js     1252 &lt;phase_2+0x2e&gt; #js:结果为负则转移，1252就是explode_bomb，说明rsp - 0 &gt;= 0不会爆炸，即rsp &gt;= 0,第一个参数要非负
+    1248:	bb 01 00 00 00       	mov    $0x1,%ebx #ebx = 0x1
+    124d:	48 89 e5             	mov    %rsp,%rbp #rbp指向第一个参数
+    1250:	eb 11                	jmp    1263 &lt;phase_2+0x3f&gt;
+    1252:	e8 3f 07 00 00       	callq  1996 &lt;explode_bomb&gt;
+    1257:	eb ef                	jmp    1248 &lt;phase_2+0x24&gt;
+    1259:	48 83 c3 01          	add    $0x1,%rbx  # rbx = rbx + 0x1 = 0x2
+    125d:	48 83 fb 06          	cmp    $0x6,%rbx  #rbx 与0x6比较
+    1261:	74 13                	je     1276 &lt;phase_2+0x52&gt; #相等则跳转
+    1263:	89 d8                	mov    %ebx,%eax #从1250跳转过来，第一次,eax = ebx = 0x1
+    1265:	03 44 9d fc          	add    -0x4(%rbp,%rbx,4),%eax  #eax =eax + %rbp + 4%rbx -0x4 = eax, rbx在循环中为1,2,3...所以每次等于数组中的上一个元素，即eax = eax + a[i-1]
+    1269:	39 44 9d 00          	cmp    %eax,0x0(%rbp,%rbx,4) #将eax与a[i] 比较，如果a[i] != eax，爆炸
+    126d:	74 ea                	je     1259 &lt;phase_2+0x35&gt;
+    126f:	e8 22 07 00 00       	callq  1996 &lt;explode_bomb&gt;
+    1274:	eb e3                	jmp    1259 &lt;phase_2+0x35&gt;
+    1276:	48 8b 44 24 18       	mov    0x18(%rsp),%rax #从1261跳转过来, rax=rsp + 0x18
+    127b:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax 
+    1282:	00 00 
+    1284:	75 07                	jne    128d &lt;phase_2+0x69&gt;
+    1286:	48 83 c4 28          	add    $0x28,%rsp
+    128a:	5b                   	pop    %rbx
+    128b:	5d                   	pop    %rbp
+    128c:	c3                   	retq   
+    128d:	e8 be fb ff ff       	callq  e50 &lt;__stack_chk_fail@plt&gt;
+</code></pre><p>所以输入的6个数满足如下关系：</p>
+<pre><code>if(a[0] &lt; 0) bomb();
+b = 1;
+i = 1;
+while(b != 6){
+	a[i] = a[i-1] + b;
+	b++;
+}
+</code></pre><p>可以列举出来一个符合条件的数组如：[0, 1, 3, 6, 10, 15]</p>
+<p>输入：0 1 3 6 10 15</p>
+<p>程序输出：</p>
+<pre><code>That's number 2.  Keep going!
+</code></pre><p>第二关顺利通过</p>
+<h3 id="phase_3">phase_3</h3>
+<p>汇编代码：</p>
+<pre><code class="language-assembly" data-lang="assembly">0000000000001292 &lt;phase_3&gt;:
+    1292:       48 83 ec 18             sub    $0x18,%rsp #开栈
+    1296:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax 
+    129d:       00 00
+    129f:       48 89 44 24 08          mov    %rax,0x8(%rsp) 
+    12a4:       31 c0                   xor    %eax,%eax 
+    12a6:       48 8d 4c 24 04          lea    0x4(%rsp),%rcx 
+    12ab:       48 89 e2                mov    %rsp,%rdx
+    12ae:       48 8d 35 a8 19 00 00    lea    0x19a8(%rip),%rsi        # 2c5d &lt;array.3415+0x21d&gt; #输入参数
+    12b5:       e8 36 fc ff ff          callq  ef0 &lt;__isoc99_sscanf@plt&gt; #输入
+    12ba:       83 f8 01                cmp    $0x1,%eax #输入参数的个数 &lt;= 1，jle跳转到引爆炸弹
+    12bd:       7e 1d                   jle    12dc &lt;phase_3+0x4a&gt;
+    12bf:       83 3c 24 07             cmpl   $0x7,(%rsp)
+    12c3:       0f 87 99 00 00 00       ja     1362 &lt;phase_3+0xd0&gt;
+    12c9:       8b 04 24                mov    (%rsp),%eax
+    12cc:       48 8d 15 4d 17 00 00    lea    0x174d(%rip),%rdx        # 2a20 &lt;_IO_stdin_used+0x1a0&gt;
+    12d3:       48 63 04 82             movslq (%rdx,%rax,4),%rax
+    12d7:       48 01 d0                add    %rdx,%rax 
+    12da:       ff e0                   jmpq   *%rax #根据rax的值在跳转表中跳转
+    12dc:       e8 b5 06 00 00          callq  1996 &lt;explode_bomb&gt;
+    12e1:       eb dc                   jmp    12bf &lt;phase_3+0x2d&gt; 
+    12e3:       b8 b3 00 00 00          mov    $0xb3,%eax #case0： eax = 179
+    12e8:       eb 05                   jmp    12ef &lt;phase_3+0x5d&gt;
+    12ea:       b8 00 00 00 00          mov    $0x0,%eax
+    12ef:       2d 05 03 00 00          sub    $0x305,%eax #-773，
+    12f4:       05 57 02 00 00          add    $0x257,%eax #+599
+    12f9:       2d 88 01 00 00          sub    $0x188,%eax #-392
+    12fe:       05 88 01 00 00          add    $0x188,%eax #+392
+    1303:       2d 88 01 00 00          sub    $0x188,%eax #-392
+    1308:       05 88 01 00 00          add    $0x188,%eax #+392
+    130d:       2d 88 01 00 00          sub    $0x188,%eax #-392
+    1312:       83 3c 24 05             cmpl   $0x5,(%rsp) #第一个参数 &gt; 5，炸
+    1316:       7f 06                   jg     131e &lt;phase_3+0x8c&gt;
+    1318:       39 44 24 04             cmp    %eax,0x4(%rsp) #第二个参数 != 经过处理完的数，炸
+    131c:       74 05                   je     1323 &lt;phase_3+0x91&gt;
+    131e:       e8 73 06 00 00          callq  1996 &lt;explode_bomb&gt;
+    1323:       48 8b 44 24 08          mov    0x8(%rsp),%rax
+    1328:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+    132f:       00 00
+    1331:       75 3b                   jne    136e &lt;phase_3+0xdc&gt;
+    1333:       48 83 c4 18             add    $0x18,%rsp
+    1337:       c3                      retq
+    1338:       b8 00 00 00 00          mov    $0x0,%eax #case 1
+    133d:       eb b5                   jmp    12f4 &lt;phase_3+0x62&gt;
+    133f:       b8 00 00 00 00          mov    $0x0,%eax #case 2
+		1344:       eb b3                   jmp    12f9 &lt;phase_3+0x67&gt;
+    1346:       b8 00 00 00 00          mov    $0x0,%eax #case 3
+    134b:       eb b1                   jmp    12fe &lt;phase_3+0x6c&gt;
+    134d:       b8 00 00 00 00          mov    $0x0,%eax #case 4
+    1352:       eb af                   jmp    1303 &lt;phase_3+0x71&gt;
+    1354:       b8 00 00 00 00          mov    $0x0,%eax #case 5
+    1359:       eb ad                   jmp    1308 &lt;phase_3+0x76&gt;
+    135b:       b8 00 00 00 00          mov    $0x0,%eax #case 6
+    1360:       eb ab                   jmp    130d &lt;phase_3+0x7b&gt;
+    1362:       e8 2f 06 00 00          callq  1996 &lt;explode_bomb&gt;
+    1367:       b8 00 00 00 00          mov    $0x0,%eax #case 7
+    136c:       eb a4                   jmp    1312 &lt;phase_3+0x80&gt;
+    136e:       e8 dd fa ff ff          callq  e50 &lt;__stack_chk_fail@plt&gt;
+</code></pre><p>这一关汇编代码比较长，但是可以看出很有规律，后面全是jmp和mov，其实是swich-case语句</p>
+<p>先看</p>
+<pre><code>12ae:       48 8d 35 a8 19 00 00    lea    0x19a8(%rip),%rsi        # 2c5d &lt;array.3415+0x21d&gt; 
+12b5:       e8 36 fc ff ff          callq  ef0 &lt;__isoc99_sscanf@plt&gt; #输入
+</code></pre><p>12b5调用了sccanf，能猜出来是在输入，在该处打断点，查看rsi的值，发现为</p>
+<pre><code>rsi            0x56413d802c5d      94838204673117
+x/s 0x56413d802c5d
+</code></pre><p>输出：</p>
+<pre><code>0x56413d802c5d:	&quot;%d %d&quot; #说明输入两个整数
+</code></pre><pre><code>12bf:       83 3c 24 07             cmpl   $0x7,(%rsp)
+</code></pre><p>说明输入第一个的数字&lt;7，下一条的ja说明第一个数字&gt;=0</p>
+<p>后面分析起来很乱，借助ida的流程图：</p>
+<p><img src="https://i.loli.net/2021/11/01/byPGkXKEI1DTuMj.png" alt="image-20211101153055084"></p>
+<p><img src="https://i.loli.net/2021/11/01/lreUfdQ2TynObxp.png" alt="image-20211101153742392"></p>
+<p>可以看到下面是一个跳转表，根据第一个参数的数值进行跳转的表</p>
+<p>结合上面的汇编代码，可以知道是有多个答案的</p>
+<p>假设第一个参数为0，则过程为：</p>
+<p>进入case 0 &ndash;&gt; eax = 710 &ndash;&gt; eax -= 773 &ndash;&gt;eax +=599 &ndash;&gt;eax -= 392 &ndash;&gt;eax += 392 &ndash;&gt; eax-=392 &ndash;&gt;eax += 392</p>
+<p>&ndash;&gt;eax-=392 最后eax = -387。而eax必须和输入的第二个参数相等，所以第二个参数为-387</p>
+<p>所以其中一个答案为：0, -387</p>
+<h3 id="phase_4">phase_4</h3>
+<pre><code>    13ac:       48 83 ec 18             sub    $0x18,%rsp
+    13b0:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    13b7:       00 00
+    13b9:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+    13be:       31 c0                   xor    %eax,%eax
+    13c0:       48 89 e1                mov    %rsp,%rcx
+    13c3:       48 8d 54 24 04          lea    0x4(%rsp),%rdx
+    13c8:       48 8d 35 8e 18 00 00    lea    0x188e(%rip),%rsi        # 2c5d &lt;array.3415+0x21d&gt;
+    13cf:       e8 1c fb ff ff          callq  ef0 &lt;__isoc99_sscanf@plt&gt;
+    13d4:       83 f8 02                cmp    $0x2,%eax
+    13d7:       75 0b                   jne    13e4 &lt;phase_4+0x38&gt;
+    13d9:       8b 04 24                mov    (%rsp),%eax
+    13dc:       83 e8 02                sub    $0x2,%eax
+    13df:       83 f8 02                cmp    $0x2,%eax
+    13e2:       76 05                   jbe    13e9 &lt;phase_4+0x3d&gt;
+    13e4:       e8 ad 05 00 00          callq  1996 &lt;explode_bomb&gt;
+    13e9:       8b 34 24                mov    (%rsp),%esi
+    13ec:       bf 09 00 00 00          mov    $0x9,%edi
+    13f1:       e8 7d ff ff ff          callq  1373 &lt;func4&gt;
+    13f6:       39 44 24 04             cmp    %eax,0x4(%rsp)
+    13fa:       74 05                   je     1401 &lt;phase_4+0x55&gt;
+    13fc:       e8 95 05 00 00          callq  1996 &lt;explode_bomb&gt;
+    1401:       48 8b 44 24 08          mov    0x8(%rsp),%rax
+    1406:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+    140d:       00 00
+    140f:       75 05                   jne    1416 &lt;phase_4+0x6a&gt;
+    1411:       48 83 c4 18             add    $0x18,%rsp
+    1415:       c3                      retq
+    1416:       e8 35 fa ff ff          callq  e50 &lt;__stack_chk_fail@plt&gt;
+</code></pre><p>Func4:</p>
+<pre><code>0000000000001373 &lt;func4&gt;:
+    1373:       b8 00 00 00 00          mov    $0x0,%eax
+    1378:       85 ff                   test   %edi,%edi
+    137a:       7e 07                   jle    1383 &lt;func4+0x10&gt;
+    137c:       89 f0                   mov    %esi,%eax
+    137e:       83 ff 01                cmp    $0x1,%edi
+    1381:       75 02                   jne    1385 &lt;func4+0x12&gt;
+    1383:       f3 c3                   repz retq
+    1385:       41 54                   push   %r12
+    1387:       55                      push   %rbp
+    1388:       53                      push   %rbx
+    1389:       41 89 f4                mov    %esi,%r12d
+    138c:       89 fb                   mov    %edi,%ebx
+    138e:       8d 7f ff                lea    -0x1(%rdi),%edi
+    1391:       e8 dd ff ff ff          callq  1373 &lt;func4&gt;
+    1396:       42 8d 2c 20             lea    (%rax,%r12,1),%ebp
+    139a:       8d 7b fe                lea    -0x2(%rbx),%edi
+    139d:       44 89 e6                mov    %r12d,%esi
+    13a0:       e8 ce ff ff ff          callq  1373 &lt;func4&gt;
+    13a5:       01 e8                   add    %ebp,%eax
+    13a7:       5b                      pop    %rbx
+    13a8:       5d                      pop    %rbp
+    13a9:       41 5c                   pop    %r12
+    13ab:       c3                      retq
+</code></pre><h3 id="phase_5">phase_5</h3>
+<pre><code>000000000000141b &lt;phase_5&gt;:
+    141b:       48 83 ec 18             sub    $0x18,%rsp
+    141f:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    1426:       00 00
+    1428:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+    142d:       31 c0                   xor    %eax,%eax
+    142f:       48 8d 4c 24 04          lea    0x4(%rsp),%rcx
+    1434:       48 89 e2                mov    %rsp,%rdx
+    1437:       48 8d 35 1f 18 00 00    lea    0x181f(%rip),%rsi        # 2c5d &lt;array.3415+0x21d&gt;
+    143e:       e8 ad fa ff ff          callq  ef0 &lt;__isoc99_sscanf@plt&gt;
+    1443:       83 f8 01                cmp    $0x1,%eax
+    1446:       7e 5a                   jle    14a2 &lt;phase_5+0x87&gt;
+    1448:       8b 04 24                mov    (%rsp),%eax
+    144b:       83 e0 0f                and    $0xf,%eax
+    144e:       89 04 24                mov    %eax,(%rsp)
+    1451:       83 f8 0f                cmp    $0xf,%eax
+    1454:       74 32                   je     1488 &lt;phase_5+0x6d&gt;
+    1456:       b9 00 00 00 00          mov    $0x0,%ecx
+    145b:       ba 00 00 00 00          mov    $0x0,%edx
+    1460:       48 8d 35 d9 15 00 00    lea    0x15d9(%rip),%rsi        # 2a40 &lt;array.3415&gt;
+    1467:       83 c2 01                add    $0x1,%edx
+    146a:       48 98                   cltq
+    146c:       8b 04 86                mov    (%rsi,%rax,4),%eax
+    146f:       01 c1                   add    %eax,%ecx
+    1471:       83 f8 0f                cmp    $0xf,%eax
+    1474:       75 f1                   jne    1467 &lt;phase_5+0x4c&gt;
+    1476:       c7 04 24 0f 00 00 00    movl   $0xf,(%rsp)
+    147d:       83 fa 0f                cmp    $0xf,%edx
+    1480:       75 06                   jne    1488 &lt;phase_5+0x6d&gt;
+    1482:       39 4c 24 04             cmp    %ecx,0x4(%rsp)
+    1486:       74 05                   je     148d &lt;phase_5+0x72&gt;
+    1488:       e8 09 05 00 00          callq  1996 &lt;explode_bomb&gt;
+    148d:       48 8b 44 24 08          mov    0x8(%rsp),%rax
+    1492:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+    1499:       00 00
+    149b:       75 0c                   jne    14a9 &lt;phase_5+0x8e&gt;
+    149d:       48 83 c4 18             add    $0x18,%rsp
+    14a1:       c3                      retq
+    14a2:       e8 ef 04 00 00          callq  1996 &lt;explode_bomb&gt;
+    14a7:       eb 9f                   jmp    1448 &lt;phase_5+0x2d&gt;
+    14a9:       e8 a2 f9 ff ff          callq  e50 &lt;__stack_chk_fail@plt&gt;
+</code></pre><h3 id="phase_6">phase_6</h3>
+<pre><code>00000000000014ae &lt;phase_6&gt;:
+    14ae:       41 55                   push   %r13
+    14b0:       41 54                   push   %r12
+    14b2:       55                      push   %rbp
+    14b3:       53                      push   %rbx
+    14b4:       48 83 ec 68             sub    $0x68,%rsp
+    14b8:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    14bf:       00 00
+    14c1:       48 89 44 24 58          mov    %rax,0x58(%rsp)
+    14c6:       31 c0                   xor    %eax,%eax
+    14c8:       49 89 e4                mov    %rsp,%r12
+    14cb:       4c 89 e6                mov    %r12,%rsi
+    14ce:       e8 ff 04 00 00          callq  19d2 &lt;read_six_numbers&gt;
+    14d3:       41 bd 00 00 00 00       mov    $0x0,%r13d
+    14d9:       eb 25                   jmp    1500 &lt;phase_6+0x52&gt;
+    14db:       e8 b6 04 00 00          callq  1996 &lt;explode_bomb&gt;
+    14e0:       eb 2d                   jmp    150f &lt;phase_6+0x61&gt;
+    14e2:       83 c3 01                add    $0x1,%ebx
+    14e5:       83 fb 05                cmp    $0x5,%ebx
+    14e8:       7f 12                   jg     14fc &lt;phase_6+0x4e&gt;
+    14ea:       48 63 c3                movslq %ebx,%rax
+    14ed:       8b 04 84                mov    (%rsp,%rax,4),%eax
+    14f0:       39 45 00                cmp    %eax,0x0(%rbp)
+    14f3:       75 ed                   jne    14e2 &lt;phase_6+0x34&gt;
+    14f5:       e8 9c 04 00 00          callq  1996 &lt;explode_bomb&gt;
+    14fa:       eb e6                   jmp    14e2 &lt;phase_6+0x34&gt;
+    14fc:       49 83 c4 04             add    $0x4,%r12
+    1500:       4c 89 e5                mov    %r12,%rbp
+    1503:       41 8b 04 24             mov    (%r12),%eax
+    1507:       83 e8 01                sub    $0x1,%eax
+    150a:       83 f8 05                cmp    $0x5,%eax
+    150d:       77 cc                   ja     14db &lt;phase_6+0x2d&gt;
+    150f:       41 83 c5 01             add    $0x1,%r13d
+    1513:       41 83 fd 06             cmp    $0x6,%r13d
+    1517:       74 35                   je     154e &lt;phase_6+0xa0&gt;
+    1519:       44 89 eb                mov    %r13d,%ebx
+    151c:       eb cc                   jmp    14ea &lt;phase_6+0x3c&gt;
+    151e:       48 8b 52 08             mov    0x8(%rdx),%rdx
+    1522:       83 c0 01                add    $0x1,%eax
+    1525:       39 c8                   cmp    %ecx,%eax
+    1527:       75 f5                   jne    151e &lt;phase_6+0x70&gt;
+    1529:       48 89 54 f4 20          mov    %rdx,0x20(%rsp,%rsi,8)
+    152e:       48 83 c6 01             add    $0x1,%rsi
+    1532:       48 83 fe 06             cmp    $0x6,%rsi
+    1536:       74 1d                   je     1555 &lt;phase_6+0xa7&gt;
+    1538:       8b 0c b4                mov    (%rsp,%rsi,4),%ecx
+    153b:       b8 01 00 00 00          mov    $0x1,%eax
+    1540:       48 8d 15 e9 2c 20 00    lea    0x202ce9(%rip),%rdx        # 204230 &lt;node1&gt;
+    1547:       83 f9 01                cmp    $0x1,%ecx
+    154a:       7f d2                   jg     151e &lt;phase_6+0x70&gt;
+    154c:       eb db                   jmp    1529 &lt;phase_6+0x7b&gt;
+    154e:       be 00 00 00 00          mov    $0x0,%esi
+    1553:       eb e3                   jmp    1538 &lt;phase_6+0x8a&gt;
+    1555:       48 8b 5c 24 20          mov    0x20(%rsp),%rbx
+    155a:       48 8b 44 24 28          mov    0x28(%rsp),%rax
+    155f:       48 89 43 08             mov    %rax,0x8(%rbx)
+    1563:       48 8b 54 24 30          mov    0x30(%rsp),%rdx
+    1568:       48 89 50 08             mov    %rdx,0x8(%rax)
+    156c:       48 8b 44 24 38          mov    0x38(%rsp),%rax
+    1571:       48 89 42 08             mov    %rax,0x8(%rdx)
+    1575:       48 8b 54 24 40          mov    0x40(%rsp),%rdx
+    157a:       48 89 50 08             mov    %rdx,0x8(%rax)
+    157e:       48 8b 44 24 48          mov    0x48(%rsp),%rax
+    1583:       48 89 42 08             mov    %rax,0x8(%rdx)
+    1587:       48 c7 40 08 00 00 00    movq   $0x0,0x8(%rax)
+    158e:       00
+    158f:       bd 05 00 00 00          mov    $0x5,%ebp
+    1594:       eb 09                   jmp    159f &lt;phase_6+0xf1&gt;
+    1596:       48 8b 5b 08             mov    0x8(%rbx),%rbx
+    159a:       83 ed 01                sub    $0x1,%ebp
+    159d:       74 11                   je     15b0 &lt;phase_6+0x102&gt;
+    159f:       48 8b 43 08             mov    0x8(%rbx),%rax
+    15a3:       8b 00                   mov    (%rax),%eax
+    15a5:       39 03                   cmp    %eax,(%rbx)
+    15a7:       7e ed                   jle    1596 &lt;phase_6+0xe8&gt;
+    15a9:       e8 e8 03 00 00          callq  1996 &lt;explode_bomb&gt;
+    15ae:       eb e6                   jmp    1596 &lt;phase_6+0xe8&gt;
+    15b0:       48 8b 44 24 58          mov    0x58(%rsp),%rax
+    15b5:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+    15bc:       00 00
+    15be:       75 0b                   jne    15cb &lt;phase_6+0x11d&gt;
+    15c0:       48 83 c4 68             add    $0x68,%rsp
+    15c4:       5b                      pop    %rbx
+    15c5:       5d                      pop    %rbp
+    15c6:       41 5c                   pop    %r12
+    15c8:       41 5d                   pop    %r13
+    15ca:       c3                      retq
+    15cb:       e8 80 f8 ff ff          callq  e50 &lt;__stack_chk_fail@plt&gt;
+
+</code></pre></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 2258 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/studynotes/docker_notes/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Docker_notes
+    </a>
+    
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>
