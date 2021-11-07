@@ -6,10 +6,26 @@
     <description>Recent content in StudyNotes on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Nov 2021 22:18:42 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 06 Nov 2021 19:38:03 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/studynotes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>React笔记</title>
+      <link>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 06 Nov 2021 19:38:03 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h2 id=&#34;为什么要用到函数式组件&#34;&gt;为什么要用到函数式组件？&lt;/h2&gt;
+&lt;p&gt;react官网：&lt;/p&gt;
+&lt;p&gt;class难以理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Javascript的this指针&lt;/li&gt;
+&lt;li&gt;官方进行组件预编译优化，class常常让优化措施无效&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>CSAPP_BombLab</title>
@@ -542,6 +558,7 @@ x/s 0x56413d802c5d
 &lt;li&gt;队列，管道，信箱已满对嵌入式软件是一种灾难&lt;/li&gt;
 &lt;li&gt;通过队列，管道，信箱在任务间传递指针可能会创建共享数据&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;实时操作系统的基本设计&#34;&gt;实时操作系统的基本设计&lt;/h2&gt;
 </description>
     </item>
     

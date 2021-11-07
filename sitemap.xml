@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://weivwang.github.io/studynotes/csapp_bomblab/</loc>
-    <lastmod>2021-11-01T22:18:42+08:00</lastmod>
+    <loc>https://weivwang.github.io/readpapers/2021jsa/</loc>
+    <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
-    <loc>https://weivwang.github.io/studynotes/</loc>
-    <lastmod>2021-11-01T22:18:42+08:00</lastmod>
+    <loc>https://weivwang.github.io/readpapers/</loc>
+    <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/</loc>
+    <lastmod>2021-11-07T14:42:49+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-06T19:38:03+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/</loc>
+    <lastmod>2021-11-06T19:38:03+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/csapp_bomblab/</loc>
     <lastmod>2021-11-01T22:18:42+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/studynotes/docker_notes/</loc>
