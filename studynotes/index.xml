@@ -12,18 +12,251 @@
     
     
     <item>
-      <title>React笔记</title>
+      <title>React再思考</title>
       <link>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 06 Nov 2021 19:38:03 +0800</pubDate>
       
       <guid>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</guid>
-      <description>&lt;h2 id=&#34;为什么要用到函数式组件&#34;&gt;为什么要用到函数式组件？&lt;/h2&gt;
+      <description>&lt;h3 id=&#34;为什么要用到函数式组件&#34;&gt;为什么要用到函数式组件？&lt;/h3&gt;
 &lt;p&gt;react官网：&lt;/p&gt;
 &lt;p&gt;class难以理解：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Javascript的this指针&lt;/li&gt;
 &lt;li&gt;官方进行组件预编译优化，class常常让优化措施无效&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;理解react&#34;&gt;理解React？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;React框架？ 不同于angular，react官网并不称自己为框架：用于构建用户界面的JavaScript库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;路由，状态管理，并不是react团队开发的，而是交给社区做，所以它并不完全能叫一个框架，只是一个库。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;react使用者上限和下限差距极大，会使用很简单，成为高手比较难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;react优势&#34;&gt;React优势&lt;/h3&gt;
+&lt;p&gt;组件化，高内聚低耦合，但并没有提供一整套解决方案，需要依靠社区提供的集成方案&lt;/p&gt;
+&lt;p&gt;JSX代码可读性好&lt;/p&gt;
+&lt;h3 id=&#34;为什么react选择jsx其他方案为什么不好&#34;&gt;为什么React选择JSX？其他方案为什么不好&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;JSX本质&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;官网：实际上，JSX 仅仅只是 &lt;code&gt;React.createElement(component, props, ...children)&lt;/code&gt; 函数的语法糖。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;MyButton color=&amp;quot;blue&amp;quot; shadowSize={2}&amp;gt;
+  Click Me
+&amp;lt;/MyButton&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;被编译为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;React.createElement(
+  MyButton,
+  {color: &#39;blue&#39;, shadowSize: 2},
+  &#39;Click Me&#39;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着会产生疑问：React.createElement()到底是一个什么样的方法？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;React.createElement(
+  type, //第一个参数为html标签名称
+  [props], //第二个参数为属性，如className
+  [...children] //第三个参数为子结点
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在react文件中，第一句常常是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;React&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;react&amp;#39;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是程序中却没有出现显式的对引入的React的调用，删了这一句也不行&lt;/p&gt;
+&lt;p&gt;查：&lt;/p&gt;
+&lt;p&gt;在渲染Dom的时候调了React.createElement()&lt;/p&gt;
+&lt;p&gt;在https://babeljs.io中可以看到该过程:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/10/GL5FOV9ms7gxiwc.png&#34; alt=&#34;image-20211110234827340&#34;&gt;&lt;/p&gt;
+&lt;p&gt;看createElement()源码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-react&#34; data-lang=&#34;react&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * Create and return a new ReactElement of the given type.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * See https://reactjs.org/docs/react-api.html#createelement
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * type: 节点类型
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 如果是原生的节点类型，那么就是一个字符串 tagName
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 如果是一个组件(我们自己定义的、或者React内置提供的)那么就是一个变量
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * config: 就是写在jsx上的属性，它们都会转为key: value格式存到config对象上
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * children: 所有后代元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+ &lt;span style=&#34;color:#66d9ef&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;children&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// Reserved names are extracted
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 对于组件内部来说传入的属性就是props
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// 预定义key ref等变量用于后面存值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// key ref属于特殊的attrs需要剔除
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;hasValidRef&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;)) {
+      &lt;span style=&#34;color:#75715e&#34;&gt;// 存储合法的ref
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;;
+    }
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;hasValidKey&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;)) {
+      &lt;span style=&#34;color:#75715e&#34;&gt;// 存储合法的key =&amp;gt; string
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;;
+    }
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;__self&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;undefined&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;__self&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;__source&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;undefined&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;__source&lt;/span&gt;;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 其他属性枚举到props对象
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;) {
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 仅限config自身的属性 &amp;amp;&amp;amp; 排除React预留的props
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;hasOwnProperty&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;RESERVED_PROPS&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;hasOwnProperty&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;)
+      ) {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;];
+      }
+    }
+  }
+   &lt;span style=&#34;color:#75715e&#34;&gt;// Children can be more than one argument, and those are transferred onto
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// the newly allocated props object.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 获取children的个数，一个节点下的children是可以有多个的
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;childrenLength&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;arguments&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// 赋值处理props.children
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;childrenLength&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;children&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;children&lt;/span&gt;;
+  } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;childrenLength&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 定长数组、再遍历拷贝
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;childArray&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Array(&lt;span style=&#34;color:#a6e22e&#34;&gt;childrenLength&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;childrenLength&lt;/span&gt;; &lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;childArray&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;arguments&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
+    }
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;__DEV__&lt;/span&gt;) {
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;freeze&lt;/span&gt;) {
+        Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;freeze&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;childArray&lt;/span&gt;);
+      }
+    }
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;children&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;childArray&lt;/span&gt;;
+  }
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// Resolve default props
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 处理defaultProps，另外需要处理defaultProps的顺序
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;   * class CustomButton extends React.component{}
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;   * CustomButton.defaultProps = {}
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;   * 可见type是一个组件
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;   */&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultProps&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defaultProps&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultProps&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defaultProps&lt;/span&gt;) {
+      &lt;span style=&#34;color:#75715e&#34;&gt;// 如果 props.color 被设置为 null，则它将保持为 null
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 关于这里为什么是undefined、而不是null，其实很好理解，定义了一个遍历而不初始化那它就是undefined，而null需要手动初始化。
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;undefined&lt;/span&gt;) {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defaultProps&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;propName&lt;/span&gt;];
+      }
+    }
+  }
+
+ &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;__DEV__&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;) {
+      &lt;span style=&#34;color:#75715e&#34;&gt;// 处理displayName，即推导过程
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 如果是组件、先从组件的displayName取、其次是组件的名字、最后是默认值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;displayName&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;typeof&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;function&amp;#39;&lt;/span&gt;
+          &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;displayName&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Unknown&amp;#39;&lt;/span&gt;
+          &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;) {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;defineKeyPropWarningGetter&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;displayName&lt;/span&gt;);
+      }
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;) {
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;defineRefPropWarningGetter&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;displayName&lt;/span&gt;);
+      }
+    }
+  }
+
+  &lt;span style=&#34;color:#75715e&#34;&gt;// 返回一个真正的ReactElement
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ReactElement&lt;/span&gt;(
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;source&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;ReactCurrentOwner&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;current&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;,
+  );
+}
+
+&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * Factory method to create a new React element. This no longer adheres to
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * the class pattern, so do not use new to call it. Also, no instanceof check
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * will work. Instead test $$typeof field against Symbol.for(&amp;#39;react.element&amp;#39;) to check
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * if something is a React Element.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} type
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} props
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} key
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {string|object} ref
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} owner
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} self A *temporary* helper to detect places where `this` is
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * different from the `owner` when React.createElement is called, so that we
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * can warn. We want to get rid of owner and replace string `ref`s with arrow
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * functions, and as long as `this` and owner are the same, there will be no
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * change in behavior.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @param {*} source An annotation object (added by a transpiler or otherwise)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * indicating filename, line number, and/or other information.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * @internal
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ReactElement&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;source&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;owner&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;) {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// This tag allows us to uniquely identify this as a React Element
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 通过Symbol作为独一无二标识符 Symbol.for进行复用
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;$$typeof&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;REACT_ELEMENT_TYPE&lt;/span&gt;,
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Built-in properties that belong on the element
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 节点类型
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;key&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ref&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;,
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Record the component responsible for creating this element.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;_owner&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;owner&lt;/span&gt;,
+  };
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;__DEV__&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// The validation flag is currently mutative. We put it on
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// an external backing store so that we can freeze the whole object.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// This can be replaced with a WeakMap once they are implemented in
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// commonly used development environments.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;_store&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// To make comparing ReactElements easier for testing purposes, we make
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// the validation flag non-enumerable (where possible, which should
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// include every environment we run tests in), so the test framework
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// ignores it.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;defineProperty&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;_store&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;validated&amp;#39;&lt;/span&gt;, {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;configurable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;enumerable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;writable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+    });
+    &lt;span style=&#34;color:#75715e&#34;&gt;// self and source are DEV only properties.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;defineProperty&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;_self&amp;#39;&lt;/span&gt;, {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;configurable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;enumerable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;writable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;,
+    });
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Two elements created in two different places should be considered
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// equal for testing purposes and therefore we hide it from enumeration.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;defineProperty&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;_source&amp;#39;&lt;/span&gt;, {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;configurable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;enumerable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;writable&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;source&lt;/span&gt;,
+    });
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;freeze&lt;/span&gt;) {
+      Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;freeze&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;);
+      Object.&lt;span style=&#34;color:#a6e22e&#34;&gt;freeze&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;);
+    }
+  }
+
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;element&lt;/span&gt;;
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;为什么选择&lt;/strong&gt;JSX**？**&lt;/p&gt;
+&lt;p&gt;JSX 语法糖允许前端开发者使用我们最为熟悉的类 HTML 标签语法来创建虚拟 DOM，在降低学习成本的同时，也提升了研发效率与研发体验&lt;/p&gt;
 </description>
     </item>
     
