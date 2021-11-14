@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://weivwang.github.io/tags/business/</loc>
+    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/techthinking/business_model_canvas/</loc>
+    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/tags/</loc>
+    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/techthinking/</loc>
+    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/</loc>
+    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
+  </url><url>
     <loc>https://weivwang.github.io/readpapers/2021jsa/</loc>
     <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/readpapers/</loc>
-    <lastmod>2021-11-07T14:42:49+08:00</lastmod>
-  </url><url>
-    <loc>https://weivwang.github.io/</loc>
     <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</loc>
@@ -21,9 +33,6 @@
     <lastmod>2021-11-01T22:18:42+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/studynotes/docker_notes/</loc>
-    <lastmod>2021-10-29T21:04:17+08:00</lastmod>
-  </url><url>
-    <loc>https://weivwang.github.io/tags/</loc>
     <lastmod>2021-10-29T21:04:17+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>business on wwwvvvのblog</title>
+    <link>https://weivwang.github.io/tags/business/</link>
+    <description>Recent content in business on wwwvvvのblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Nov 2021 23:46:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://weivwang.github.io/tags/business/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Business_model_canvas</title>
+      <link>https://weivwang.github.io/techthinking/business_model_canvas/</link>
+      <pubDate>Sun, 14 Nov 2021 23:46:31 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/techthinking/business_model_canvas/</guid>
+      <description>&lt;p&gt;在“若川视野”微信公众号上看到这个概念，比较感兴趣，于是上网看了相关的资料。觉得是一种有条理的思维方式，不光适用于商业上，做的一些事情也可以套用该模版，遂整理。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/14/kC9otfdA1RzINHh.png&#34; alt=&#34;image-20211114234908520&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;definition&#34;&gt;definition&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;strong&gt;Business Model Canvas&lt;/strong&gt; is a &lt;a href=&#34;https://en.wikipedia.org/wiki/Strategic_management&#34;&gt;strategic management&lt;/a&gt; template used for developing new &lt;a href=&#34;https://en.wikipedia.org/wiki/Business_model&#34;&gt;business models&lt;/a&gt; and documenting existing ones.[&lt;a href=&#34;https://en.wikipedia.org/wiki/Business_Model_Canvas#cite_note-2&#34;&gt;2]&lt;/a&gt;[&lt;a href=&#34;https://en.wikipedia.org/wiki/Business_Model_Canvas#cite_note-3&#34;&gt;3]&lt;/a&gt; It offers a visual chart with elements describing a firm&amp;rsquo;s or product&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Value_proposition&#34;&gt;value proposition&lt;/a&gt;, infrastructure, customers, and finances,[&lt;a href=&#34;https://en.wikipedia.org/wiki/Business_Model_Canvas#cite_note-Osterwalder2010-1&#34;&gt;1]&lt;/a&gt; assisting businesses to align their activities by illustrating potential trade-offs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;源自维基百科。&lt;/p&gt;
+&lt;h3 id=&#34;description&#34;&gt;description&lt;/h3&gt;
+&lt;p&gt;分三个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Infrastructure 基础设施&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;KP&lt;/strong&gt;:  Key Partnership &lt;strong&gt;(谁可以帮我？)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;cultivate buyer-supplier relationships -&amp;gt; foucs on core activity&lt;/p&gt;
+&lt;p&gt;为了价值主张需要具有哪些合作方，这些合作方的价值和利益分别是什么。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;KA&lt;/strong&gt;: Key activities &lt;strong&gt;（我要做什么？）&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The most important activities in executing a company&amp;rsquo;s value proposition.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;执行公司价值主张的最重要活动&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;KS&lt;/strong&gt;: Key resources**（我有什么？）**&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The resources that are necessary to create value for the customer.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为了实现价值主张，需要具有的关键资源&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Offering&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;VP&lt;/strong&gt;:  Value propositions&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The collection of products and services a business offers to meet the needs of its customers.&lt;/p&gt;
+&lt;p&gt;such as newness, performance, customization, &amp;ldquo;getting the job done&amp;rdquo;, design, brand/status, price, cost reduction, risk reduction,&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解决客户什么痛点？公司产品的亮点？和其他产品的区别？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The value propositions may be:
+Quantitative – price and efficiency
+Qualitative – overall customer experience and outcome&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Customers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CS: Customer segments 客户分类&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Various sets of customers can be segmented based on their different needs and attributes to ensure appropriate implementation of corporate strategy to meet the characteristics of selected groups of clients.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;项目解决的是谁的问题和痛点&lt;/p&gt;
+&lt;p&gt;The different types of customer segments include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mass market 大众市场&lt;/li&gt;
+&lt;li&gt;Niche market:  Customer segmentation based on specialized needs and characteristics of its clients: e.g. Rolex.&lt;/li&gt;
+&lt;li&gt;Segmented：公司在现有客户细分中应用额外的细分。在细分情况下，企业可根据性别、年龄和/或收入进一步区分其客户。&lt;/li&gt;
+&lt;li&gt;Diversify: A business serves multiple customer segments with different needs and characteristics. 一个企业服务于具有不同需求和特点的多个客户群体&lt;/li&gt;
+&lt;li&gt;Multi-sided platform/market: 为相互依赖的客户群体提供服务 ,例如：信用卡公司将为信用卡持有人提供服务，同时协助接受这些信用卡的商户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CH: channels&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A company can deliver its value proposition to its targeted customers through different channel&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过哪些渠道向目标客户传递公司的价值主张&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CR : Customer relationships&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;companies must identify the type of relationship they want to create with their customer segments&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我想和客户建立什么样的关系？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finance&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;C$ :Cost structure&lt;/p&gt;
+&lt;p&gt;商业结构：价值驱动和成本驱动。&lt;/p&gt;
+&lt;p&gt;成本结构：固定成本/可变成本/规模经济/范围经济&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;R$: Revenue streams 收入流&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The way a company makes income from each customer segment&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;公司盈利的方式: Asset sale/Usage fee/Subscription fees/&amp;ldquo;Lending/leasing/renting  &amp;ldquo;/Licensing /&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Brokerage fees(类似中介？)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

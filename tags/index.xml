@@ -6,10 +6,19 @@
     <description>Recent content in Tags on wwwvvvのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Oct 2021 21:04:17 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Nov 2021 23:46:31 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>business</title>
+      <link>https://weivwang.github.io/tags/business/</link>
+      <pubDate>Sun, 14 Nov 2021 23:46:31 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/tags/business/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>学习笔记</title>
