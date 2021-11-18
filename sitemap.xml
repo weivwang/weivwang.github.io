@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://weivwang.github.io/</loc>
+    <lastmod>2021-11-18T10:13:02+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/</loc>
+    <lastmod>2021-11-18T10:13:02+08:00</lastmod>
+  </url><url>
+    <loc>https://weivwang.github.io/studynotes/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-11-18T10:13:02+08:00</lastmod>
+  </url><url>
     <loc>https://weivwang.github.io/tags/business/</loc>
     <lastmod>2021-11-14T23:46:31+08:00</lastmod>
   </url><url>
@@ -14,9 +23,6 @@
     <loc>https://weivwang.github.io/techthinking/</loc>
     <lastmod>2021-11-14T23:46:31+08:00</lastmod>
   </url><url>
-    <loc>https://weivwang.github.io/</loc>
-    <lastmod>2021-11-14T23:46:31+08:00</lastmod>
-  </url><url>
     <loc>https://weivwang.github.io/readpapers/2021jsa/</loc>
     <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
@@ -24,9 +30,6 @@
     <lastmod>2021-11-07T14:42:49+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-11-06T19:38:03+08:00</lastmod>
-  </url><url>
-    <loc>https://weivwang.github.io/studynotes/</loc>
     <lastmod>2021-11-06T19:38:03+08:00</lastmod>
   </url><url>
     <loc>https://weivwang.github.io/studynotes/csapp_bomblab/</loc>

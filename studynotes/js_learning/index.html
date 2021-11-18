@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>wwwvvvのblog  | Js_learning</title>
+	<title>3wのblog  | Js_learning</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.85.0" />
 	
@@ -109,7 +109,7 @@
 				
 <div>
 	<h2>
-		<a href="https://weivwang.github.io" title="wwwvvvのblog" class="heading font-cursive icon">wwwvvvのblog</a>
+		<a href="https://weivwang.github.io" title="3wのblog" class="heading font-cursive icon">3wのblog</a>
 	</h2>
 </div>
 <h1 class="pt-2">Js_learning</h1>
@@ -164,7 +164,7 @@
 <p>三部分：事件源，事件类型，事件处理程序</p>
 <p><code>var btn = document.getElementById('btn'); </code>//事件源：按钮</p>
 <p>btn.oncliick = function(){ //事件类型：点击</p>
-<p>​ alert(&lsquo;按钮被点击&rsquo;); //事件处理程序</p>
+<p>alert(&lsquo;按钮被点击&rsquo;); //事件处理程序</p>
 <p>}</p>
 <p><code>element.InnerText</code> 来改元素内容，不识别 HTML 标签，非标准，去掉空格和换行</p>
 <p><code>element.InnerHTML</code>能识别 html 标签，用的更多</p>
@@ -232,8 +232,104 @@ lastElementChild //最后，这两个都有兼容问题
 //实际开发写法：
 children[0]
 children[length-1]
-</code></pre><hr>
-</div>
+</code></pre><h3 id="垃圾回收">垃圾回收</h3>
+<p>参考资料：https://zh.javascript.info/garbage-collection</p>
+<p>JavaScript 中主要的内存管理概念是 <strong>可达性</strong>。</p>
+<p>简而言之，“可达”值是那些以某种方式可访问或可用的值。它们一定是存储在内存中的。</p>
+<ol>
+<li>
+<p>这里列出固有的可达值的基本集合，这些值明显不能被释放。</p>
+<p>比方说：</p>
+<ul>
+<li>当前函数的局部变量和参数。</li>
+<li>嵌套调用时，当前调用链上所有函数的变量与参数。</li>
+<li>全局变量。</li>
+<li>（还有一些内部的）</li>
+</ul>
+<p>这些值被称作 <strong>根（roots）</strong>。</p>
+</li>
+<li>
+<p>如果一个值可以通过引用或引用链从根访问任何其他值，则认为该值是可达的。</p>
+<p>比方说，如果全局变量中有一个对象，并且该对象有一个属性引用了另一个对象，则 <strong>该</strong> 对象被认为是可达的。而且它引用的内容也是可达的。下面是详细的例子。</p>
+</li>
+</ol>
+<p>在 JavaScript 引擎中有一个被称作 <a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">垃圾回收器</a> 的东西在后台执行。它监控着所有对象的状态，并删除掉那些已经不可达的。</p>
+<p><img src="https://i.loli.net/2021/11/17/2xzqVyIKjRQnbok.png" alt="image-20211117160809991"></p>
+<p>Object是可达的，若： user = null;</p>
+<p>则：<img src="https://i.loli.net/2021/11/17/lw76DdLcKbvX32h.png" alt="image-20211117160906622"></p>
+<p>变为不可达了，垃圾回收器会进行回收，释放内存。</p>
+<p>JS引擎做的优化：</p>
+<ul>
+<li><strong>分代收集（Generational collection）</strong>—— 对象被分成两组：“新的”和“旧的”。许多对象出现，完成它们的工作并很快死去，它们可以很快被清理。那些长期存活的对象会变得“老旧”，而且被检查的频次也会减少。</li>
+<li><strong>增量收集（Incremental collection）</strong>—— 如果有许多对象，并且我们试图一次遍历并标记整个对象集，则可能需要一些时间，并在执行过程中带来明显的延迟。所以引擎试图将垃圾收集工作分成几部分来做。然后将这几部分会逐一进行处理。这需要它们之间有额外的标记来追踪变化，但是这样会有许多微小的延迟而不是一个大的延迟。</li>
+<li><strong>闲时收集（Idle-time collection）</strong>—— 垃圾收集器只会在 CPU 空闲时尝试运行，以减少可能对代码执行的影响。</li>
+</ul>
+<h3 id="原始类型的方法">原始类型的方法</h3>
+<p>参考资料：https://zh.javascript.info/primitives-methods</p>
+<p>原始类型和对象之间的关键区别。</p>
+<p>一个原始值：</p>
+<ul>
+<li>是原始类型中的一种值。</li>
+<li>在 JavaScript 中有 7 种原始类型：<code>string</code>，<code>number</code>，<code>bigint</code>，<code>boolean</code>，<code>symbol</code>，<code>null</code> 和 <code>undefined</code>。</li>
+</ul>
+<p>一个对象：</p>
+<ul>
+<li>能够存储多个值作为属性。</li>
+<li>可以使用大括号 <code>{}</code> 创建对象，例如：<code>{name: &quot;John&quot;, age: 30}</code>。JavaScript 中还有其他种类的对象，例如函数就是对象。</li>
+</ul>
+<p>JavaScript 创建者面临的悖论：</p>
+<ul>
+<li>人们可能想对诸如字符串或数字之类的原始类型执行很多操作。最好将它们作为方法来访问。</li>
+<li>原始类型必须尽可能的简单轻量</li>
+</ul>
+<p>为了使原始类型的方法起作用，js创建了提供额外功能的特殊“对象包装器”，使用后即被销毁。</p>
+<p><strong>（可以联系JAVA的包装类来思考？）</strong></p>
+<p>例如：</p>
+<p>例如，字符串方法 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase">str.toUpperCase()</a> 返回一个大写化处理的字符串。</p>
+<p>用法演示如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+
+<span style="color:#a6e22e">alert</span>( <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">toUpperCase</span>() ); <span style="color:#75715e">// HELLO
+</span></code></pre></div><p>发生了如下过程：</p>
+<p>1，为了访问toUpperCase()方法，js创建了一个对象，对象里面存放了hello以及toUpperCase()方法</p>
+<p>2，程序调用toUpperCase()方法</p>
+<p>3，调用完毕，js销毁该对象，只留下原始值str</p>
+<p>这样可以保证原始类型依然是轻量的</p>
+<p><img src="https://i.loli.net/2021/11/18/2Y8qhBZSI5LCMpV.png" alt="image-20211118150021239"></p>
+<p>这个例子很好地说明了上面的一点，并且表明原始类型无法添加额外的属性。其实要使用额外的属性，直接自己创建一个对象就好了。</p>
+<h3 id="常用方法">常用方法</h3>
+<h4 id="数字类型">数字类型</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">toString</span>();
+Math.<span style="color:#a6e22e">floor</span>();<span style="color:#75715e">//向下舍入
+</span><span style="color:#75715e"></span>Math.<span style="color:#a6e22e">ceil</span>();<span style="color:#75715e">//向上舍入
+</span><span style="color:#75715e"></span>Math.<span style="color:#a6e22e">round</span>();<span style="color:#75715e">//四舍五入
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">toFixed</span>(<span style="color:#a6e22e">n</span>);<span style="color:#75715e">//舍入小数点n位 ，return string
+</span><span style="color:#75715e"></span>parseInt <span style="color:#a6e22e">和</span> parseFloat<span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">它们可以从字符串中</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">读取</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">数字</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">直到无法读取为止</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">如果发生</span> <span style="color:#a6e22e">error</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则返回收集到的数字</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">函数</span> parseInt <span style="color:#a6e22e">返回一个整数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">而</span> parseFloat <span style="color:#a6e22e">返回一个浮点数</span>
+Math.<span style="color:#a6e22e">random</span>() <span style="color:#75715e">//0-1随机数
+</span><span style="color:#75715e"></span>Math.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">c</span>,....)
+Math.<span style="color:#a6e22e">min</span>();
+Math.<span style="color:#a6e22e">pow</span>(<span style="color:#a6e22e">n</span>,<span style="color:#a6e22e">power</span>);
+</code></pre></div><p>注意这种问题：</p>
+<p><img src="https://i.loli.net/2021/11/18/ND9QsSZYprmIija.png" alt="image-20211118151253901"></p>
+<h4 id="字符串">字符串</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">lenght</span> <span style="color:#75715e">//是一个属性
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charAt</span>(<span style="color:#a6e22e">pos</span>) 
+<span style="color:#a6e22e">遍历字符串</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">char</span> <span style="color:#66d9ef">of</span> <span style="color:#e6db74">&#34;Hello&#34;</span>) {
+  <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">char</span>); <span style="color:#75715e">// H,e,l,l,o（char 变为 &#34;H&#34;，然后是 &#34;e&#34;，然后是 &#34;l&#34; 等）
+</span><span style="color:#75715e"></span>}
+<span style="color:#a6e22e">字符串不可改</span>
+<span style="color:#a6e22e">toLowerCase</span>()<span style="color:#a6e22e">和toUpperCase</span>()
+<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">substr</span>, <span style="color:#a6e22e">pos</span>) <span style="color:#75715e">// 从pos开始找子串str,如果没有找到，则返回 -1，否则返回匹配成功的位置。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">lastIndexOf</span>(<span style="color:#a6e22e">substr</span>, <span style="color:#a6e22e">pos</span>) <span style="color:#75715e">//从末尾开始找
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">substr</span>, <span style="color:#a6e22e">pos</span>) <span style="color:#75715e">//根据 str 中是否包含 substr 来返回 true/false
+</span><span style="color:#75715e"></span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#a6e22e">substr</span>)<span style="color:#f92672">/</span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#a6e22e">substr</span>) <span style="color:#75715e">// 判断是否以substr开始/结束
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#a6e22e">start</span> [, <span style="color:#a6e22e">end</span>])  <span style="color:#75715e">//返回字符串从 start 到（但不包括）end 的部分。start/end 也有可能是负值。它们的意思是起始位置从字符串结尾计算
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#a6e22e">start</span> [, <span style="color:#a6e22e">end</span>]) <span style="color:#75715e">//返回字符串在 start 和 end 之间 的部分。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">codePointAt</span>(<span style="color:#a6e22e">pos</span>) <span style="color:#75715e">//返回pos位置的字符代码
+</span><span style="color:#75715e"></span>String.<span style="color:#a6e22e">fromCodePoint</span>(<span style="color:#a6e22e">code</span>) <span style="color:#75715e">//通过数字 code 创建字符
+</span></code></pre></div></div>
 	</section>
 
 
@@ -306,7 +402,7 @@ children[length-1]
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 204 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 378 words in this page.
 	</div>
 </div>
 
