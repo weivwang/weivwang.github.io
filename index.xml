@@ -6,10 +6,274 @@
     <description>Recent content on 3wのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Nov 2021 10:13:02 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Nov 2021 18:18:40 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>腾讯文档 武大</title>
+      <link>https://weivwang.github.io/studynotes/%E8%85%BE%E8%AE%AF%E6%96%87%E6%A1%A3-%E6%AD%A6%E5%A4%A7/</link>
+      <pubDate>Sat, 20 Nov 2021 18:18:40 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/studynotes/%E8%85%BE%E8%AE%AF%E6%96%87%E6%A1%A3-%E6%AD%A6%E5%A4%A7/</guid>
+      <description>&lt;h1 id=&#34;腾讯文档-武大web前端&#34;&gt;腾讯文档-武大：web前端&lt;/h1&gt;
+&lt;p&gt;##第一周：前端基础及ES6讲解&lt;/p&gt;
+&lt;h3 id=&#34;前端三剑客&#34;&gt;前端三剑客&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;html：结构 。&lt;/p&gt;
+&lt;p&gt;块：div，h1，p，header等；行内元素：span，input，img，a&lt;/p&gt;
+&lt;p&gt;Html5: 提供了更加语义化的标签。&lt;/p&gt;
+&lt;p&gt;&amp;lt;meta&amp;gt; 描述html元数据，定义页面作者，浏览器解析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;css：外观&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;css选择器&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;盒模型&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flex&lt;/strong&gt;，栅格布局&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;定位&lt;/strong&gt;：relative，absolute，fixed（相对浏览器窗口的固定位置）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;js：行为&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数&lt;/li&gt;
+&lt;li&gt;对象&lt;/li&gt;
+&lt;li&gt;闭包&lt;/li&gt;
+&lt;li&gt;原型链&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/10/30/GP1iKmzwDvlWqLR.png&#34; alt=&#34;image-20211030103810153&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DOM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第二周&#34;&gt;第二周&lt;/h2&gt;
+&lt;h2 id=&#34;typescript&#34;&gt;TypeScript&lt;/h2&gt;
+&lt;p&gt;TypeScript = Typed JavaScript at Any Scale&lt;/p&gt;
+&lt;h3 id=&#34;typescript是什么&#34;&gt;TypeScript是什么&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;TypeScript&lt;/strong&gt; &lt;strong&gt;是&lt;/strong&gt; &lt;strong&gt;JavaScript&lt;/strong&gt; &lt;strong&gt;的严格超集&lt;/strong&gt;，类型是TS最核心的特性，TS适用于任何规模的项目&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScript是解释类型语言，没有编译阶段，运行时进行类型检查&lt;/li&gt;
+&lt;li&gt;TS运行前需要先编译为JS，编译阶段会进行类型检查，所以TS是静态类型&lt;/li&gt;
+&lt;li&gt;TS是弱类型语言，和JS都允许隐式转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;符合最新ECMAScript标准&lt;/p&gt;
+&lt;h3 id=&#34;优点&#34;&gt;优点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TS类型定义和编译器的引入，能够让我们避免掉JS的很多错误&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在大型系统中，能够知道某个变量的类型定义是很有价值的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;react优势&#34;&gt;React优势&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;组件化&lt;/li&gt;
+&lt;li&gt;数据驱动：修改数据，组件重新渲染&lt;/li&gt;
+&lt;li&gt;虚拟DOM：在需要的时候会渲染成真实DOM，结合&lt;strong&gt;Diff算法&lt;/strong&gt;来提升性能，支持跨平台渲染&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/06/TKrxas8FmQAnqV9.png&#34; alt=&#34;image-20211106103245624&#34;&gt;&lt;/p&gt;
+&lt;p&gt;父节点，子节点也重新更新。叶子结点更新就只更新叶子结点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跨端渲染&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;npm&#34;&gt;NPM&lt;/h2&gt;
+&lt;p&gt;Package.json：描述项目信息，依赖，版本，脚本等&lt;/p&gt;
+&lt;p&gt;npm init：初始化项目，生成package.json文件&lt;/p&gt;
+&lt;p&gt;Npm install：自动安装package.json下面等所有模块&lt;/p&gt;
+&lt;p&gt;npm publish：发布自己的库到npmjs&lt;/p&gt;
+&lt;h2 id=&#34;第三周&#34;&gt;第三周&lt;/h2&gt;
+&lt;h3 id=&#34;构建工具&#34;&gt;构建工具&lt;/h3&gt;
+&lt;p&gt;构建工具：将前端源代码自动转成js，html，css等&lt;/p&gt;
+&lt;p&gt;比如：ES6 -&amp;gt; ES5&lt;/p&gt;
+&lt;p&gt;JSX -&amp;gt;运行时js组件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/v1uednkBODXgmFY.png&#34; alt=&#34;image-20211120100256903&#34;&gt;&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;p&gt;html和js分离时，&lt;/p&gt;
+&lt;p&gt;原来： html引用同域JS。&lt;/p&gt;
+&lt;p&gt;现在CDN加载（跨域）&lt;/p&gt;
+&lt;h3 id=&#34;构建工具的发展&#34;&gt;构建工具的发展&lt;/h3&gt;
+&lt;p&gt;早期：seajs, requirejs(node.js)&lt;/p&gt;
+&lt;p&gt;2011-2014: gulp（基于配置，流式）, grunt, webpack, browserify&lt;/p&gt;
+&lt;p&gt;2015: rollup（解决webpack的一些问题，支持shaking）&lt;/p&gt;
+&lt;p&gt;2017: parcel&lt;/p&gt;
+&lt;p&gt;近两年：vite, snowpack（只用打包改动的代码）&lt;/p&gt;
+&lt;p&gt;webpack社区活跃&lt;/p&gt;
+&lt;h3 id=&#34;为什么webpack不是vite&#34;&gt;为什么webpack，不是vite&lt;/h3&gt;
+&lt;p&gt;从使用广度，构建能力，使用场景，工具生态，webpack是最佳方案&lt;/p&gt;
+&lt;p&gt;vite生态可能没有webpack成熟，有一些坑&lt;/p&gt;
+&lt;h3 id=&#34;webpack&#34;&gt;webpack&lt;/h3&gt;
+&lt;p&gt;一切皆模块，通过loader转换文件，plugin注入钩子实现&lt;/p&gt;
+&lt;p&gt;各版本：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/LRStaP4XI7peqxn.png&#34; alt=&#34;image-20211120101517055&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;基本使用&#34;&gt;基本使用&lt;/h4&gt;
+&lt;p&gt;![image-20211120101644649](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120101644649.png)&lt;/p&gt;
+&lt;p&gt;Mode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Development: 不压缩，调试&lt;/li&gt;
+&lt;li&gt;Production：压缩，开启优化选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Output :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Path: 输出文件路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;publicPath：配置发布到线上资源的URL前缀&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plugin:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比如HtmlWebpackPlugin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Loader：webpack核心&lt;/p&gt;
+&lt;p&gt;把一切文件看作模块，对不同类型的文件，进行不同处理&lt;/p&gt;
+&lt;p&gt;laoder来扩展对不同文件的处理能力。loader是一个处理函数&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/SatmLoOpUsfeRET.png&#34; alt=&#34;image-20211120103621263&#34;&gt;&lt;/p&gt;
+&lt;p&gt;读取匹配到的文件源码，进行转换，生成代码&lt;/p&gt;
+&lt;h4 id=&#34;devserver&#34;&gt;devServer&lt;/h4&gt;
+&lt;p&gt;提供http服务而不是本地文件预览&lt;/p&gt;
+&lt;p&gt;监听文件变化并自动刷新网页&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/1dtYKmqxWPCkNo2.png&#34; alt=&#34;image-20211120105138440&#34;&gt;&lt;/p&gt;
+&lt;p&gt;hot:true&lt;/p&gt;
+&lt;p&gt;热更新：在网页不刷新情况下，将老的代码替换为新代码&lt;/p&gt;
+&lt;h3 id=&#34;进阶使用&#34;&gt;进阶使用&lt;/h3&gt;
+&lt;h4 id=&#34;es6配置&#34;&gt;ES6配置&lt;/h4&gt;
+&lt;p&gt;![image-20211120105822869](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120105822869.png)&lt;/p&gt;
+&lt;h4 id=&#34;图片配置&#34;&gt;图片配置&lt;/h4&gt;
+&lt;p&gt;构建中使用url-loader处理图片资源&lt;/p&gt;
+&lt;p&gt;使用limit来限制图片大小&lt;/p&gt;
+&lt;h4 id=&#34;页面代码加载优化方式&#34;&gt;页面代码加载优化方式&lt;/h4&gt;
+&lt;p&gt;1、按需加载&lt;/p&gt;
+&lt;p&gt;大型网站打开时加载全部代码，会导致页面加载缓慢，交互卡顿&lt;/p&gt;
+&lt;p&gt;使用异步加载的方式，按需加载和使用&lt;/p&gt;
+&lt;p&gt;![image-20211120112625848](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120112625848.png)&lt;/p&gt;
+&lt;p&gt;关键是await语句&lt;/p&gt;
+&lt;p&gt;2、提取公共代码&lt;/p&gt;
+&lt;p&gt;打包时会把公共部分打包在一个文件中&lt;/p&gt;
+&lt;p&gt;![image-20211120113039580](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120113039580.png)&lt;/p&gt;
+&lt;h3 id=&#34;http和https&#34;&gt;Http和https&lt;/h3&gt;
+&lt;p&gt;usl中的fragment，方便定位页面元素&lt;/p&gt;
+&lt;p&gt;http：超文本传输协议&lt;/p&gt;
+&lt;p&gt;http报文分为请求报文和响应报文&lt;/p&gt;
+&lt;p&gt;http请求方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GET：从指定资源中请求数据。没有副作用，不会更新资源&lt;/li&gt;
+&lt;li&gt;POST：用于将数据发送到服务器以创建或更新资源（一般是非幂等）&lt;/li&gt;
+&lt;li&gt;PUT：和post一样，一般是幂等等&lt;/li&gt;
+&lt;li&gt;delete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;get和post区别&#34;&gt;GET和POST区别&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/zl5xBq8iwkQLXnf.png&#34; alt=&#34;image-20211120141948799&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;http状态码&#34;&gt;http状态码&lt;/h4&gt;
+&lt;p&gt;![image-20211120142308910](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142308910.png)&lt;/p&gt;
+&lt;h4 id=&#34;思考为什么http是无连接无状态&#34;&gt;思考：为什么http是无连接无状态？&lt;/h4&gt;
+&lt;p&gt;前提：基于tcp&lt;/p&gt;
+&lt;p&gt;减轻服务端压力，不用保持链接状态&lt;/p&gt;
+&lt;p&gt;![image-20211120142853725](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142853725.png)&lt;/p&gt;
+&lt;p&gt;Http1.1的优化&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/5a4ZcelGKJhrLBb.png&#34; alt=&#34;image-20211120143049907&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;https&#34;&gt;Https&lt;/h4&gt;
+&lt;p&gt;![image-20211120143700840](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120143700840.png)&lt;/p&gt;
+&lt;h4 id=&#34;思考服务器怎么向客户端推送消息&#34;&gt;思考：服务器怎么向客户端推送消息&lt;/h4&gt;
+&lt;p&gt;短轮询&lt;/p&gt;
+&lt;p&gt;指在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP request，然后由服务器返回最新的数据给客户端的浏览器。&lt;/p&gt;
+&lt;p&gt;请求中有很多是无用的，浪费带宽和服务器资源；响应的结果没有顺序（因为是异步请求，当发送的请求没有返回结果的时候，后面的请求又被发送。而此时如果后面的请求比前面的请 求要先返回结果，那么当前面的请求返回结果数据时已经是过时无效的数据了）&lt;/p&gt;
+&lt;p&gt;长轮询&lt;/p&gt;
+&lt;p&gt;客户端向服务器发送Ajax请求，服务器接到请求后hold住连接，直到有新消息才返回响应信息并关闭连接，客户端处理完响应信息后再向服务器发送新的请求。&lt;/p&gt;
+&lt;p&gt;![image-20211120144400146](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120144400146.png)&lt;/p&gt;
+&lt;p&gt;缺点：服务器端一直保持链接，占用资源&lt;/p&gt;
+&lt;p&gt;解决方法：SSE， server-sent event&lt;/p&gt;
+&lt;p&gt;web端即时通讯技术&lt;/p&gt;
+&lt;p&gt;websocket：html5新技术&lt;/p&gt;
+&lt;p&gt;腾讯文档：你写一个数据在表格中，其他人马上能看到变化。使用websocket，服务器端广播&lt;/p&gt;
+&lt;h3 id=&#34;浏览器跨域问题&#34;&gt;浏览器跨域问题&lt;/h3&gt;
+&lt;h4 id=&#34;同源策略&#34;&gt;同源策略&lt;/h4&gt;
+&lt;p&gt;同源：只有 同协议，同域名，同端口，才能叫同源&lt;/p&gt;
+&lt;h4 id=&#34;为什么同源&#34;&gt;为什么同源？&lt;/h4&gt;
+&lt;p&gt;cookie和session 安全问题&lt;/p&gt;
+&lt;p&gt;cookie相当于一个工牌或者学生卡，别人拿到了也能刷&lt;/p&gt;
+&lt;p&gt;访问了一个网站之后又访问其他网站，其他网站如果读取第一个网站的cookie怎么办: 同源&lt;/p&gt;
+&lt;h4 id=&#34;如何规避同源策略&#34;&gt;如何规避同源策略&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;cookie：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两个网站一级域名相同，第二级域名不同，可以设置document.domain共享cookie&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;iframe同源策略限制&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;同源策略下，网页不同，不能拿到另一个网页的dom&lt;/p&gt;
+&lt;p&gt;解决：h5引入全新API：跨文档通信API: cross-document message&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AJAX方法&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;服务器代理跨域：由服务器端来拿另一个网站的策略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JSONP：添加script标签&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;终极解决方案&lt;/strong&gt;：CROS， w3c标准，是跨源ajax请求的根本解决方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相比于jsonp只能发get，cros支持任何类型请求&lt;/li&gt;
+&lt;li&gt;浏览器自动完成，不需要用户参与&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;缓存&#34;&gt;缓存&lt;/h3&gt;
+&lt;h4 id=&#34;浏览器缓存&#34;&gt;浏览器缓存&lt;/h4&gt;
+&lt;p&gt;浏览器获取的http资源，保存到本地磁盘&lt;/p&gt;
+&lt;p&gt;![image-20211120151233916](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120151233916.png)&lt;/p&gt;
+&lt;p&gt;为什么缓存：&lt;/p&gt;
+&lt;p&gt;减轻服务器端压力，页面加载速度更快&lt;/p&gt;
+&lt;h4 id=&#34;缓存分类&#34;&gt;缓存分类&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/R6E18qYlDVLGMgu.png&#34; alt=&#34;image-20211120151344608&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;强缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Expires: http1.0产物，过期了，存在是为了兼容性&lt;/li&gt;
+&lt;li&gt;Cache- Control: http1.1产物&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;协商缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Etag和If-none-match&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/HjsJiKQqh3CynwU.png&#34; alt=&#34;image-20211120151832396&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;last-modify和if-modify-since&lt;/p&gt;
+&lt;p&gt;Last-modify：只记录时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;强缓存和协商缓存区别&#34;&gt;强缓存和协商缓存区别&lt;/h4&gt;
+&lt;p&gt;区别在于需不需要向服务器请求&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/wGeEasPrfvuoLTO.png&#34; alt=&#34;image-20211120152725402&#34;&gt;&lt;/p&gt;
+&lt;p&gt;缓存过程&lt;/p&gt;
+&lt;p&gt;![image-20211120152618378](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120152618378.png)&lt;/p&gt;
+&lt;h3 id=&#34;网络攻击&#34;&gt;网络攻击&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;XSS&lt;/p&gt;
+&lt;p&gt;Cross Site Script跨站脚本，为了和css区分叫xss&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储型XSS：黑客将恶意代码发向服务器，服务器端存储。用户访问界面拿到的是有黑客的恶意代码的页面&lt;/li&gt;
+&lt;li&gt;反射型XSS&lt;/li&gt;
+&lt;li&gt;基于DOM型的XSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;预防XSS：对输入做验证&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CSRF&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/yha9spVJTF4Rigq.png&#34; alt=&#34;image-20211120154042064&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/gvWyxtem2rJqafQ.png&#34; alt=&#34;image-20211120154204533&#34;&gt;&lt;/p&gt;
+&lt;p&gt;重点是token验证&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>商务智能课堂笔记</title>
@@ -271,10 +535,10 @@ MPA-RTC使用一个服务曲线元组𝛽=[𝛽𝑙,𝛽𝑢]对系统可用的�
     
     <item>
       <title>React再思考</title>
-      <link>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</link>
+      <link>https://weivwang.github.io/studynotes/react%E5%86%8D%E6%80%9D%E8%80%83/</link>
       <pubDate>Sat, 06 Nov 2021 19:38:03 +0800</pubDate>
       
-      <guid>https://weivwang.github.io/studynotes/react%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://weivwang.github.io/studynotes/react%E5%86%8D%E6%80%9D%E8%80%83/</guid>
       <description>&lt;h3 id=&#34;为什么要用到函数式组件&#34;&gt;为什么要用到函数式组件？&lt;/h3&gt;
 &lt;p&gt;react官网：&lt;/p&gt;
 &lt;p&gt;class难以理解：&lt;/p&gt;
@@ -515,6 +779,29 @@ MPA-RTC使用一个服务曲线元组𝛽=[𝛽𝑙,𝛽𝑢]对系统可用的�
 };
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;为什么选择&lt;/strong&gt;JSX**？**&lt;/p&gt;
 &lt;p&gt;JSX 语法糖允许前端开发者使用我们最为熟悉的类 HTML 标签语法来创建虚拟 DOM，在降低学习成本的同时，也提升了研发效率与研发体验&lt;/p&gt;
+&lt;h3 id=&#34;react高性能体现虚拟dom&#34;&gt;React高性能体现：虚拟DOM&lt;/h3&gt;
+&lt;p&gt;（参考资料：https://www.bilibili.com/video/BV19p4y1z7LK?p=9&amp;amp;spm_id_from=pageDriver）&lt;/p&gt;
+&lt;p&gt;Web开发需要将变化的数据实时反映到UI上，需要我们频繁地操作DOM，这就是性能瓶颈的原因（如何进行高性能的复杂DOM操作？）&lt;/p&gt;
+&lt;p&gt;React：引入Virtual DOM。在浏览器端用Javascript实现了一套DOM API。基于react开发的所有DOM构造都通过虚拟DOM进行。&lt;/p&gt;
+&lt;p&gt;当数据变化 ，react重构DOM树，将当前树和上一次树进行对比，得到DOM的区别，仅仅更新变化的部分。&lt;/p&gt;
+&lt;p&gt;**（精髓）**存在一个Event loop，在一个loop中两次数据变化会被合并，A-&amp;gt;B-&amp;gt;A在一个loop中发生，UI不发生任何变化。react认为不变，所以不会更新到B，再更新到A。&lt;/p&gt;
+&lt;h3 id=&#34;频繁更新虚拟dom性能不会差&#34;&gt;频繁更新虚拟DOM，性能不会差？&lt;/h3&gt;
+&lt;p&gt;虚拟DOM是内存数据，性能高，对实际DOM进行操作的仅仅是Diff部分。&lt;/p&gt;
+&lt;h3 id=&#34;react-fiber&#34;&gt;React Fiber&lt;/h3&gt;
+&lt;p&gt;不是上面的Event Loop。&lt;/p&gt;
+&lt;p&gt;是React 16之后发布的一种核心算法。官网：是对核心算法的重新实现。之前用的是diff算法。&lt;/p&gt;
+&lt;p&gt;为了解决的问题：之前的react，更新过程是同步的，可能导致性能问题。&lt;/p&gt;
+&lt;p&gt;React决定加载或更新组件时，会干很多事，比如：调用各个组件生命周期，计算比较虚拟DOM树，更新DOM树。这个过程是同步进行的，一次加载/更新开始，中间不会中断。因为JS是单线程，组件树很大时，每个同步任务耗时太长，出现加载卡顿。&lt;/p&gt;
+&lt;p&gt;React Fiber：分片。把耗时的任务分成若干片。每一片运行时间很短。每一小片执行完成之后，都会给其他任务机会去执行，从而避免进程被独占。（很像CPU的时间片，把cpu资源类比于js单线程，把线程类比于react中的很多任务）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/18/17B5gzvhRULWYMS.png&#34; alt=&#34;image-20211118172121553&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;生命周期&#34;&gt;生命周期&lt;/h3&gt;
+&lt;p&gt;16.3之前&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/19/kOj5QVMqvcymgBw.png&#34; alt=&#34;image-20211119103202357&#34;&gt;&lt;/p&gt;
+&lt;p&gt;现在的生命周期：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/19/cFoTbreuEh1Cq9V.png&#34; alt=&#34;image-20211119113223593&#34;&gt;&lt;/p&gt;
+&lt;p&gt;getDrivedStateFromProps(): 根据props生成state&lt;/p&gt;
+&lt;p&gt;官网不推荐使用，容易写出bug&lt;/p&gt;
+&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
 </description>
     </item>
     

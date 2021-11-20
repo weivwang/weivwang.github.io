@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>3wのblog  | React再思考</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:\/\/weivwang.github.io\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https://weivwang.github.io" title="3wのblog" class="heading font-cursive icon">3wのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">React再思考</h1>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-11-06T19:38:03&#43;08:00">2021-11-6 19:38</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h3 id="为什么要用到函数式组件">为什么要用到函数式组件？</h3>
+<p>react官网：</p>
+<p>class难以理解：</p>
+<ul>
+<li>Javascript的this指针</li>
+<li>官方进行组件预编译优化，class常常让优化措施无效</li>
+</ul>
+<h3 id="理解react">理解React？</h3>
+<ul>
+<li>React框架？ 不同于angular，react官网并不称自己为框架：用于构建用户界面的JavaScript库</li>
+</ul>
+<p>路由，状态管理，并不是react团队开发的，而是交给社区做，所以它并不完全能叫一个框架，只是一个库。</p>
+<ul>
+<li>react使用者上限和下限差距极大，会使用很简单，成为高手比较难</li>
+</ul>
+<h3 id="react优势">React优势</h3>
+<p>组件化，高内聚低耦合，但并没有提供一整套解决方案，需要依靠社区提供的集成方案</p>
+<p>JSX代码可读性好</p>
+<h3 id="为什么react选择jsx其他方案为什么不好">为什么React选择JSX？其他方案为什么不好</h3>
+<p><strong>JSX本质</strong></p>
+<p>官网：实际上，JSX 仅仅只是 <code>React.createElement(component, props, ...children)</code> 函数的语法糖。</p>
+<pre><code>&lt;MyButton color=&quot;blue&quot; shadowSize={2}&gt;
+  Click Me
+&lt;/MyButton&gt;
+</code></pre><p>被编译为：</p>
+<pre><code>React.createElement(
+  MyButton,
+  {color: 'blue', shadowSize: 2},
+  'Click Me'
+)
+</code></pre><p>接着会产生疑问：React.createElement()到底是一个什么样的方法？</p>
+<pre><code>React.createElement(
+  type, //第一个参数为html标签名称
+  [props], //第二个参数为属性，如className
+  [...children] //第三个参数为子结点
+)
+</code></pre><p>在react文件中，第一句常常是：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+</code></pre></div><p>但是程序中却没有出现显式的对引入的React的调用，删了这一句也不行</p>
+<p>查：</p>
+<p>在渲染Dom的时候调了React.createElement()</p>
+<p>在https://babeljs.io中可以看到该过程:</p>
+<p><img src="https://i.loli.net/2021/11/10/GL5FOV9ms7gxiwc.png" alt="image-20211110234827340"></p>
+<p>看createElement()源码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * Create and return a new ReactElement of the given type.
+</span><span style="color:#75715e"> * See https://reactjs.org/docs/react-api.html#createelement
+</span><span style="color:#75715e"> * type: 节点类型
+</span><span style="color:#75715e"> * 如果是原生的节点类型，那么就是一个字符串 tagName
+</span><span style="color:#75715e"> * 如果是一个组件(我们自己定义的、或者React内置提供的)那么就是一个变量
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * config: 就是写在jsx上的属性，它们都会转为key: value格式存到config对象上
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * children: 所有后代元素
+</span><span style="color:#75715e"> */</span>
+ <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createElement</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">config</span>, <span style="color:#a6e22e">children</span>) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">propName</span>;
+
+  <span style="color:#75715e">// Reserved names are extracted
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 对于组件内部来说传入的属性就是props
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> {};
+
+  <span style="color:#75715e">// 预定义key ref等变量用于后面存值
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// key ref属于特殊的attrs需要剔除
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">config</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hasValidRef</span>(<span style="color:#a6e22e">config</span>)) {
+      <span style="color:#75715e">// 存储合法的ref
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">ref</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">ref</span>;
+    }
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hasValidKey</span>(<span style="color:#a6e22e">config</span>)) {
+      <span style="color:#75715e">// 存储合法的key =&gt; string
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">key</span>;
+    }
+
+    <span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">__self</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">__self</span>;
+    <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">__source</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">__source</span>;
+    <span style="color:#75715e">// 其他属性枚举到props对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">propName</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">config</span>) {
+      <span style="color:#66d9ef">if</span> (
+        <span style="color:#75715e">// 仅限config自身的属性 &amp;&amp; 排除React预留的props
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">hasOwnProperty</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">config</span>, <span style="color:#a6e22e">propName</span>) <span style="color:#f92672">&amp;&amp;</span>
+        <span style="color:#f92672">!</span><span style="color:#a6e22e">RESERVED_PROPS</span>.<span style="color:#a6e22e">hasOwnProperty</span>(<span style="color:#a6e22e">propName</span>)
+      ) {
+        <span style="color:#a6e22e">props</span>[<span style="color:#a6e22e">propName</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>[<span style="color:#a6e22e">propName</span>];
+      }
+    }
+  }
+   <span style="color:#75715e">// Children can be more than one argument, and those are transferred onto
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// the newly allocated props object.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 获取children的个数，一个节点下的children是可以有多个的
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">childrenLength</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
+
+  <span style="color:#75715e">// 赋值处理props.children
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">childrenLength</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) {
+    <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">children</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">children</span>;
+  } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">childrenLength</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
+    <span style="color:#75715e">// 定长数组、再遍历拷贝
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">childArray</span> <span style="color:#f92672">=</span> Array(<span style="color:#a6e22e">childrenLength</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">childrenLength</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+      <span style="color:#a6e22e">childArray</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>];
+    }
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">__DEV__</span>) {
+      <span style="color:#66d9ef">if</span> (Object.<span style="color:#a6e22e">freeze</span>) {
+        Object.<span style="color:#a6e22e">freeze</span>(<span style="color:#a6e22e">childArray</span>);
+      }
+    }
+    <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">children</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">childArray</span>;
+  }
+
+  <span style="color:#75715e">// Resolve default props
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 处理defaultProps，另外需要处理defaultProps的顺序
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * class CustomButton extends React.component{}
+</span><span style="color:#75715e">   * CustomButton.defaultProps = {}
+</span><span style="color:#75715e">   * 可见type是一个组件
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">type</span>.<span style="color:#a6e22e">defaultProps</span>) {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultProps</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">type</span>.<span style="color:#a6e22e">defaultProps</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">propName</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">defaultProps</span>) {
+      <span style="color:#75715e">// 如果 props.color 被设置为 null，则它将保持为 null
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// 关于这里为什么是undefined、而不是null，其实很好理解，定义了一个遍历而不初始化那它就是undefined，而null需要手动初始化。
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">props</span>[<span style="color:#a6e22e">propName</span>] <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+        <span style="color:#a6e22e">props</span>[<span style="color:#a6e22e">propName</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">defaultProps</span>[<span style="color:#a6e22e">propName</span>];
+      }
+    }
+  }
+
+ <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">__DEV__</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">key</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">ref</span>) {
+      <span style="color:#75715e">// 处理displayName，即推导过程
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// 如果是组件、先从组件的displayName取、其次是组件的名字、最后是默认值
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">displayName</span> <span style="color:#f92672">=</span>
+        <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span>
+          <span style="color:#f92672">?</span> <span style="color:#a6e22e">type</span>.<span style="color:#a6e22e">displayName</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">type</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;Unknown&#39;</span>
+          <span style="color:#f92672">:</span> <span style="color:#a6e22e">type</span>;
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">key</span>) {
+        <span style="color:#a6e22e">defineKeyPropWarningGetter</span>(<span style="color:#a6e22e">props</span>, <span style="color:#a6e22e">displayName</span>);
+      }
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ref</span>) {
+        <span style="color:#a6e22e">defineRefPropWarningGetter</span>(<span style="color:#a6e22e">props</span>, <span style="color:#a6e22e">displayName</span>);
+      }
+    }
+  }
+
+  <span style="color:#75715e">// 返回一个真正的ReactElement
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ReactElement</span>(
+    <span style="color:#a6e22e">type</span>,
+    <span style="color:#a6e22e">key</span>,
+    <span style="color:#a6e22e">ref</span>,
+    <span style="color:#a6e22e">self</span>,
+    <span style="color:#a6e22e">source</span>,
+    <span style="color:#a6e22e">ReactCurrentOwner</span>.<span style="color:#a6e22e">current</span>,
+    <span style="color:#a6e22e">props</span>,
+  );
+}
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * Factory method to create a new React element. This no longer adheres to
+</span><span style="color:#75715e"> * the class pattern, so do not use new to call it. Also, no instanceof check
+</span><span style="color:#75715e"> * will work. Instead test $$typeof field against Symbol.for(&#39;react.element&#39;) to check
+</span><span style="color:#75715e"> * if something is a React Element.
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param {*} type
+</span><span style="color:#75715e"> * @param {*} props
+</span><span style="color:#75715e"> * @param {*} key
+</span><span style="color:#75715e"> * @param {string|object} ref
+</span><span style="color:#75715e"> * @param {*} owner
+</span><span style="color:#75715e"> * @param {*} self A *temporary* helper to detect places where `this` is
+</span><span style="color:#75715e"> * different from the `owner` when React.createElement is called, so that we
+</span><span style="color:#75715e"> * can warn. We want to get rid of owner and replace string `ref`s with arrow
+</span><span style="color:#75715e"> * functions, and as long as `this` and owner are the same, there will be no
+</span><span style="color:#75715e"> * change in behavior.
+</span><span style="color:#75715e"> * @param {*} source An annotation object (added by a transpiler or otherwise)
+</span><span style="color:#75715e"> * indicating filename, line number, and/or other information.
+</span><span style="color:#75715e"> * @internal
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ReactElement</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">self</span>, <span style="color:#a6e22e">source</span>, <span style="color:#a6e22e">owner</span>, <span style="color:#a6e22e">props</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> {
+    <span style="color:#75715e">// This tag allows us to uniquely identify this as a React Element
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 通过Symbol作为独一无二标识符 Symbol.for进行复用
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$$typeof</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">REACT_ELEMENT_TYPE</span>,
+
+    <span style="color:#75715e">// Built-in properties that belong on the element
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 节点类型
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">type</span>,
+    <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">key</span>,
+    <span style="color:#a6e22e">ref</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ref</span>,
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">props</span>,
+
+    <span style="color:#75715e">// Record the component responsible for creating this element.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_owner</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">owner</span>,
+  };
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">__DEV__</span>) {
+    <span style="color:#75715e">// The validation flag is currently mutative. We put it on
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// an external backing store so that we can freeze the whole object.
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// This can be replaced with a WeakMap once they are implemented in
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// commonly used development environments.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">_store</span> <span style="color:#f92672">=</span> {};
+
+    <span style="color:#75715e">// To make comparing ReactElements easier for testing purposes, we make
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// the validation flag non-enumerable (where possible, which should
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// include every environment we run tests in), so the test framework
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// ignores it.
+</span><span style="color:#75715e"></span>    Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">_store</span>, <span style="color:#e6db74">&#39;validated&#39;</span>, {
+      <span style="color:#a6e22e">configurable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">enumerable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">writable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+    });
+    <span style="color:#75715e">// self and source are DEV only properties.
+</span><span style="color:#75715e"></span>    Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">element</span>, <span style="color:#e6db74">&#39;_self&#39;</span>, {
+      <span style="color:#a6e22e">configurable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">enumerable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">writable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">self</span>,
+    });
+    <span style="color:#75715e">// Two elements created in two different places should be considered
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// equal for testing purposes and therefore we hide it from enumeration.
+</span><span style="color:#75715e"></span>    Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">element</span>, <span style="color:#e6db74">&#39;_source&#39;</span>, {
+      <span style="color:#a6e22e">configurable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">enumerable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">writable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">source</span>,
+    });
+    <span style="color:#66d9ef">if</span> (Object.<span style="color:#a6e22e">freeze</span>) {
+      Object.<span style="color:#a6e22e">freeze</span>(<span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">props</span>);
+      Object.<span style="color:#a6e22e">freeze</span>(<span style="color:#a6e22e">element</span>);
+    }
+  }
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">element</span>;
+};
+</code></pre></div><p><strong>为什么选择</strong>JSX**？**</p>
+<p>JSX 语法糖允许前端开发者使用我们最为熟悉的类 HTML 标签语法来创建虚拟 DOM，在降低学习成本的同时，也提升了研发效率与研发体验</p>
+<h3 id="react高性能体现虚拟dom">React高性能体现：虚拟DOM</h3>
+<p>（参考资料：https://www.bilibili.com/video/BV19p4y1z7LK?p=9&amp;spm_id_from=pageDriver）</p>
+<p>Web开发需要将变化的数据实时反映到UI上，需要我们频繁地操作DOM，这就是性能瓶颈的原因（如何进行高性能的复杂DOM操作？）</p>
+<p>React：引入Virtual DOM。在浏览器端用Javascript实现了一套DOM API。基于react开发的所有DOM构造都通过虚拟DOM进行。</p>
+<p>当数据变化 ，react重构DOM树，将当前树和上一次树进行对比，得到DOM的区别，仅仅更新变化的部分。</p>
+<p>**（精髓）**存在一个Event loop，在一个loop中两次数据变化会被合并，A-&gt;B-&gt;A在一个loop中发生，UI不发生任何变化。react认为不变，所以不会更新到B，再更新到A。</p>
+<h3 id="频繁更新虚拟dom性能不会差">频繁更新虚拟DOM，性能不会差？</h3>
+<p>虚拟DOM是内存数据，性能高，对实际DOM进行操作的仅仅是Diff部分。</p>
+<h3 id="react-fiber">React Fiber</h3>
+<p>不是上面的Event Loop。</p>
+<p>是React 16之后发布的一种核心算法。官网：是对核心算法的重新实现。之前用的是diff算法。</p>
+<p>为了解决的问题：之前的react，更新过程是同步的，可能导致性能问题。</p>
+<p>React决定加载或更新组件时，会干很多事，比如：调用各个组件生命周期，计算比较虚拟DOM树，更新DOM树。这个过程是同步进行的，一次加载/更新开始，中间不会中断。因为JS是单线程，组件树很大时，每个同步任务耗时太长，出现加载卡顿。</p>
+<p>React Fiber：分片。把耗时的任务分成若干片。每一片运行时间很短。每一小片执行完成之后，都会给其他任务机会去执行，从而避免进程被独占。（很像CPU的时间片，把cpu资源类比于js单线程，把线程类比于react中的很多任务）</p>
+<p><img src="https://i.loli.net/2021/11/18/17B5gzvhRULWYMS.png" alt="image-20211118172121553"></p>
+<h3 id="生命周期">生命周期</h3>
+<p>16.3之前</p>
+<p><img src="https://i.loli.net/2021/11/19/kOj5QVMqvcymgBw.png" alt="image-20211119103202357"></p>
+<p>现在的生命周期：</p>
+<p><img src="https://i.loli.net/2021/11/19/cFoTbreuEh1Cq9V.png" alt="image-20211119113223593"></p>
+<p>getDrivedStateFromProps(): 根据props生成state</p>
+<p>官网不推荐使用，容易写出bug</p>
+<h1 id="heading"></h1>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 797 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/studynotes/csapp_bomblab/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        CSAPP_BombLab
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/readpapers/2021jsa/">
+        2021JSA
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>
