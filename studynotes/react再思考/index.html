@@ -396,7 +396,34 @@
 <p><img src="https://i.loli.net/2021/11/19/cFoTbreuEh1Cq9V.png" alt="image-20211119113223593"></p>
 <p>getDrivedStateFromProps(): 根据props生成state</p>
 <p>官网不推荐使用，容易写出bug</p>
-<h1 id="heading"></h1>
+<h3 id="redux">Redux</h3>
+<p>Flux: Redux鼻祖</p>
+<p><img src="https://i.loli.net/2021/11/20/qTEJ4eQn6rGcFS8.png" alt="image-20211120191207422"></p>
+<ul>
+<li>View:视图层</li>
+<li>ActionCreator ：视图层发出的消息</li>
+<li>Dispatcher: 用来接受Action，执行回调函数</li>
+<li>Store(数据层)：用来存放应用的状态，一旦发生变动，提醒Views更新界面</li>
+</ul>
+<p>但是Flux实现太复杂</p>
+<h4 id="需要redux的项目">需要Redux的项目</h4>
+<ul>
+<li>用户使用的方式复杂</li>
+<li>不同身份用户有不同的使用方式</li>
+<li>多个用户之间可以协作</li>
+<li>与服务端大量交互，或者使用了websocket</li>
+<li>View需要从多个来源获取数据</li>
+</ul>
+<p>从组件层面考虑：</p>
+<ul>
+<li>某个组件的状态需要共享</li>
+<li>某个状态在任何地方都可拿到</li>
+<li>一个组件需要改变全局状态</li>
+<li>一个组件需要改变另一个组件的状态</li>
+</ul>
+<p>设计思想：</p>
+<p>1、Web应用是一个状态机，数据和视图一一对应</p>
+<p>2、全局状态保存在一个对象中</p>
 </div>
 	</section>
 
@@ -470,7 +497,7 @@
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 797 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 821 words in this page.
 	</div>
 </div>
 
