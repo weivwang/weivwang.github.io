@@ -6,13 +6,26 @@
     <description>Recent content on 3wのblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Nov 2021 18:18:40 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Nov 2021 22:17:14 +0800</lastBuildDate>
     
 	<atom:link href="https://weivwang.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>腾讯文档 武大</title>
+      <title>技术文章收集</title>
+      <link>https://weivwang.github.io/studynotes/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E6%94%B6%E9%9B%86/</link>
+      <pubDate>Wed, 24 Nov 2021 22:17:14 +0800</pubDate>
+      
+      <guid>https://weivwang.github.io/studynotes/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E6%94%B6%E9%9B%86/</guid>
+      <description>&lt;p&gt;WebRTC：https://mp.weixin.qq.com/s/VQwvyaitC1L8noIq5Bnwjw&lt;/p&gt;
+&lt;p&gt;讲了WebRTC和NAT&lt;/p&gt;
+&lt;p&gt;汇编语言：https://mp.weixin.qq.com/s?__biz=MzkwMDE1MzkwNQ==&amp;amp;mid=2247496045&amp;amp;idx=1&amp;amp;sn=74265846bffaa3ed01b6226ec47c7b11&amp;amp;source=41#wechat_redirect&lt;/p&gt;
+&lt;p&gt;操作系统进程和线程：https://juejin.cn/post/6844904080393912327&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>腾讯文档&amp;武大前端菁英班笔记</title>
       <link>https://weivwang.github.io/studynotes/%E8%85%BE%E8%AE%AF%E6%96%87%E6%A1%A3-%E6%AD%A6%E5%A4%A7/</link>
       <pubDate>Sat, 20 Nov 2021 18:18:40 +0800</pubDate>
       
@@ -111,7 +124,7 @@
 &lt;p&gt;各版本：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/LRStaP4XI7peqxn.png&#34; alt=&#34;image-20211120101517055&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;基本使用&#34;&gt;基本使用&lt;/h4&gt;
-&lt;p&gt;![image-20211120101644649](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120101644649.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/maj8pNAzy7CvLhs.png&#34; alt=&#34;image-20211120101644649&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Mode:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Development: 不压缩，调试&lt;/li&gt;
@@ -143,7 +156,7 @@
 &lt;p&gt;热更新：在网页不刷新情况下，将老的代码替换为新代码&lt;/p&gt;
 &lt;h3 id=&#34;进阶使用&#34;&gt;进阶使用&lt;/h3&gt;
 &lt;h4 id=&#34;es6配置&#34;&gt;ES6配置&lt;/h4&gt;
-&lt;p&gt;![image-20211120105822869](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120105822869.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/5LecXmMhiztQgCj.png&#34; alt=&#34;image-20211120105822869&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;图片配置&#34;&gt;图片配置&lt;/h4&gt;
 &lt;p&gt;构建中使用url-loader处理图片资源&lt;/p&gt;
 &lt;p&gt;使用limit来限制图片大小&lt;/p&gt;
@@ -151,11 +164,11 @@
 &lt;p&gt;1、按需加载&lt;/p&gt;
 &lt;p&gt;大型网站打开时加载全部代码，会导致页面加载缓慢，交互卡顿&lt;/p&gt;
 &lt;p&gt;使用异步加载的方式，按需加载和使用&lt;/p&gt;
-&lt;p&gt;![image-20211120112625848](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120112625848.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/sAxdIBNMOcVPRpL.png&#34; alt=&#34;image-20211120112625848&#34;&gt;&lt;/p&gt;
 &lt;p&gt;关键是await语句&lt;/p&gt;
 &lt;p&gt;2、提取公共代码&lt;/p&gt;
 &lt;p&gt;打包时会把公共部分打包在一个文件中&lt;/p&gt;
-&lt;p&gt;![image-20211120113039580](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120113039580.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/sAxdIBNMOcVPRpL.png&#34; alt=&#34;image-20211120113039580&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;http和https&#34;&gt;Http和https&lt;/h3&gt;
 &lt;p&gt;usl中的fragment，方便定位页面元素&lt;/p&gt;
 &lt;p&gt;http：超文本传输协议&lt;/p&gt;
@@ -170,22 +183,22 @@
 &lt;h4 id=&#34;get和post区别&#34;&gt;GET和POST区别&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/zl5xBq8iwkQLXnf.png&#34; alt=&#34;image-20211120141948799&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;http状态码&#34;&gt;http状态码&lt;/h4&gt;
-&lt;p&gt;![image-20211120142308910](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142308910.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/5dpBuZ1SI8tfVz2.png&#34; alt=&#34;image-20211120142308910&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;思考为什么http是无连接无状态&#34;&gt;思考：为什么http是无连接无状态？&lt;/h4&gt;
 &lt;p&gt;前提：基于tcp&lt;/p&gt;
 &lt;p&gt;减轻服务端压力，不用保持链接状态&lt;/p&gt;
-&lt;p&gt;![image-20211120142853725](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142853725.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/I1o5dFx8VMtlBYi.png&#34; alt=&#34;image-20211120142853725&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Http1.1的优化&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/5a4ZcelGKJhrLBb.png&#34; alt=&#34;image-20211120143049907&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;https&#34;&gt;Https&lt;/h4&gt;
-&lt;p&gt;![image-20211120143700840](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120143700840.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/UKZrQLjbTz6MoNu.png&#34; alt=&#34;image-20211120143700840&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;思考服务器怎么向客户端推送消息&#34;&gt;思考：服务器怎么向客户端推送消息&lt;/h4&gt;
 &lt;p&gt;短轮询&lt;/p&gt;
 &lt;p&gt;指在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP request，然后由服务器返回最新的数据给客户端的浏览器。&lt;/p&gt;
 &lt;p&gt;请求中有很多是无用的，浪费带宽和服务器资源；响应的结果没有顺序（因为是异步请求，当发送的请求没有返回结果的时候，后面的请求又被发送。而此时如果后面的请求比前面的请 求要先返回结果，那么当前面的请求返回结果数据时已经是过时无效的数据了）&lt;/p&gt;
 &lt;p&gt;长轮询&lt;/p&gt;
 &lt;p&gt;客户端向服务器发送Ajax请求，服务器接到请求后hold住连接，直到有新消息才返回响应信息并关闭连接，客户端处理完响应信息后再向服务器发送新的请求。&lt;/p&gt;
-&lt;p&gt;![image-20211120144400146](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120144400146.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/5HBktN4mjhixd18.png&#34; alt=&#34;image-20211120144400146&#34;&gt;&lt;/p&gt;
 &lt;p&gt;缺点：服务器端一直保持链接，占用资源&lt;/p&gt;
 &lt;p&gt;解决方法：SSE， server-sent event&lt;/p&gt;
 &lt;p&gt;web端即时通讯技术&lt;/p&gt;
@@ -225,7 +238,7 @@
 &lt;h3 id=&#34;缓存&#34;&gt;缓存&lt;/h3&gt;
 &lt;h4 id=&#34;浏览器缓存&#34;&gt;浏览器缓存&lt;/h4&gt;
 &lt;p&gt;浏览器获取的http资源，保存到本地磁盘&lt;/p&gt;
-&lt;p&gt;![image-20211120151233916](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120151233916.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/ck5RjW3H4fbXelL.png&#34; alt=&#34;image-20211120151233916&#34;&gt;&lt;/p&gt;
 &lt;p&gt;为什么缓存：&lt;/p&gt;
 &lt;p&gt;减轻服务器端压力，页面加载速度更快&lt;/p&gt;
 &lt;h4 id=&#34;缓存分类&#34;&gt;缓存分类&lt;/h4&gt;
@@ -252,7 +265,7 @@
 &lt;p&gt;区别在于需不需要向服务器请求&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/20/wGeEasPrfvuoLTO.png&#34; alt=&#34;image-20211120152725402&#34;&gt;&lt;/p&gt;
 &lt;p&gt;缓存过程&lt;/p&gt;
-&lt;p&gt;![image-20211120152618378](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120152618378.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/Gm9U4O3Q5r2ybdD.png&#34; alt=&#34;image-20211120152618378&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;网络攻击&#34;&gt;网络攻击&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -272,6 +285,103 @@
 &lt;p&gt;重点是token验证&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;第四周&#34;&gt;第四周&lt;/h2&gt;
+&lt;h3 id=&#34;前端工程化和编码规范&#34;&gt;前端工程化和编码规范&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;目录结构&lt;/li&gt;
+&lt;li&gt;文件命名规范&lt;/li&gt;
+&lt;li&gt;代码规范：eslint,prettier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​	为什么有了eslint还要用prettier？&lt;/p&gt;
+&lt;p&gt;​		eslint发现代码错误&lt;/p&gt;
+&lt;p&gt;​		prettier是代码格式化器，不关心代码逻辑&lt;/p&gt;
+&lt;p&gt;​		husky：&lt;/p&gt;
+&lt;p&gt;​				解决git commit有时候忘记eslint或prettier&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/InwVsxga6GWQMAp.png&#34; alt=&#34;image-20211127101536124&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Lint staged ： 只检查当前改动的eslint，防止把别人的错误检查出来，却要自己改&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提交规范&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​	commitlint&lt;/p&gt;
+&lt;p&gt;​	commitizen：可以自己选改动的类型&lt;/p&gt;
+&lt;h3 id=&#34;jest单测&#34;&gt;Jest单测&lt;/h3&gt;
+&lt;p&gt;为什么单测：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更少的问题排查时间
+&lt;ul&gt;
+&lt;li&gt;代码在他的生命周期里实际上不会一成不变&lt;/li&gt;
+&lt;li&gt;经过测试的代码提交后出现问题的可能性更小&lt;/li&gt;
+&lt;li&gt;让整个团队受益&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更准确的文档
+&lt;ul&gt;
+&lt;li&gt;维护文档非常痛苦，且容易过时&lt;/li&gt;
+&lt;li&gt;想知道一段代码的调用方式，可以直接看测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更方便的代码审核&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/M35Ty1Omv4tDnaR.png&#34; alt=&#34;image-20211127105746414&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;设计原则&#34;&gt;设计原则&lt;/h3&gt;
+&lt;p&gt;所有设计模式的实现都遵循一条原则，即“找出程序变化的情况”&lt;/p&gt;
+&lt;h4 id=&#34;单例模式&#34;&gt;单例模式&lt;/h4&gt;
+&lt;p&gt;保证一个类中只有一个实例&lt;/p&gt;
+&lt;p&gt;在js中全局变量常常被当成单例模式，var a = {} ;&lt;/p&gt;
+&lt;p&gt;但是同意造成命名空间污染&lt;/p&gt;
+&lt;p&gt;我们需要尽量减少全局变量的使用&lt;/p&gt;
+&lt;p&gt;使用闭包封装私有变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userInfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UserInfo&lt;/span&gt;();
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;{
+		&lt;span style=&#34;color:#a6e22e&#34;&gt;getUserInfo&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+			&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userInfo&lt;/span&gt;;
+		}
+	}
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;怎么避免每次都new一个UserInfo？&lt;/p&gt;
+&lt;p&gt;使用惰性单例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useInfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;{
+		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;useInfo&lt;/span&gt;){
+			&lt;span style=&#34;color:#a6e22e&#34;&gt;useInfo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UseInfo&lt;/span&gt;();
+		}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;getUseInfo&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
+				&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;useInfo&lt;/span&gt;;
+			}
+	}
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;发布-订阅模式&#34;&gt;发布-订阅模式&lt;/h4&gt;
+&lt;p&gt;定义对象间一对多的依赖关系，当一个对象的状态发生变化时，所有依赖于它的对象都将得到通知&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/LJvbqyolZuHmMzs.png&#34; alt=&#34;image-20211127114412606&#34;&gt;&lt;/p&gt;
+&lt;p&gt;加一个中介：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/27/K2maZGV1tkHPgEo.png&#34; alt=&#34;image-20211127114726545&#34;&gt;&lt;/p&gt;
+&lt;p&gt;问题在于：模块之间的联系被隐藏到背后&lt;/p&gt;
+&lt;h4 id=&#34;享元模式&#34;&gt;享元模式&lt;/h4&gt;
+&lt;h4 id=&#34;装饰者模式&#34;&gt;装饰者模式&lt;/h4&gt;
+&lt;p&gt;允许向一个现有的对象添加新的功能，同时又不改变其结构&lt;/p&gt;
+&lt;p&gt;思考一个游戏升级问题，A飞机升级时增加了技能，如何设计？&lt;/p&gt;
+&lt;p&gt;最简单的方法：继承，问题：数量多，强耦合&lt;/p&gt;
+&lt;p&gt;装饰器模式。&lt;/p&gt;
+&lt;h4 id=&#34;工厂模式&#34;&gt;工厂模式&lt;/h4&gt;
+&lt;p&gt;提供一种创建对象的方式&lt;/p&gt;
+&lt;h3 id=&#34;设计原则-1&#34;&gt;设计原则&lt;/h3&gt;
+&lt;p&gt;所有的设计原则的目的都是让程序低耦合，高复用，高内聚，易扩展，易维护&lt;/p&gt;
+&lt;h4 id=&#34;单一职责原则&#34;&gt;单一职责原则&lt;/h4&gt;
+&lt;p&gt;一个对象（方法）只做一件事&lt;/p&gt;
+&lt;p&gt;并不是所有的职责都应该一一分离&lt;/p&gt;
+&lt;p&gt;srp原则的优点是降低了单个类或对象的复杂度，缺点是增加了代码编写的复杂度&lt;/p&gt;
+&lt;h4 id=&#34;开闭原则&#34;&gt;开闭原则&lt;/h4&gt;
+&lt;p&gt;软件实体（类，模块，函数）等应该是可以扩展的，但是不可修改&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对软件测试友好，不会破环原有的测试程序&lt;/li&gt;
+&lt;li&gt;改动代码是一个危险的行为，经常不知不觉引发了其他bug&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过封装变化的方式，把系统中稳定不变的部分和容易变化的部分隔离开来&lt;/p&gt;
+&lt;p&gt;如：发布订阅模式，新的订阅者出现后，发布者不需要修改任何代码&lt;/p&gt;
+&lt;h4 id=&#34;依赖倒置原则&#34;&gt;依赖倒置原则&lt;/h4&gt;
+&lt;p&gt;面向接口编程而不是面向实现编程&lt;/p&gt;
 </description>
     </item>
     
@@ -286,6 +396,373 @@
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/18/slkGtz6MLpEnFoW.png&#34; alt=&#34;image-20211118101711178&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/18/g6NcMXWOvnlwtbE.png&#34; alt=&#34;image-20211118101602534&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://i.loli.net/2021/11/18/yoAmtRuePxgc7h5.png&#34; alt=&#34;image-20211118102252963&#34;&gt;&lt;/p&gt;
+&lt;p&gt;作业 记录&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请说明描述性分析、 预测性分析、 规范性分析的含义，并采用一个综合例子说明这三种分析的应用。（*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*12*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分）*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;描述性分析：描述已经发生了什么。它是对历史的洞察，即回答“发生了什么？”。描述性分析使用简单的数学和统计方法就能实现，典型的分析指标例如计数、均值、中位数、众数、方差、分布、相关系数等。&lt;/p&gt;
+&lt;p&gt;预测性分析：预测将会发生什么。预测性分析大多是基于概率的，即预测事件在未来发生的概率，或者事件在大概率上会如何发生。在预测性分析中，使用了多种技术，例如数据挖掘，统计建模和机器学习算法（分类，回归和聚类技术）等等，它最终的目的是试图预测可能的未来结果并提供这些结果发生的可能性。&lt;/p&gt;
+&lt;p&gt;规范性分析：提供应该怎么办的建议。规范性分析吸收描述性分析与预测性分析中的结论，通过为企业推荐最佳的可行方案来得到行动建议&lt;/p&gt;
+&lt;p&gt;例子：比如一家短视频公司需要分析用户的视频喜好，从未为用户推荐更多他们喜爱的短视频类型。&lt;/p&gt;
+&lt;p&gt;使用描述性分析，分析用户在平台上观看短视频的数据，计算方差，均值，还有一些相关系数：年龄和视频类型的相关系数，性别和视频类型的相关系数等。&lt;/p&gt;
+&lt;p&gt;使用预测性分析：将拿到的数据进行分类，回归，聚类等其他机器学习算法，或者将数据投喂给深度学习模型，从而实现预测，比如拿到用户的性别年龄，过往喜好来预测用户对哪些短视频更有兴趣。&lt;/p&gt;
+&lt;p&gt;使用规范性分析：根据用户的这种偏好，平台怎么调整自己的策略来让用户对产品的粘性更高。比如把更多用户偏好的短视频推荐给他们，把与之相关的广告更精准推荐给他们。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请描述数据挖掘的步骤，请简述每个步骤的基本含义。（*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*10*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分）*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;步骤（1）&lt;em&gt;&lt;strong&gt;*信息收集*&lt;/strong&gt;&lt;/em&gt;：根据确定的数据分析对象，抽象出在数据分析中所需要的特征信息，然后选择合适的信息收集方法，将收集到的信息存入数据库。对于海量数据，选择一个合适的数据存储和管理的数据仓库是至关重要的。&lt;/p&gt;
+&lt;p&gt;步骤（2）&lt;em&gt;&lt;strong&gt;*数据集成*&lt;/strong&gt;&lt;/em&gt;：把不同来源、格式、特点性质的数据在逻辑上或物理上有机地集中，从而为企业提供全面的数据共享。&lt;/p&gt;
+&lt;p&gt;步骤（3）&lt;em&gt;&lt;strong&gt;*数据规约*&lt;/strong&gt;&lt;/em&gt;：如果执行多数的数据挖掘算法，即使是在少量数据上也需要很长的时间，而做商业运营数据挖掘时数据量往往非常大。数据规约技术可以用来得到数据集的规约表示，它小得多，但仍然接近于保持原数据的完整性，并且规约后执行数据挖掘结果与规约前执行结果相同或几乎相同。&lt;/p&gt;
+&lt;p&gt;步骤（4）&lt;em&gt;&lt;strong&gt;*数据清理*&lt;/strong&gt;&lt;/em&gt;：在数据库中的数据有一些是不完整的（有些感兴趣的属性缺少属性值）、含噪声的（包含错误的属性值），并且是不一致的（同样的信息不同的表示方式），因此需要进行数据清理，将完整、正确、一致的数据信息存入数据仓库中。不然，挖掘的结果会差强人意。&lt;/p&gt;
+&lt;p&gt;步骤（5）&lt;em&gt;&lt;strong&gt;*数据变换*&lt;/strong&gt;&lt;/em&gt;：通过平滑聚集、数据概化、规范化等方式将数据转换成适用于数据挖掘的形式。对于有些实数型数据，通过概念分层和数据的离散化来转换数据也是重要的一步。&lt;/p&gt;
+&lt;p&gt;步骤（6）&lt;em&gt;&lt;strong&gt;*数据挖掘过程*&lt;/strong&gt;&lt;/em&gt;：根据数据仓库中的数据信息，选择合适的分析工具，应用统计方法、事例推理、决策树、规则推理、模糊集，甚至神经网络、遗传算法的方法处理信息，得出有用的分析信息。&lt;/p&gt;
+&lt;p&gt;步骤（7）&lt;em&gt;&lt;strong&gt;*模式评估*&lt;/strong&gt;&lt;/em&gt;：从商业角度，由行业专家来验证数据挖掘结果的正确性。&lt;/p&gt;
+&lt;p&gt;步骤（8）&lt;em&gt;&lt;strong&gt;*知识表示*&lt;/strong&gt;&lt;/em&gt;：将数据挖掘所得到的分析信息以可视化的方式呈现给用户，或作为新的知识存放在知识库中，供其他应用程序使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*编写程序实现*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*A*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*priori*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*算法*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*和*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*FP*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*-*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*G*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*rowth*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*算法，算法*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*可以根据*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*给定*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*的支持度和置信度获取所有的频繁项集*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*和*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*关联规则。*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*请自拟数据集进行测试。（2*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*5*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分）*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Apriori算法：&lt;/p&gt;
+&lt;p&gt;核心代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+def loadDataSet():
+    return [[1,3,4],[2,3,5],[1,2,3,5],[2,5]]
+
+#发现频繁项集
+def createC1(dataSet):
+    C1=[]
+    for transaction in dataSet:
+        for item in transaction:
+            if not [item] in C1:
+                C1.append([item])
+    C1.sort()
+    return list(map(frozenset,C1))
+
+def scanD(D,CK,minSupport):
+    ssCnt = {}
+    for tid in D:
+        for can in CK:
+            if can.issubset(tid):
+                if not can in ssCnt:ssCnt[can]=1
+                else:ssCnt[can]+=1
+    numItems = float(len(D))
+    retList = []
+    supportData={}
+    for key in ssCnt:
+        support = ssCnt[key]/numItems
+        if support&amp;gt;=minSupport:
+            retList.insert(0,key)
+        supportData[key]=support
+    return retList,supportData
+
+#频繁项集两两组合
+def aprioriGen(Lk,k):
+    retList=[]
+    lenLk = len(Lk)
+    for i in range(lenLk):
+        for j in range(i+1,lenLk):
+            L1=list(Lk[i])[:k-2];L2=list(Lk[j])[:k-2]
+            L1.sort();L2.sort()
+            if L1==L2:
+                retList.append(Lk[i]|Lk[j])
+    return retList
+
+# 最小支持度域值设置为0.5
+def apriori(dataSet,minSupport=0.7):
+    C1=createC1(dataSet)
+    D=list(map(set,dataSet))
+    L1,supportData =scanD(D,C1,minSupport)
+    L=[L1]
+    k=2
+    while(len(L[k-2])&amp;gt;0):
+        CK = aprioriGen(L[k-2],k)
+        Lk,supK = scanD(D,CK,minSupport)
+        supportData.update(supK)
+        L.append(Lk)
+        k+=1
+    return L,supportData
+
+# 找关联规则
+# 规则计算的主函数
+def generateRules(L,supportData,minConf=0.5):
+    bigRuleList = []
+    for i in range(1,len(L)):
+        for freqSet in L[i]:
+            H1 = [frozenset([item]) for item in freqSet]
+            if(i&amp;gt;1):
+                rulesFromConseq(freqSet,H1,supportData,bigRuleList,minConf)
+            else:
+                calcConf(freqSet,H1,supportData,bigRuleList,minConf)
+    return bigRuleList
+
+
+def calcConf(freqSet,H,supportData,brl,minConf=0.5):
+    prunedH=[]
+    for conseq in H:
+        conf = supportData[freqSet]/supportData[freqSet-conseq]
+        if conf&amp;gt;=minConf:
+            print (freqSet-conseq,&#39;---&amp;gt;&#39;,conseq,&#39;conf:&#39;,conf)
+            brl.append((freqSet-conseq,conseq,conf))
+            prunedH.append(conseq)
+    return prunedH
+def rulesFromConseq(freqSet,H,supportData,brl,minConf=0.7):
+    m = len(H[0])
+    if (len(freqSet)&amp;gt;(m+1)):
+        Hmp1 = aprioriGen(H,m+1)
+        Hmp1 = calcConf(freqSet,Hmp1,supportData,brl,minConf)
+        if(len(Hmp1)&amp;gt;1):
+            rulesFromConseq(freqSet,Hmp1,supportData,brl,minConf)
+
+
+if __name__==&#39;__main__&#39;:
+    dataSet=loadDataSet()
+    L,supportData=apriori(dataSet)
+    rules = generateRules(L,supportData,minConf=0.5)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;拟定数据：&lt;/p&gt;
+&lt;p&gt;[1,3,4],[2,3,5],[1,2,3,5],[2,5]&lt;/p&gt;
+&lt;p&gt;最小支持度设置为0.5，最小置信度设置为0.7时，测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/g5TCOWLFoVqEjPS.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;修改最小支持度和最小置信度，分别修改为0.7和0.5，测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/BaLWXitCnlqEr75.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Fp-growth算法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+def loadSimpDat():
+    simpDat = [[&#39;r&#39;, &#39;z&#39;, &#39;h&#39;, &#39;j&#39;, &#39;p&#39;],
+               [&#39;z&#39;, &#39;y&#39;, &#39;x&#39;, &#39;w&#39;, &#39;v&#39;, &#39;u&#39;, &#39;t&#39;, &#39;s&#39;],
+               [&#39;z&#39;,&#39;p&#39;,&#39;x&#39;],
+               [&#39;r&#39;, &#39;x&#39;, &#39;n&#39;, &#39;o&#39;, &#39;s&#39;],
+               [&#39;y&#39;, &#39;r&#39;, &#39;x&#39;, &#39;z&#39;, &#39;q&#39;, &#39;t&#39;, &#39;p&#39;],
+               [&#39;y&#39;, &#39;z&#39;, &#39;x&#39;, &#39;e&#39;, &#39;q&#39;, &#39;s&#39;, &#39;t&#39;, &#39;m&#39;]]
+    return simpDat
+    
+class treeNode:
+    def __init__(self, nameValue, numOccur, parentNode):
+        self.name = nameValue
+        self.count = numOccur
+        self.nodeLink = None
+        self.parent = parentNode      #needs to be updated
+        self.children = {}
+   
+    def inc(self, numOccur):
+        self.count += numOccur
+       
+    def disp(self, ind=1):
+        print ((&#39;  &#39;*ind, self.name, &#39; &#39;, self.count))
+        for child in self.children.values():
+            child.disp(ind+1)
+        
+def createTree(dataSet, minSup=1): #create FP-tree from dataset but don&#39;t mine
+    headerTable = {}
+    #go over dataSet twice
+    for trans in dataSet:#first pass counts frequency of occurance
+        for item in trans:
+            headerTable[item] = headerTable.get(item, 0) + dataSet[trans]
+           
+    for k in list(headerTable.keys()):  #remove items not meeting minSup
+        if headerTable[k] &amp;lt; minSup:
+            headerTable.pop(k)
+    freqItemSet = set(headerTable.keys())
+   
+    #print &#39;freqItemSet: &#39;,freqItemSet
+    if len(freqItemSet) == 0: return None, None  #if no items meet min support --&amp;gt;get out
+    for k in headerTable:
+        headerTable[k] = [headerTable[k], None] #reformat headerTable to use Node link
+    #print &#39;headerTable: &#39;,headerTable
+    retTree = treeNode(&#39;Null Set&#39;, 1, None) #create tree
+    for tranSet, count in dataSet.items():  #go through dataset 2nd time
+        localD = {}
+        for item in tranSet:  #put transaction items in order
+            if item in freqItemSet:
+                localD[item] = headerTable[item][0]
+        if len(localD) &amp;gt; 0:
+            orderedItems = [v[0] for v in sorted(localD.items(), key=lambda p: p[1], reverse=True)]
+            updateTree(orderedItems, retTree, headerTable, count)#populate tree with ordered freq itemset
+    return retTree, headerTable #return tree and header table
+    
+def updateTree(items, inTree, headerTable, count):
+    if items[0] in inTree.children:#check if orderedItems[0] in retTree.children
+        inTree.children[items[0]].inc(count) #incrament count
+    else:   #add items[0] to inTree.children
+        inTree.children[items[0]] = treeNode(items[0], count, inTree)
+        if headerTable[items[0]][1] == None: #update header table
+            headerTable[items[0]][1] = inTree.children[items[0]]
+        else:
+            updateHeader(headerTable[items[0]][1], inTree.children[items[0]])
+    if len(items) &amp;gt; 1:#call updateTree() with remaining ordered items
+        updateTree(items[1::], inTree.children[items[0]], headerTable, count)
+       
+def updateHeader(nodeToTest, targetNode):   #this version does not use recursion
+    while (nodeToTest.nodeLink != None):    #Do not use recursion to traverse a linked list!
+        nodeToTest = nodeToTest.nodeLink
+    nodeToTest.nodeLink = targetNode
+       
+def ascendTree(leafNode, prefixPath): #ascends from leaf node to root
+    if leafNode.parent != None:
+        prefixPath.append(leafNode.name)
+        ascendTree(leafNode.parent, prefixPath)
+   
+def findPrefixPath(basePat, treeNode): #treeNode comes from header table
+    condPats = {}
+    while treeNode != None:
+        prefixPath = []
+        ascendTree(treeNode, prefixPath)
+        if len(prefixPath) &amp;gt; 1:
+            condPats[frozenset(prefixPath[1:])] = treeNode.count
+        treeNode = treeNode.nodeLink
+    return condPats
+    
+def mineTree(inTree, headerTable, minSup, preFix, freqItemList):
+    bigL = [k for k,v in sorted(headerTable.items(), key=lambda p: p[1][0])]#(sort header table)
+    for basePat in bigL:  #start from bottom of header table
+        newFreqSet = preFix.copy()
+        newFreqSet.add(basePat)
+        #print &#39;finalFrequent Item: &#39;,newFreqSet    #append to set
+        freqItemList.append(newFreqSet)
+        condPattBases = findPrefixPath(basePat, headerTable[basePat][1])
+        #print &#39;condPattBases :&#39;,basePat, condPattBases
+        #2. construct cond FP-tree from cond. pattern base
+        myCondTree, myHead = createTree(condPattBases, minSup)
+        #print &#39;head from conditional tree: &#39;, myHead
+        if myHead != None: #3. mine cond. FP-tree
+            #print &#39;conditional tree for: &#39;,newFreqSet
+            #myCondTree.disp(1)           
+            mineTree(myCondTree, myHead, minSup, newFreqSet, freqItemList)
+
+def createInitSet(dataSet):
+    retDict = {}
+    for trans in dataSet:
+        retDict[frozenset(trans)] = 1
+    return retDict
+
+
+minSup = 4
+simpDat = loadSimpDat()
+initSet = createInitSet(simpDat)
+myFPtree, myHeaderTab = createTree(initSet, minSup)
+myFreqList = []
+if myFPtree is not None:
+    myFPtree.disp()
+    mineTree(myFPtree, myHeaderTab, minSup, set([]), myFreqList)
+print(&amp;quot;支持度为%d时，频繁项数为%d:&amp;quot;%(minSup, len(myFreqList)))
+print(&amp;quot;频繁项集为:&amp;quot;)
+for item in myFreqList:
+    print(item)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;测试数据：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/cw2i874amMrEHsl.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/BD6ziHM4KOhC8Qf.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;代码运行环境：python3.7&lt;/p&gt;
+&lt;p&gt;完整代码见 ./压缩包/代码&lt;/p&gt;
+&lt;p&gt;\4. 请编写程序实现决策树算法，请自拟数据集进行测试。（20分）&lt;/p&gt;
+&lt;p&gt;核心代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from math import log
+def createDataSet():
+    #outlook:sunny:1,overcast:2,rainy:3
+    #temperature:hot:1,mild:2,cool:3
+    #humidity:high:1,normal:2
+    #windy:false:1,true:2
+    #play:no,yes
+    dataSet=[
+        [1,1,1,1,&#39;no&#39;],
+        [1,1,1,2,&#39;no&#39;],
+        [2,1,1,1,&#39;yes&#39;],
+        [3,2,1,1,&#39;yes&#39;],
+        [3,3,2,1,&#39;yes&#39;],
+        [3,3,2,2,&#39;no&#39;],
+        [2,3,2,2,&#39;yes&#39;],
+        [1,2,1,1,&#39;no&#39;],
+        [1,3,2,1,&#39;yes&#39;],
+        [3,2,2,1,&#39;yes&#39;],
+        [1,2,2,2,&#39;yes&#39;],
+        [2,2,1,2,&#39;yes&#39;],
+        [2,1,2,1,&#39;yes&#39;],
+        [3,2,1,2,&#39;no&#39;]
+    ]
+    labels=[&#39;outlook&#39;,&#39;temperature&#39;,&#39;humidity&#39;,&#39;windy&#39;,&#39;play&#39;]
+    return dataSet,labels
+def calcShannonEnt(dataSet):
+    #返回数据集行数
+    numEntries=len(dataSet)
+    #保存每个标签（label）出现次数的字典
+    labelCounts={}
+    #对每组特征向量进行统计
+    for featVec in dataSet:
+        currentLabel=featVec[-1]#提取标签信息
+        if currentLabel not in labelCounts.keys():#如果标签没有放入统计次数
+            labelCounts[currentLabel]=0
+        labelCounts[currentLabel]+=1#label计数
+    shannonEnt=0.0
+    #计算经验熵
+    for key in labelCounts:
+        prob=float(labelCounts[key])/numEntries #选择该标签的概率
+        shannonEnt-=prob*log(prob,2)            #利用公式计算
+    return shannonEnt
+def chooseBestFeatureToSplit(dataSet):
+    #特征数量
+    numFeatures = len(dataSet[0]) - 1
+    #计数数据集的香农熵
+    baseEntropy = calcShannonEnt(dataSet)
+    #信息增益
+    bestInfoGain = 0.0
+    #最优特征的索引值
+    bestFeature = -1
+    #遍历所有特征
+    for i in range(numFeatures):
+        # 获取dataSet的第i个所有特征
+        featList = [example[i] for example in dataSet]
+        #创建set集合{}，元素不可重复
+        uniqueVals = set(featList)
+        #经验条件熵
+        newEntropy = 0.0
+        #计算信息增益
+        for value in uniqueVals:
+            #subDataSet划分后的子集
+            subDataSet = splitDataSet(dataSet, i, value)
+            #计算子集的概率
+            prob = len(subDataSet) / float(len(dataSet))
+            #根据公式计算经验条件熵
+            newEntropy += prob * calcShannonEnt((subDataSet))
+        #信息增益
+        infoGain = baseEntropy - newEntropy
+        #打印每个特征的信息增益
+        print(&amp;quot;第%d个特征的增益为%.3f&amp;quot; % (i, infoGain))
+        #计算信息增益
+        if (infoGain &amp;gt; bestInfoGain):
+            #更新信息增益，找到最大的信息增益
+            bestInfoGain = infoGain
+            #记录信息增益最大的特征的索引值
+            bestFeature = i
+            #返回信息增益最大特征的索引值
+    return bestFeature
+def splitDataSet(dataSet,axis,value):
+    retDataSet=[]
+    for featVec in dataSet:
+        if featVec[axis]==value:
+            reducedFeatVec=featVec[:axis]
+            reducedFeatVec.extend(featVec[axis+1:])
+            retDataSet.append(reducedFeatVec)
+    return retDataSet
+if __name__==&#39;__main__&#39;:
+    dataSet,features=createDataSet()
+    print(dataSet)
+    print(calcShannonEnt(dataSet))
+    print(&amp;quot;最优索引值：&amp;quot;+str(chooseBestFeatureToSplit(dataSet)))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/2EMmlRZycCXTK9L.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请分析k*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*-means*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*算法和k中心点算法的异同。（*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*8*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分）*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;相同之处：&lt;/p&gt;
+&lt;p&gt;在第一步：选择k个随机的点作为初始的种子点和第二步：针对每个簇中,随机在选一个点为新的种子点构建新的划分，k-means算法和k中心点算法没有区别，是相同的。&lt;/p&gt;
+&lt;p&gt;第五步两者都是重复计算E的值直到没有能够使得E值更小的划分为止。&lt;/p&gt;
+&lt;p&gt;不同之处：&lt;/p&gt;
+&lt;p&gt;在第三步，k-means对簇中的点求均值，均值可能并不存在于簇中，k中心点算法采用的是在簇中随机的点作为新种子，再构建新的划分，新种子一点是真实存在簇中。&lt;/p&gt;
+&lt;p&gt;第四步：计算距离时公式不同：k-中心点中的dist(p,ci)没有平方。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请使用单连接算法描述下列数据是如何进行层次聚类的并画出树状图。*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;（10， 8） （70，80） （99，87） （6，5） （5，10） （16分）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/s4ZxUkwYCpFH6MI.png&#34; alt=&#34;image-20211210090953323&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2021/12/10/whDcVrFRks6XvK2.png&#34; alt=&#34;image-20211210091036062&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7.&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;*请描述深度学习中前向传递、后项传递和梯度下降含义和作用。（*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*9*&lt;/strong&gt;&lt;/em&gt;&lt;em&gt;&lt;strong&gt;*分）*&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;前向传播 (Forward propagation)，指的是：数据从输入层开始，依次经过隐藏层（如果有）最终到达输出层的过程。其中，数据每经过一层传播，其节点输出的值所代表的信息层次就越高阶和概括。节点中输出的值是通过与其相连的前一层中所有的节点输出值的加权求和处理后的结果。&lt;/p&gt;
+&lt;p&gt;反向传播是计算损失函数对神经网络这个函数中的不同层中参数的偏导数的过程。就是对前向传播产生的结果进行纠正，并把权重参数等进行更新。&lt;/p&gt;
+&lt;p&gt;梯度下降就是寻找优化参数的方向，对得到的偏差，往哪个方向对参数进行优化。它利用&lt;a href=&#34;https://www.zhihu.com/search?q=%E6%A2%AF%E5%BA%A6%E4%BF%A1%E6%81%AF&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B:,:113714840%7D&#34;&gt;梯度信息&lt;/a&gt;，通过不断迭代调整参数来寻找合适的目标值&lt;/p&gt;
 </description>
     </item>
     

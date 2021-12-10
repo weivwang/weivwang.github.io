@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>3wのblog  | 腾讯文档 武大</title>
+	<title>3wのblog  | 腾讯文档&amp;武大前端菁英班笔记</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.85.0" />
 	
@@ -112,7 +112,7 @@
 		<a href="https://weivwang.github.io" title="3wのblog" class="heading font-cursive icon">3wのblog</a>
 	</h2>
 </div>
-<h1 class="pt-2">腾讯文档 武大</h1>
+<h1 class="pt-2">腾讯文档&amp;武大前端菁英班笔记</h1>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -228,7 +228,7 @@
 <p>各版本：</p>
 <p><img src="https://i.loli.net/2021/11/20/LRStaP4XI7peqxn.png" alt="image-20211120101517055"></p>
 <h4 id="基本使用">基本使用</h4>
-<p>![image-20211120101644649](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120101644649.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/maj8pNAzy7CvLhs.png" alt="image-20211120101644649"></p>
 <p>Mode:</p>
 <ul>
 <li>Development: 不压缩，调试</li>
@@ -260,7 +260,7 @@
 <p>热更新：在网页不刷新情况下，将老的代码替换为新代码</p>
 <h3 id="进阶使用">进阶使用</h3>
 <h4 id="es6配置">ES6配置</h4>
-<p>![image-20211120105822869](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120105822869.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/5LecXmMhiztQgCj.png" alt="image-20211120105822869"></p>
 <h4 id="图片配置">图片配置</h4>
 <p>构建中使用url-loader处理图片资源</p>
 <p>使用limit来限制图片大小</p>
@@ -268,11 +268,11 @@
 <p>1、按需加载</p>
 <p>大型网站打开时加载全部代码，会导致页面加载缓慢，交互卡顿</p>
 <p>使用异步加载的方式，按需加载和使用</p>
-<p>![image-20211120112625848](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120112625848.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/sAxdIBNMOcVPRpL.png" alt="image-20211120112625848"></p>
 <p>关键是await语句</p>
 <p>2、提取公共代码</p>
 <p>打包时会把公共部分打包在一个文件中</p>
-<p>![image-20211120113039580](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120113039580.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/sAxdIBNMOcVPRpL.png" alt="image-20211120113039580"></p>
 <h3 id="http和https">Http和https</h3>
 <p>usl中的fragment，方便定位页面元素</p>
 <p>http：超文本传输协议</p>
@@ -287,22 +287,22 @@
 <h4 id="get和post区别">GET和POST区别</h4>
 <p><img src="https://i.loli.net/2021/11/20/zl5xBq8iwkQLXnf.png" alt="image-20211120141948799"></p>
 <h4 id="http状态码">http状态码</h4>
-<p>![image-20211120142308910](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142308910.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/5dpBuZ1SI8tfVz2.png" alt="image-20211120142308910"></p>
 <h4 id="思考为什么http是无连接无状态">思考：为什么http是无连接无状态？</h4>
 <p>前提：基于tcp</p>
 <p>减轻服务端压力，不用保持链接状态</p>
-<p>![image-20211120142853725](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120142853725.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/I1o5dFx8VMtlBYi.png" alt="image-20211120142853725"></p>
 <p>Http1.1的优化</p>
 <p><img src="https://i.loli.net/2021/11/20/5a4ZcelGKJhrLBb.png" alt="image-20211120143049907"></p>
 <h4 id="https">Https</h4>
-<p>![image-20211120143700840](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120143700840.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/UKZrQLjbTz6MoNu.png" alt="image-20211120143700840"></p>
 <h4 id="思考服务器怎么向客户端推送消息">思考：服务器怎么向客户端推送消息</h4>
 <p>短轮询</p>
 <p>指在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP request，然后由服务器返回最新的数据给客户端的浏览器。</p>
 <p>请求中有很多是无用的，浪费带宽和服务器资源；响应的结果没有顺序（因为是异步请求，当发送的请求没有返回结果的时候，后面的请求又被发送。而此时如果后面的请求比前面的请 求要先返回结果，那么当前面的请求返回结果数据时已经是过时无效的数据了）</p>
 <p>长轮询</p>
 <p>客户端向服务器发送Ajax请求，服务器接到请求后hold住连接，直到有新消息才返回响应信息并关闭连接，客户端处理完响应信息后再向服务器发送新的请求。</p>
-<p>![image-20211120144400146](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120144400146.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/5HBktN4mjhixd18.png" alt="image-20211120144400146"></p>
 <p>缺点：服务器端一直保持链接，占用资源</p>
 <p>解决方法：SSE， server-sent event</p>
 <p>web端即时通讯技术</p>
@@ -342,7 +342,7 @@
 <h3 id="缓存">缓存</h3>
 <h4 id="浏览器缓存">浏览器缓存</h4>
 <p>浏览器获取的http资源，保存到本地磁盘</p>
-<p>![image-20211120151233916](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120151233916.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/ck5RjW3H4fbXelL.png" alt="image-20211120151233916"></p>
 <p>为什么缓存：</p>
 <p>减轻服务器端压力，页面加载速度更快</p>
 <h4 id="缓存分类">缓存分类</h4>
@@ -369,7 +369,7 @@
 <p>区别在于需不需要向服务器请求</p>
 <p><img src="https://i.loli.net/2021/11/20/wGeEasPrfvuoLTO.png" alt="image-20211120152725402"></p>
 <p>缓存过程</p>
-<p>![image-20211120152618378](/Users/wangweiwei/Library/Application Support/typora-user-images/image-20211120152618378.png)</p>
+<p><img src="https://i.loli.net/2021/11/27/Gm9U4O3Q5r2ybdD.png" alt="image-20211120152618378"></p>
 <h3 id="网络攻击">网络攻击</h3>
 <ul>
 <li>
@@ -389,6 +389,103 @@
 <p>重点是token验证</p>
 </li>
 </ul>
+<h2 id="第四周">第四周</h2>
+<h3 id="前端工程化和编码规范">前端工程化和编码规范</h3>
+<ul>
+<li>目录结构</li>
+<li>文件命名规范</li>
+<li>代码规范：eslint,prettier</li>
+</ul>
+<p>​	为什么有了eslint还要用prettier？</p>
+<p>​		eslint发现代码错误</p>
+<p>​		prettier是代码格式化器，不关心代码逻辑</p>
+<p>​		husky：</p>
+<p>​				解决git commit有时候忘记eslint或prettier</p>
+<p><img src="https://i.loli.net/2021/11/27/InwVsxga6GWQMAp.png" alt="image-20211127101536124"></p>
+<p>Lint staged ： 只检查当前改动的eslint，防止把别人的错误检查出来，却要自己改</p>
+<ul>
+<li>提交规范</li>
+</ul>
+<p>​	commitlint</p>
+<p>​	commitizen：可以自己选改动的类型</p>
+<h3 id="jest单测">Jest单测</h3>
+<p>为什么单测：</p>
+<ul>
+<li>更少的问题排查时间
+<ul>
+<li>代码在他的生命周期里实际上不会一成不变</li>
+<li>经过测试的代码提交后出现问题的可能性更小</li>
+<li>让整个团队受益</li>
+</ul>
+</li>
+<li>更准确的文档
+<ul>
+<li>维护文档非常痛苦，且容易过时</li>
+<li>想知道一段代码的调用方式，可以直接看测试</li>
+</ul>
+</li>
+<li>更方便的代码审核</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/27/M35Ty1Omv4tDnaR.png" alt="image-20211127105746414"></p>
+<h3 id="设计原则">设计原则</h3>
+<p>所有设计模式的实现都遵循一条原则，即“找出程序变化的情况”</p>
+<h4 id="单例模式">单例模式</h4>
+<p>保证一个类中只有一个实例</p>
+<p>在js中全局变量常常被当成单例模式，var a = {} ;</p>
+<p>但是同意造成命名空间污染</p>
+<p>我们需要尽量减少全局变量的使用</p>
+<p>使用闭包封装私有变量：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>(){
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userInfo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UserInfo</span>();
+	<span style="color:#66d9ef">return</span>{
+		<span style="color:#a6e22e">getUserInfo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">userInfo</span>;
+		}
+	}
+})
+</code></pre></div><p>怎么避免每次都new一个UserInfo？</p>
+<p>使用惰性单例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>(){
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">useInfo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+	<span style="color:#66d9ef">return</span>{
+		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">useInfo</span>){
+			<span style="color:#a6e22e">useInfo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UseInfo</span>();
+		}
+    <span style="color:#a6e22e">getUseInfo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){
+				<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">useInfo</span>;
+			}
+	}
+})
+</code></pre></div><h4 id="发布-订阅模式">发布-订阅模式</h4>
+<p>定义对象间一对多的依赖关系，当一个对象的状态发生变化时，所有依赖于它的对象都将得到通知</p>
+<p><img src="https://i.loli.net/2021/11/27/LJvbqyolZuHmMzs.png" alt="image-20211127114412606"></p>
+<p>加一个中介：</p>
+<p><img src="https://i.loli.net/2021/11/27/K2maZGV1tkHPgEo.png" alt="image-20211127114726545"></p>
+<p>问题在于：模块之间的联系被隐藏到背后</p>
+<h4 id="享元模式">享元模式</h4>
+<h4 id="装饰者模式">装饰者模式</h4>
+<p>允许向一个现有的对象添加新的功能，同时又不改变其结构</p>
+<p>思考一个游戏升级问题，A飞机升级时增加了技能，如何设计？</p>
+<p>最简单的方法：继承，问题：数量多，强耦合</p>
+<p>装饰器模式。</p>
+<h4 id="工厂模式">工厂模式</h4>
+<p>提供一种创建对象的方式</p>
+<h3 id="设计原则-1">设计原则</h3>
+<p>所有的设计原则的目的都是让程序低耦合，高复用，高内聚，易扩展，易维护</p>
+<h4 id="单一职责原则">单一职责原则</h4>
+<p>一个对象（方法）只做一件事</p>
+<p>并不是所有的职责都应该一一分离</p>
+<p>srp原则的优点是降低了单个类或对象的复杂度，缺点是增加了代码编写的复杂度</p>
+<h4 id="开闭原则">开闭原则</h4>
+<p>软件实体（类，模块，函数）等应该是可以扩展的，但是不可修改</p>
+<ul>
+<li>对软件测试友好，不会破环原有的测试程序</li>
+<li>改动代码是一个危险的行为，经常不知不觉引发了其他bug</li>
+</ul>
+<p>通过封装变化的方式，把系统中稳定不变的部分和容易变化的部分隔离开来</p>
+<p>如：发布订阅模式，新的订阅者出现后，发布者不需要修改任何代码</p>
+<h4 id="依赖倒置原则">依赖倒置原则</h4>
+<p>面向接口编程而不是面向实现编程</p>
 </div>
 	</section>
 
@@ -462,7 +559,7 @@
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 229 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 323 words in this page.
 	</div>
 </div>
 
@@ -481,6 +578,13 @@
         商务智能课堂笔记
     </a>
     
+    
+    <a class="flex-grow-0" href="/studynotes/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E6%94%B6%E9%9B%86/">
+        技术文章收集
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
