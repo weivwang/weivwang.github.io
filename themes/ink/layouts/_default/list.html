@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $pages := .Pages }}
+{{ range (seq (now.Year) -1 2021) }}
+  {{ $year := . }}
+  {{ $yearPages := where $pages "Date.Year" $year }}
+  {{ if $yearPages }}
+  <h2 class="archive-year">{{ $year }}</h2>
+  <ul class="archive-list">
+    {{ range $yearPages.ByDate.Reverse }}
+    <li class="archive-item">
+      <span class="post-date">{{ .Date.Format "01-02" }}</span>
+      <a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}
+{{ end }}
