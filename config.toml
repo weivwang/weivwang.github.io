@@ -1,0 +1,42 @@
+baseURL = "https://weivwang.github.io/"
+languageCode = "zh-cn"
+title = "www's Blog"
+theme = "ink"
+
+[params]
+  subtitle = "使其中坦然，不以物伤性，将何适而非快"
+  author = "www"
+  description = "www's Blog - 使其中坦然，不以物伤性，将何适而非快"
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.highlight]
+    style = "monokailight"
+    lineNos = false
+    guessSyntax = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[menu]
+  [[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "归档"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 4
+
+[pagination]
+  pagerSize = 10
