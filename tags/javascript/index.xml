@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on www's Blog</title><link>https://weivwang.github.io/tags/javascript/</link><description>Recent content in JavaScript on www's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://weivwang.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>JavaScript学习笔记</title><link>https://weivwang.github.io/posts/js-learning/</link><pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate><guid>https://weivwang.github.io/posts/js-learning/</guid><description>&lt;h2 id="dom2021-1-31"&gt;DOM（2021-1-31）&lt;/h2&gt;
+&lt;h3 id="dom-简介"&gt;DOM 简介&lt;/h3&gt;
+&lt;p&gt;文档对象模型（DOM）是&amp;quot;W3C制定的处理HTML或XML的标准编程接口&amp;quot;，使得通过编程接口修改网页内容和样式成为可能。&lt;/p&gt;
+&lt;p&gt;关键概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Document&lt;/strong&gt;：代表页面&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Element&lt;/strong&gt;：代表标签&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Node&lt;/strong&gt;：包含所有内容（属性、标签、文本、注释）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="获取元素"&gt;获取元素&lt;/h3&gt;
+&lt;p&gt;常用方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;document.getElementById(id)&lt;/code&gt; — 按ID选择&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;document.getElementsByTagName()&lt;/code&gt; — 按标签名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;document.querySelector()&lt;/code&gt; — CSS选择器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;document.body&lt;/code&gt; — 直接访问&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="事件"&gt;事件&lt;/h3&gt;
+&lt;p&gt;事件由三部分组成：事件源、事件类型和事件处理程序。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#00a8c8"&gt;var&lt;/span&gt; &lt;span style="color:#75af00"&gt;btn&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#111"&gt;document&lt;/span&gt;&lt;span style="color:#111"&gt;.&lt;/span&gt;&lt;span style="color:#75af00"&gt;getElementById&lt;/span&gt;&lt;span style="color:#111"&gt;(&lt;/span&gt;&lt;span style="color:#d88200"&gt;&amp;#39;btn&amp;#39;&lt;/span&gt;&lt;span style="color:#111"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75af00"&gt;btn&lt;/span&gt;&lt;span style="color:#111"&gt;.&lt;/span&gt;&lt;span style="color:#75af00"&gt;onclick&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#00a8c8"&gt;function&lt;/span&gt;&lt;span style="color:#111"&gt;()&lt;/span&gt; &lt;span style="color:#111"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75af00"&gt;alert&lt;/span&gt;&lt;span style="color:#111"&gt;(&lt;/span&gt;&lt;span style="color:#d88200"&gt;&amp;#39;clicked&amp;#39;&lt;/span&gt;&lt;span style="color:#111"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#111"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="内容修改"&gt;内容修改&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;element.innerText&lt;/code&gt; — 忽略HTML标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;element.innerHTML&lt;/code&gt; — 识别HTML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2021-2-2-更新"&gt;2021-2-2 更新&lt;/h2&gt;
+&lt;h3 id="切换密码可见性"&gt;切换密码可见性&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#00a8c8"&gt;var&lt;/span&gt; &lt;span style="color:#75af00"&gt;flag&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;&lt;span style="color:#111"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75af00"&gt;btn&lt;/span&gt;&lt;span style="color:#111"&gt;.&lt;/span&gt;&lt;span style="color:#75af00"&gt;onclick&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#00a8c8"&gt;function&lt;/span&gt;&lt;span style="color:#111"&gt;()&lt;/span&gt; &lt;span style="color:#111"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75af00"&gt;pwd&lt;/span&gt;&lt;span style="color:#111"&gt;.&lt;/span&gt;&lt;span style="color:#75af00"&gt;type&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#75af00"&gt;flag&lt;/span&gt; &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;?&lt;/span&gt; &lt;span style="color:#d88200"&gt;&amp;#34;text&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#d88200"&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span style="color:#111"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75af00"&gt;flag&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#75af00"&gt;flag&lt;/span&gt;&lt;span style="color:#111"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#111"&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="css-修改"&gt;CSS 修改&lt;/h3&gt;
+&lt;p&gt;使用驼峰命名法：&lt;code&gt;element.style.backgroundColor = ''&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="焦点事件"&gt;焦点事件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;element.onfocus&lt;/code&gt; — 获得焦点&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;element.onblur&lt;/code&gt; — 失去焦点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="节点操作"&gt;节点操作&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75af00"&gt;parentNode&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 最近的父节点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75af00"&gt;children&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 所有子元素
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75af00"&gt;firstElementChild&lt;/span&gt; &lt;span style="color:#75715e"&gt;// 第一个子元素
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="垃圾回收"&gt;垃圾回收&lt;/h2&gt;
+&lt;p&gt;JavaScript 使用&lt;strong&gt;可达性&lt;/strong&gt;作为核心内存管理概念。当没有引用指向对象时，对象变为&amp;quot;不可达&amp;quot;，触发自动回收。&lt;/p&gt;
+&lt;h2 id="字符串方法"&gt;字符串方法&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;indexOf()&lt;/code&gt;、&lt;code&gt;includes()&lt;/code&gt;、&lt;code&gt;slice()&lt;/code&gt;、&lt;code&gt;substring()&lt;/code&gt;、&lt;code&gt;toUpperCase()&lt;/code&gt;、&lt;code&gt;toLowerCase()&lt;/code&gt;、&lt;code&gt;charAt()&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="数字方法"&gt;数字方法&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Math.floor()&lt;/code&gt;、&lt;code&gt;Math.ceil()&lt;/code&gt;、&lt;code&gt;Math.round()&lt;/code&gt;、&lt;code&gt;toFixed(n)&lt;/code&gt;、&lt;code&gt;parseInt()&lt;/code&gt;、&lt;code&gt;Math.random()&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

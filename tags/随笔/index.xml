@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>随笔 on www's Blog</title><link>https://weivwang.github.io/tags/%E9%9A%8F%E7%AC%94/</link><description>Recent content in 随笔 on www's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://weivwang.github.io/tags/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml"/><item><title>写在前面</title><link>https://weivwang.github.io/posts/xie-zai-qian-mian/</link><pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate><guid>https://weivwang.github.io/posts/xie-zai-qian-mian/</guid><description>&lt;h2 id="关于小窝的建立"&gt;关于小窝的建立&lt;/h2&gt;
+&lt;p&gt;2020年12月，和三位朋友参加了网页设计大赛，学了HTML、CSS和React.js。一次课上，朋友提议用Hexo搭建博客。于是在GitHub上搭了一个Hexo博客，后来荒废了。&lt;/p&gt;
+&lt;p&gt;后来发现了一个用Hugo搭建的极简风格博客，非常喜欢，于是决定重新搭建自己的空间。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;2021-4-27：博客搭建成功&lt;/li&gt;
+&lt;li&gt;2021-10-29：博客修复恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="站点分区"&gt;站点分区&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;LifeRecord&lt;/li&gt;
+&lt;li&gt;StudyNotes&lt;/li&gt;
+&lt;li&gt;TechThinking&lt;/li&gt;
+&lt;li&gt;ReadPapers&lt;/li&gt;
+&lt;li&gt;Literature&amp;amp;Art&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本站使用 Hugo 搭建，主题为 &lt;a href="https://github.com/heyeshuang/hugo-theme-tokiwa"&gt;Tokiwa&lt;/a&gt;，托管于 GitHub。&lt;/p&gt;</description></item></channel></rss>

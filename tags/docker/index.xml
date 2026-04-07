@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on www's Blog</title><link>https://weivwang.github.io/tags/docker/</link><description>Recent content in Docker on www's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 29 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://weivwang.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker学习笔记</title><link>https://weivwang.github.io/posts/docker-notes/</link><pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate><guid>https://weivwang.github.io/posts/docker-notes/</guid><description>&lt;h2 id="学习动机"&gt;学习动机&lt;/h2&gt;
+&lt;p&gt;为了在 macOS 上运行 Linux 完成 CSAPP 课程作业，使用轻量级虚拟机方式学习 Docker。&lt;/p&gt;
+&lt;h2 id="docker-简介"&gt;Docker 简介&lt;/h2&gt;
+&lt;p&gt;Docker 使组织从传统的开发-运维交接转向集成部署工作流。该技术利用&amp;quot;隔离机制来最大化服务器利用率&amp;quot;，对于管理数据库和缓存集群部署特别有价值。&lt;/p&gt;
+&lt;h2 id="历史背景"&gt;历史背景&lt;/h2&gt;
+&lt;p&gt;dotCloud 成立于 2010 年，最初提供平台即服务（PaaS），2013 年将其容器化技术开源。Docker 因其轻量级特性和 Go 语言实现而获得广泛采用。&lt;/p&gt;
+&lt;h2 id="相比虚拟机的优势"&gt;相比虚拟机的优势&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;虚拟机&lt;/strong&gt;需要完整的内核模拟，消耗大量资源，启动时间长。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker 容器&lt;/strong&gt;共享宿主机内核，同时维护隔离的应用环境。主要优势：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最小资源消耗（MB级 vs GB级）&lt;/li&gt;
+&lt;li&gt;快速初始化&lt;/li&gt;
+&lt;li&gt;容器间文件系统隔离&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="devops-优势"&gt;DevOps 优势&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;更快的应用交付和部署&lt;/li&gt;
+&lt;li&gt;简化版本升级和扩展&lt;/li&gt;
+&lt;li&gt;降低系统管理复杂性&lt;/li&gt;
+&lt;li&gt;提高物理硬件资源利用率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="docker-核心组件"&gt;Docker 核心组件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;镜像（Image）&lt;/strong&gt;：创建容器实例的模板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;容器（Container）&lt;/strong&gt;：托管应用的运行时环境&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仓库（Repository）&lt;/strong&gt;：存储镜像的位置&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

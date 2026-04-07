@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on www's Blog</title><link>https://weivwang.github.io/tags/react/</link><description>Recent content in React on www's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sat, 06 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://weivwang.github.io/tags/react/index.xml" rel="self" type="application/rss+xml"/><item><title>React再思考</title><link>https://weivwang.github.io/posts/react-rethink/</link><pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate><guid>https://weivwang.github.io/posts/react-rethink/</guid><description>&lt;h2 id="为什么是函数组件"&gt;为什么是函数组件？&lt;/h2&gt;
+&lt;p&gt;类组件存在挑战：JavaScript 的 &lt;code&gt;this&lt;/code&gt; 绑定复杂性以及对编译器优化的限制。&lt;/p&gt;
+&lt;h2 id="理解-react"&gt;理解 React&lt;/h2&gt;
+&lt;p&gt;React 将自己描述为&amp;quot;一个用于构建用户界面的 JavaScript 库&amp;quot;，而非完整的框架。团队将路由和状态管理交给社区，而非提供全面的内置解决方案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心优势：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;组件化架构促进高内聚低耦合&lt;/li&gt;
+&lt;li&gt;JSX 语法提高代码可读性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="jsx-基础"&gt;JSX 基础&lt;/h2&gt;
+&lt;p&gt;JSX 是 &lt;code&gt;React.createElement()&lt;/code&gt; 调用的语法糖。一个 JSX 元素如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-jsx" data-lang="jsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#111"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#f92672"&gt;MyButton&lt;/span&gt; &lt;span style="color:#75af00"&gt;color&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#d88200"&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;&lt;span style="color:#111"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#75af00"&gt;Click&lt;/span&gt; &lt;span style="color:#75af00"&gt;Me&lt;/span&gt;&lt;span style="color:#111"&gt;&amp;lt;/&lt;/span&gt;&lt;span style="color:#f92672"&gt;MyButton&lt;/span&gt;&lt;span style="color:#111"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;会编译为带有 type、props 和 children 参数的函数调用。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;import React from 'react'&lt;/code&gt; 语句是必要的，因为 Babel 转译会在代码中隐式调用 &lt;code&gt;React.createElement()&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id="虚拟-dom-性能"&gt;虚拟 DOM 性能&lt;/h2&gt;
+&lt;p&gt;React 在内存中维护虚拟 DOM 表示。当数据变化时，React 将新的虚拟树与之前的版本比较，只更新实际 DOM 中的差异部分。&lt;/p&gt;
+&lt;p&gt;重要优化：&lt;strong&gt;在一个事件循环周期内，多个状态变化会合并在一起&lt;/strong&gt;，避免不必要的中间渲染。&lt;/p&gt;
+&lt;h2 id="react-fiberv16"&gt;React Fiber（v16+）&lt;/h2&gt;
+&lt;p&gt;这一算法重新设计通过将大型同步任务分割成更小的片段来解决性能瓶颈。这防止单一的 JavaScript 线程被独占，允许其他操作在片段之间执行——类似于 CPU 时间片。&lt;/p&gt;
+&lt;h2 id="生命周期更新"&gt;生命周期更新&lt;/h2&gt;
+&lt;p&gt;新版本移除了有问题的生命周期方法，引入了 &lt;code&gt;getDerivedStateFromProps()&lt;/code&gt;，尽管文档不鼓励使用它，因为常见的实现错误。&lt;/p&gt;
+&lt;h2 id="redux-实现"&gt;Redux 实现&lt;/h2&gt;
+&lt;p&gt;Redux 应用 Flux 架构原则进行状态管理，特别适用于具有复杂用户交互、多用户协作或频繁服务器通信的应用。&lt;/p&gt;</description></item></channel></rss>

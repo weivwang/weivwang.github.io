@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TensorFlow on www's Blog</title><link>https://weivwang.github.io/tags/tensorflow/</link><description>Recent content in TensorFlow on www's Blog</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://weivwang.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml"/><item><title>TensorFlow八股笔记</title><link>https://weivwang.github.io/posts/tensorflow-notes/</link><pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate><guid>https://weivwang.github.io/posts/tensorflow-notes/</guid><description>&lt;p&gt;基于北京大学人工智能实践课程的 TensorFlow 模块化神经网络框架笔记。&lt;/p&gt;
+&lt;h2 id="两部分架构"&gt;两部分架构&lt;/h2&gt;
+&lt;h3 id="前向传播forwardpy"&gt;前向传播（forward.py）&lt;/h3&gt;
+&lt;p&gt;建立网络结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构建计算图&lt;/li&gt;
+&lt;li&gt;定义带正则化的权重初始化&lt;/li&gt;
+&lt;li&gt;设置偏置参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="反向传播backwardpy"&gt;反向传播（backward.py）&lt;/h3&gt;
+&lt;p&gt;处理训练过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置输入和标签的占位符（Placeholder）&lt;/li&gt;
+&lt;li&gt;损失函数计算（MSE 或交叉熵）&lt;/li&gt;
+&lt;li&gt;正则化集成&lt;/li&gt;
+&lt;li&gt;使用指数衰减的学习率调度&lt;/li&gt;
+&lt;li&gt;参数的指数滑动平均&lt;/li&gt;
+&lt;li&gt;Session管理和训练循环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="关键技术要素"&gt;关键技术要素&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;指数衰减学习率&lt;/strong&gt;：随训练进行逐步降低学习率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正则化损失&lt;/strong&gt;：添加到集合中统一计算&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;滑动平均&lt;/strong&gt;：应用于可训练变量，提升模型稳定性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上为 TensorFlow 1.x 工作流中的标准实践。&lt;/p&gt;</description></item></channel></rss>
