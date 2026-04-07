@@ -1,0 +1,8 @@
+{{ define "main" }}
+<h2 class="article-title">标签</h2>
+<div class="tags-cloud">
+  {{ range .Data.Terms.Alphabetical }}
+  <a class="tag" href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+  {{ end }}
+</div>
+{{ end }}
