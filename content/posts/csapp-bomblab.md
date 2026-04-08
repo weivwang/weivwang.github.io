@@ -15,6 +15,18 @@ CSAPP（Computer Systems: A Programmer's Perspective）的经典实验——拆�
 
 使用 macOS，通过 Docker Ubuntu 容器配置必要工具（gcc, gdb, objdump, vim），而非安装虚拟机。
 
+X86-64寄存器用途：
+
+![X86-64寄存器](/images/posts/8lFpHKwER9AfOGN.png)
+
+![寄存器用途说明](/images/posts/74hRjgZa3Ke1muF.png)
+
+GDB快速参考：
+
+![GDB快速参考卡片1](/images/posts/mbioHa6OI4xtDkB.png)
+
+![GDB快速参考卡片2](/images/posts/Y2de9IaKZFJorzX.png)
+
 ## 方法论
 
 - 使用 `objdump` 反汇编炸弹可执行文件
@@ -35,6 +47,10 @@ CSAPP（Computer Systems: A Programmer's Perspective）的经典实验——拆�
 ### Phase 3：Switch-Case
 
 Switch-case 语句，需要两个整数进行特定计算。通过跳转表分析有多个有效解。
+
+![IDA流程图-跳转表](/images/posts/byPGkXKEI1DTuMj.png)
+
+![IDA反编译-case分析](/images/posts/lreUfdQ2TynObxp.png)
 
 ### Phase 4：递归函数
 

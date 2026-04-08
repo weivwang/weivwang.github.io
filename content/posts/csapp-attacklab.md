@@ -21,12 +21,20 @@ draft: false
 
 ## 关键工具
 
+![实验材料](/images/posts/KhJyFQzwINZgpe3.png)
+
 - **Objdump**：反汇编二进制文件
 - **GCC**：编译汇编代码
 - **GDB**：调试可执行文件
 - **Hex2raw**：将十六进制输入转换为原始字节
 
 ## 挑战关卡
+
+![ctarget和rtarget程序结构](/images/posts/dt9kUxI4rBf5TqM.png)
+
+![Gets函数的不安全性](/images/posts/fs2FWva8PDBYwjg.png)
+
+![缓冲区溢出原理](/images/posts/wbhmruZO4e6F5Nf.png)
 
 ### Touch1
 
@@ -43,12 +51,28 @@ draft: false
 
 与touch2类似，但需要传递cookie的字符串表示。字符串必须以null结尾，并放置在注入代码可访问的内存中。
 
+![touch3函数说明](/images/posts/Hdx8wkiRSQFCEZp.png)
+
+![cookie字符数组存放位置](/images/posts/rZH1G8gwYXABLCk.png)
+
+![cookie需要以0结尾](/images/posts/buo9BYfIeRyDExd.png)
+
 ### ROP 挑战
 
 对于随机化栈，使用程序中找到的gadget（以 `ret` 结尾的短指令序列）。通过在栈上仔细放置返回地址将它们链接在一起。
 
+![gadget1: mov rsp rax](/images/posts/1pcX5D9JeAtTLUy.png)
+
+![gadget2: add偏移](/images/posts/v19IO5bNXEJnTDW.png)
+
+![gadget3: mov rax rdi](/images/posts/YKIa62Pd5gSWfrN.png)
+
 ## 关键发现
 
 在测试中发现，包含 `0x0a`（换行符）的输入会在 `Gets()` 函数中提前终止。由于gadget地址随机包含该字节，解决方案是用大量填充填充栈区域，将执行转移到test函数的栈帧中，避免有问题的地址字节。
+
+![修改源代码后本地通过](/images/posts/PRqgUvxEkfVHGpr.png)
+
+![最终通关答案](/images/posts/GiXE9PFzsmeBCwO.png)
 
 这种非常规的变通方法揭示了对攻击机制和内存布局的更深理解，尽管它需要在payload中进行大量填充。

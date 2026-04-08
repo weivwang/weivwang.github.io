@@ -73,10 +73,18 @@ firstElementChild   // 第一个子元素
 
 JavaScript 使用**可达性**作为核心内存管理概念。当没有引用指向对象时，对象变为"不可达"，触发自动回收。
 
+![对象可达性示例](/images/posts/2xzqVyIKjRQnbok.png)
+
+![对象变为不可达](/images/posts/lw76DdLcKbvX32h.png)
+
 ## 字符串方法
+
+![原始类型的方法示例](/images/posts/2Y8qhBZSI5LCMpV.png)
 
 `indexOf()`、`includes()`、`slice()`、`substring()`、`toUpperCase()`、`toLowerCase()`、`charAt()`
 
 ## 数字方法
+
+![浮点数精度问题](/images/posts/ND9QsSZYprmIija.png)
 
 `Math.floor()`、`Math.ceil()`、`Math.round()`、`toFixed(n)`、`parseInt()`、`Math.random()`

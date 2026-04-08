@@ -36,6 +36,8 @@ dotCloud 成立于 2010 年，最初提供平台即服务（PaaS），2013 年�
 
 ## Docker 核心组件
 
+![Docker基本组成架构图](/images/posts/RZ39hA8XGdcr1T2.png)
+
 - **镜像（Image）**：创建容器实例的模板
 - **容器（Container）**：托管应用的运行时环境
 - **仓库（Repository）**：存储镜像的位置

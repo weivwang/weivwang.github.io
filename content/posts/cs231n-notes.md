@@ -21,6 +21,9 @@ draft: false
 ### 最近邻算法
 
 - L1 曼哈顿距离
+
+![L1曼哈顿距离](/images/posts/cA5pjUNB7VExJmk.png)
+
 - L2 欧氏距离
 
 ### K近邻（KNN）分类
@@ -33,6 +36,8 @@ draft: false
 
 **f(x, W) = Wx + b**
 
+![线性分类器示意图](/images/posts/qOUWS4Z6dRLhQ8X.png)
+
 其中 W 表示学习到的权重，b 是偏置项，产生不同类别的分类分数。
 
 ## 损失函数
@@ -40,7 +45,14 @@ draft: false
 两种主要方法：
 
 - **SVM损失**：支持向量机损失，最小值为0
+
+![SVM损失函数](/images/posts/d5FcEvqJR8Hu1Ta.png)
+
 - **Softmax分类器**：更常用，最小值也为0
+
+![Softmax分类器](/images/posts/SnOb2cl5GvFAWZf.png)
+
+![Softmax损失计算](/images/posts/6GPJAsUjwrivpB3.png)
 
 ## 优化
 
@@ -51,6 +63,10 @@ draft: false
 ## 神经网络
 
 两层神经网络架构，超越线性分类。
+
+![两层神经网络](/images/posts/5z7gcIdpyktDiEK.png)
+
+![神经网络模板示意](/images/posts/juAqi4M5JadpNzm.png)
 
 ## 卷积神经网络（CNN）
 

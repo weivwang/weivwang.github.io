@@ -17,6 +17,14 @@ draft: false
 - 每个周期选择最高优先级进程执行
 - 如果运行时间仍有剩余则重新入队；否则标记为完成
 
+![模拟设置五个线程](/images/posts/lhET4SIuYMHaUZg.png)
+
+![初始表和排序表](/images/posts/oPXN45gmZVkeqt7.png)
+
+![运行过程](/images/posts/v5NEY7n28oRerCA.png)
+
+![所有进程运行完毕](/images/posts/Rfd4baMXTtp2UcS.png)
+
 ## 实验二：内存管理
 
 ### 版本1：可变分区管理
@@ -28,6 +36,10 @@ draft: false
 - 仅与后面的分区合并
 - 孤立时创建新条目
 - 与前后相邻分区同时合并
+
+![请求内存](/images/posts/r9EoUSB45NfusTI.png)
+
+![回收内存](/images/posts/Miw5zj6dRP1T7IK.png)
 
 ### 版本2：分页管理
 
