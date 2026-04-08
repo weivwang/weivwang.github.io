@@ -5,7 +5,15 @@ tags: ["课程笔记"]
 draft: false
 ---
 
-本课程与百度PaddlePaddle平台合作开发。
+商务智能课堂笔记，对这一部分比较感兴趣。
+
+看PDF应该是老师和百度有合作，内容都是PaddlePaddle提供的。
+
+![image-20211118101711178](/images/posts/slkGtz6MLpEnFoW.png)
+
+![image-20211118101602534](/images/posts/g6NcMXWOvnlwtbE.png)
+
+![image-20211118102252963](/images/posts/yoAmtRuePxgc7h5.png)
 
 ## 作业记录
 
@@ -23,11 +31,37 @@ draft: false
 
 信息收集 → 数据集成 → 数据规约 → 数据清洗 → 数据变换 → 数据挖掘 → 模式评估 → 知识表示
 
-### 3-4. 算法实现
+### 3. Apriori算法与FP-Growth算法
 
-- **Apriori算法**：频繁项集挖掘
-- **FP-Growth算法**：模式提取
-- **决策树算法**：信息增益计算
+**Apriori算法**：频繁项集挖掘
+
+拟定数据：[1,3,4],[2,3,5],[1,2,3,5],[2,5]
+
+最小支持度设置为0.5，最小置信度设置为0.7时，测试结果：
+
+![img](/images/posts/g5TCOWLFoVqEjPS.jpg)
+
+修改最小支持度和最小置信度，分别修改为0.7和0.5，测试结果：
+
+![img](/images/posts/BaLWXitCnlqEr75.jpg)
+
+**FP-Growth算法**：模式提取
+
+测试数据：
+
+![img](/images/posts/cw2i874amMrEHsl.jpg)
+
+测试结果：
+
+![img](/images/posts/BD6ziHM4KOhC8Qf.jpg)
+
+### 4. 决策树算法
+
+信息增益计算
+
+测试结果：
+
+![img](/images/posts/2EMmlRZycCXTK9L.jpg)
 
 ### 5. K-means vs K-medoids
 
@@ -35,7 +69,13 @@ draft: false
 
 ### 6. 层次聚类
 
-使用树状图（dendrogram）展示聚类过程。
+使用单连接算法描述数据如何进行层次聚类，并画出树状图。
+
+数据点：（10，8）（70，80）（99，87）（6，5）（5，10）
+
+![image-20211210090953323](/images/posts/s4ZxUkwYCpFH6MI.png)
+
+![image-20211210091036062](/images/posts/whDcVrFRks6XvK2.png)
 
 ### 7. 深度学习基础
 
